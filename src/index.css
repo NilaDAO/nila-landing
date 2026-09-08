@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  --color-page-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #475569;
+  color: var(--color-text);
+  background-color: var(--color-page-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+  color: var(--color-text);
+  background-color: var(--color-page-bg);
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+}
+
+@theme {
+  --font-regular: "Plex-Regular", ui-sans-serif, system-ui, sans-serif;
+  --font-bold: "Plex-Bold", ui-sans-serif, system-ui, sans-serif;
+  --font-Chains: "Chains", system-ui, sans-serif;
+
+  --color-green: #1e293b;
+  --color-green_dark: #1e293b;
+  --color-red: #e69283;
+  --color-red_dark: #6492b3ff;
+  --color-grey: #cbd5e1;
+  --color-black: #0f172a;
+  --color-darkgrey: #1e293b;
+
+  /* Palette — slate-based */
+  --color-primary:        #1e293b;   /* slate-800 — dark sections */
+  --color-primary-mid:    #121212;   /* slate-700 */
+  --color-primary-light:  #cbd5e1;   /* slate-300 */
+  --color-accent:         #d4a634ff;   /* amber — keep brand gold */
+  --color-accent-hover:   #B8860B;   /* amber darker */
+  --color-bg-light:       #e2e8f0;   /* slate-100 — light sections */
+  --color-bg-section:     #e2e8f0;   /* slate-200 */
+  --color-text-on-dark:   #f8fafc;   /* slate-50 */
+  --color-text-soft:      rgba(248,250,252,0.55); /* soft white for secondary text on dark */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-page-bg: #030712;
+    --color-surface: #020617;
+    --color-text: rgba(248, 250, 252, 0.92);
+    --color-muted: rgba(203, 213, 225, 0.88);
+    color: var(--color-text);
+    background-color: var(--color-page-bg);
+  }
+
+  a:hover {
+    color: #c7d2fe;
+  }
+
+  button {
+    color: #f8fafc;
+  }
+}

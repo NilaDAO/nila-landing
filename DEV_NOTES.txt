@@ -1,0 +1,7 @@
+to deploy
+
+
+TO DEPLOY, GO TO AMPLIFY NILAPWA AND ZIP DIST (NOT FOLDER, ONLY INSIDE), DROP THE ZIP IN THE DEPLOY UPDATES BOX. 
+
+
+***  do not change cloudflare. only drop new update manually to landing deployment in nilapwa ( d108zfeejs7ppp )

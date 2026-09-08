@@ -1,0 +1,8 @@
+[
+  {
+    "Action": ["ses:SendEmail", "ses:SendRawEmail"],
+    "Resource": [
+      "arn:aws:ses:ap-south-1:867185477215:identity/info@blockchainforcommons.com"
+    ]
+  }
+]

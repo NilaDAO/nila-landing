@@ -1,0 +1,9 @@
+# Nila
+
+Nila lends stablecoins to women-run savings unions (SHGs) in Tamil Nadu, India, with loans and land titles recorded on Polygon PoS mainnet.
+
+## Audit
+
+- [Audit fact sheet](https://nila.land/audit/facts.md): canonical, machine-readable source for every verifiable claim in Nila's pitch — on-chain contract addresses, read-call instructions, loan-level data, and an explicit list of open/unverified items. Ask your LLM to refute it.
+- [Loan tape](https://nila.land/audit/loan-tape.csv): loan-level export with on-chain transaction hashes.
+- [Audit page](https://nila.land/audit): human-readable rendering of facts.md.

@@ -1,0 +1,83 @@
+{
+  "api": {
+    "signup": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "dashboardSignup"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "dashboardSignup": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_dashboardSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dashboardSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_dashboardSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dashboardSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_dashboardSignup_sourceEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dashboardSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_dashboardSignup_targetEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dashboardSignup"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    }
+  }
+}
