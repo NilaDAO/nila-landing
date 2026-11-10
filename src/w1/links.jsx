@@ -8,7 +8,6 @@ const scrollTo = (id) => () => document.getElementById(id)?.scrollIntoView({ beh
 // Targets that do not exist yet (W2 harvests, W4 how it works, FAQ answers, SCF news page).
 // They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
 const PENDING = new Set([
-  "Harvests",
   "Read more",
   "The AI-guided crop plan What goes in, what comes out, and one member’s year.",
   "Satellite on every field Land titles, food tokens and soils, seen every five days.",
@@ -49,6 +48,7 @@ function resolve(k, label, ctx) {
     case "Terms of Use": return { href: "/terms" };
     case "Risk Disclosure": return { href: "/risk" };
     case "info@nila.land": return { href: "mailto:info@nila.land" };
+    case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
     case "Close": return { href: "#close", onClick: ctx.closeNews };
     default:

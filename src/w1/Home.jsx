@@ -73,7 +73,18 @@ export default function Home({ onOpenUnions }) {
   const mobile = useIsMobile();
   const [news, setNews] = useState(true);
   const [menu, setMenu] = useState(false);
-  const ctx = { openUnions: () => { setMenu(false); onOpenUnions(); }, toggleMenu: () => setMenu((v) => !v), closeNews: () => setNews(false) };
+  const [soon, setSoon] = useState(0); // "Coming soon" chip, bottom right, for pages not built yet
+  useEffect(() => {
+    if (!soon) return undefined;
+    const t = setTimeout(() => setSoon(0), 2500);
+    return () => clearTimeout(t);
+  }, [soon]);
+  const ctx = {
+    openUnions: () => { setMenu(false); onOpenUnions(); },
+    toggleMenu: () => setMenu((v) => !v),
+    closeNews: () => setNews(false),
+    comingSoon: () => { setMenu(false); setSoon(Date.now()); },
+  };
 
   const S = mobile
     ? { News: MNews, Hero: MHero, Metrics: MMetrics, Offers: MOffers, Wave1: MWave1, Year: MYear, Package: MPackage, Wave2: MWave2, Trust: MTrust, Wave3: MWave3, Stellar: MStellar, Backed: MBacked, How: MHow, GlobeWave: MGlobeWave, Faq: MFaq, Footer: MFooter }
@@ -103,6 +114,14 @@ export default function Home({ onOpenUnions }) {
         <Anchor id="faq" />
         <S.Faq />
         <S.Footer />
+        {soon > 0 && (
+          <div role="status" aria-live="polite"
+               style={{ position: "fixed", right: 16, bottom: 16, zIndex: 60, display: "inline-flex", alignItems: "center", height: 32,
+                        padding: "0 14px", borderRadius: 9999, background: "var(--nl-surface-raised)", border: "1px solid #2A3442",
+                        boxShadow: "var(--nl-shadow-card)", fontSize: 12, fontWeight: 700, color: "var(--nl-text)" }}>
+            Coming soon
+          </div>
+        )}
       </div>
     </W1Ctx.Provider>
   );
