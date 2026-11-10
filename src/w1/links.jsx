@@ -26,7 +26,6 @@ const PENDING = new Set([
   "How does a buyer lock a harvest?",
   "Where does funding go?",
   "How do I verify independently?",
-  "Build with Nila",
 ]);
 
 // Shown but switched off until W2 (harvests) exists (Carst, 10 Nov).
@@ -54,6 +53,7 @@ function resolve(k, label, ctx) {
     case "Risk Disclosure": return { href: "/risk" };
     case "info@nila.land": return { href: "mailto:info@nila.land" };
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
+    case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
     case "Close": return { href: "#close", onClick: ctx.closeNews };
