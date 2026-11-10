@@ -56,7 +56,8 @@ function resolve(k, label, ctx) {
     case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
-    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how"), onClick: ctx.openHow || undefined }; // W4, slides in like Meet the unions (Carst, 10 Nov)
+    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how#technical"), // W4 Technical tab; slides in like Meet the unions (Carst, 10 Nov)
+      onClick: ctx.openHow ? () => { history.replaceState(null, "", `${location.pathname}${location.search}#technical`); ctx.openHow(); } : undefined };
     case "View a live field": return { href: "#live", onClick: ctx.comingSoon }; // W4: no public live field view yet
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
