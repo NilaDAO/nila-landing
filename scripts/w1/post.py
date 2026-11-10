@@ -50,3 +50,21 @@ for f in ('desktop/DHow.jsx', 'mobile/MHow.jsx'):
         assert s.count(HOW_OLD_P) == 1, f
         s = s.replace(HOW_OLD_H, '>Sow in season.</h2>').replace(HOW_OLD_P, HOW_NEW_P)
         open(f'{W}/{f}', 'w').write(s)
+
+# Home "How it works" cards → the three /how tabs, topic not process (Carst, 10 Nov).
+PEOPLE = '<circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c2.9.4 5 2.8 5 5.8"></path>'
+CARDS = [
+    ('The AI-guided crop plan', 'What goes in, what comes out, and one member’s year.', 'Impact', 'Members, repayments, and what we can’t measure yet.'),
+    ('Satellite on every field', 'Land titles, food tokens and soils, seen every five days.', 'Technical', 'Chains, signatures, AI and satellite.'),
+    ('Why yields turn around', 'Predictable, regenerative, done together in the SHG.', 'Climate', 'Soil, seasons and land that recovers.'),
+]
+for f in ('desktop/DHow.jsx', 'mobile/MHow.jsx'):
+    s = open(f'{W}/{f}').read()
+    for t0, b0, t1, b1 in CARDS:
+        if f'label="{t0} {b0}"' in s:
+            s = s.replace(f'label="{t0} {b0}"', f'label="{t1} {b1}"').replace(f'>{t0}</span>', f'>{t1}</span>').replace(f'>{b0}</span>', f'>{b1}</span>')
+    crosshair = '<path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><rect x="7" y="7" width="10" height="10" rx="2"></rect><path d="M10 10h4v4h-4z"></path>'
+    if crosshair in s and 'label="Impact ' in s:
+        assert s.count(crosshair) == 1, f
+        s = s.replace(crosshair, PEOPLE)
+    open(f'{W}/{f}', 'w').write(s)

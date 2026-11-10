@@ -45,7 +45,7 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 ## W1 — open before the flag is switched (Carst)
 
 - **Lock in a harvest** (hero primary + buyers card) is shown disabled until W2 exists (Carst, 10 Nov).
-- **Links with no target yet** (inert, listed in `src/w1/links.jsx` PENDING): *Harvests* (W2 not built); the three *How it works* cards (W4 not built); *Read more* on the SCF news bar; *Build with Nila* → "Coming soon" chip (no other services use Nila tokens yet, Carst 10 Nov);
+- **Links with no target yet** (inert, listed in `src/w1/links.jsx` PENDING): *Harvests* (W2 not built); *Read more* on the SCF news bar; *Build with Nila* → "Coming soon" chip (no other services use Nila tokens yet, Carst 10 Nov);
   all nine FAQ questions (the board has no answers — answers are an open point).
 - **Check access** opens the old unions page (W3 not built, as decided).
 - **Season ledger (CSV)** links to the old `loan-tape.csv` until the season ledger exists.

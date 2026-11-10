@@ -16,8 +16,6 @@ const scrollTo = (id, ctx) => () => {
 // Targets that do not exist yet (W2 harvests, W4 how it works, FAQ answers, SCF news page).
 // They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
 const PENDING = new Set([
-  "The AI-guided crop plan What goes in, what comes out, and one member’s year.",
-  "Why yields turn around Predictable, regenerative, done together in the SHG.",
   "What does Nila offer?",
   "What is nUSD, and where does the yield come from?",
   "What is a crop plan?",
@@ -31,6 +29,12 @@ const PENDING = new Set([
 
 // Shown but switched off (dimmed, no action). Empty since "Lock in a harvest" got the Coming soon toast (Carst, 10 Nov).
 const DISABLED = new Set([]);
+
+// /how at one tab; from the home page it slides in (ctx.openHow) and reads the tab from the hash.
+const howTab = (tab, ctx) => ({
+  href: homeHref(`/how#${tab}`),
+  onClick: ctx.openHow ? () => { history.replaceState(null, "", `${location.pathname}${location.search}#${tab}`); ctx.openHow(); } : undefined,
+});
 
 function resolve(k, label, ctx) {
   if (DISABLED.has(label)) return { href: undefined, "aria-disabled": true, pending: true, disabled: true };
@@ -56,8 +60,9 @@ function resolve(k, label, ctx) {
     case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
-    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how#technical"), // W4 Technical tab; slides in like Meet the unions (Carst, 10 Nov)
-      onClick: ctx.openHow ? () => { history.replaceState(null, "", `${location.pathname}${location.search}#technical`); ctx.openHow(); } : undefined };
+    case "Impact Members, repayments, and what we can’t measure yet.": return howTab("impact", ctx);   // W4 tabs (Carst, 10 Nov)
+    case "Technical Chains, signatures, AI and satellite.": return howTab("technical", ctx);
+    case "Climate Soil, seasons and land that recovers.": return howTab("climate", ctx);
     case "View a live field": return { href: "#live", onClick: ctx.comingSoon }; // W4: no public live field view yet
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
