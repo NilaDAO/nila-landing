@@ -16,7 +16,7 @@ export default function RiskDisclosure() {
           Risk Disclosure
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Nila.land BV · Amsterdam, Netherlands
+          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <RiskBody />
@@ -25,7 +25,7 @@ export default function RiskDisclosure() {
       {/* Footer */}
       <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
         <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
+          <span>© 2026 Blockchainforcommons</span>
           <div className="flex gap-4">
             <a href="/privacy" className="underline hover:opacity-80">Privacy Policy</a>
             <a href="/terms" className="underline hover:opacity-80">Terms of Use</a>
@@ -96,7 +96,7 @@ export function RiskBody() {
               The regulatory environment for digital assets, stablecoins, and cross-border lending is evolving. Changes in regulation — in the Netherlands, India, or any jurisdiction relevant to your situation — may restrict, tax, or prohibit activities related to your investment.
             </p>
             <p className="mt-3">
-              Nila.land BV is incorporated in the Netherlands and operates under Dutch law. It is your responsibility to ensure that participating in Nila's facilities is lawful in your jurisdiction.
+              Blockchainforcommons is registered in the Netherlands and operates under Dutch law. It is your responsibility to ensure that participating in Nila's facilities is lawful in your jurisdiction.
             </p>
           </section>
 

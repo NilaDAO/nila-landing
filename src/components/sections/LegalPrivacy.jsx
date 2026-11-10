@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
           Privacy Policy
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Nila.land BV · Amsterdam, Netherlands
+          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <PrivacyBody />
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
       {/* Footer */}
       <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
         <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
+          <span>© 2026 Blockchainforcommons</span>
           <span><a href="/terms" className="underline hover:opacity-80">Terms of Use</a></span>
         </div>
       </div>
@@ -40,7 +40,7 @@ export function PrivacyBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>1. Who we are</h2>
             <p>
-              Nila.land BV ("Nila", "we", "us") is incorporated in the Netherlands (KvK: [XXXXXXXX]) with its registered office at [Address], Amsterdam. We operate the website nila.land and related investor services.
+              Nila ("Nila", "we", "us") is run by Blockchainforcommons (KvK 55518559), Amsterdam, the Netherlands, and in India by the Nila Farmer Livelihoods Trust (Reg. Book-4/26/2026, PAN AAFTN4490C). We operate the website nila.land and related investor services.
             </p>
             <p className="mt-3">
               For questions about this policy, contact us at <a href="mailto:info@nila.land" className="underline" style={{ color: "var(--color-accent)" }}>info@nila.land</a>.

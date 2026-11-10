@@ -16,7 +16,7 @@ export default function TermsOfUse() {
           Terms of Use
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Nila.land BV · Amsterdam, Netherlands
+          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <TermsBody />
@@ -25,7 +25,7 @@ export default function TermsOfUse() {
       {/* Footer */}
       <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
         <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
+          <span>© 2026 Blockchainforcommons</span>
           <span><a href="/privacy" className="underline hover:opacity-80">Privacy Policy</a></span>
         </div>
       </div>
@@ -47,7 +47,7 @@ export function TermsBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>2. About Nila</h2>
             <p>
-              Nila.land BV ("Nila", "we", "us") is a company incorporated in the Netherlands (KvK: [XXXXXXXX]) with its registered office at [Address], Amsterdam. We operate the website nila.land and related investor services providing agricultural finance infrastructure.
+              Nila ("Nila", "we", "us") is run by Blockchainforcommons (KvK 55518559), Amsterdam, the Netherlands, and in India by the Nila Farmer Livelihoods Trust (Reg. Book-4/26/2026, PAN AAFTN4490C). We operate the website nila.land and related investor services providing agricultural finance infrastructure.
             </p>
           </section>
 
@@ -71,7 +71,7 @@ export function TermsBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>5. Intellectual property</h2>
             <p>
-              All content on the Site — including text, graphics, logos, images, and software — is the property of Nila.land BV or its licensors and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.
+              All content on the Site — including text, graphics, logos, images, and software — is the property of Blockchainforcommons or its licensors and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.
             </p>
           </section>
 
@@ -90,14 +90,14 @@ export function TermsBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>7. Disclaimers and limitation of liability</h2>
             <p>
-              The Site is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, Nila.land BV shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site.
+              The Site is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, Nila shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>8. Third-party links</h2>
             <p>
-              The Site may contain links to third-party websites. These links are provided for convenience only. Nila.land BV has no control over, and assumes no responsibility for, the content or practices of any third-party sites.
+              The Site may contain links to third-party websites. These links are provided for convenience only. Nila has no control over, and assumes no responsibility for, the content or practices of any third-party sites.
             </p>
           </section>
 
