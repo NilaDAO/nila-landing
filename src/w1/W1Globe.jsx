@@ -5,15 +5,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import { MeshPhongMaterial, Color } from "three";
+import { geoArea } from "d3-geo";
 
 const TN = { lat: 11.878858, lng: 78.964963, label: "Tamil Nadu · 3 unions" };
 
 // Camera per layout, from the board: a sphere of 1248 px (desktop) / 720 px (mobile) whose top sits 70 / 50 px into
 // the band, with Tamil Nadu ~120 / 80 px below that top. fov 40 at altitude 0.52 gives that sphere size; looking
 // from latitude ≈ −14° puts Tamil Nadu there; the view offset moves the sphere centre below the band.
+// 10 Nov (Carst): start tilted further north (lat −6) so the Himalaya countries (Nepal) are not on the rim and can be
+// tapped; Tamil Nadu then sits mid-band. Drag up/down tilts between TILT.min and TILT.max (view latitude).
+const TILT = { min: -20, max: 8 }; // the country file covers South Asia only (11 countries): no tilting into empty north
+
 const CAM = {
-  desktop: { band: 520, alt: 0.52, lat: -14, centreY: 694 },
-  mobile: { band: 300, alt: 0.52, lat: -13, centreY: 410 },
+  desktop: { band: 520, alt: 0.52, lat: -6, centreY: 694 },
+  mobile: { band: 300, alt: 0.52, lat: -6, centreY: 410 },
 };
 
 const fmtUsd = (v) => {
@@ -116,7 +121,7 @@ export default function W1Globe({ mobile }) {
       .catch(() => {});
   }, []);
 
-  // Camera: horizon view with Tamil Nadu facing us; drag rotates around the polar axis only.
+  // Camera: horizon view with Tamil Nadu facing us; drag rotates east–west and tilts within TILT.
   useEffect(() => {
     const g = ref.current;
     if (!g || !width) return;
@@ -125,10 +130,11 @@ export default function W1Globe({ mobile }) {
     camera.fov = 40;
     g.pointOfView({ lat: cam.lat, lng: TN.lng, altitude: cam.alt }, 0);
     controls.update();
-    const polar = controls.getPolarAngle();
     Object.assign(controls, {
       enabled: true, enableZoom: false, enablePan: false, enableRotate: true, rotateSpeed: 0.4,
-      minPolarAngle: polar, maxPolarAngle: polar, autoRotate: true, autoRotateSpeed: 0.1,
+      // polar angle = 90° − view latitude
+      minPolarAngle: ((90 - TILT.max) * Math.PI) / 180, maxPolarAngle: ((90 - TILT.min) * Math.PI) / 180,
+      autoRotate: true, autoRotateSpeed: 0.1,
     });
     // vertical swipes keep scrolling the page; horizontal drags rotate the globe
     g.renderer().domElement.style.touchAction = "pan-y";
@@ -150,6 +156,13 @@ export default function W1Globe({ mobile }) {
     };
   }, [active]);
 
+  // Smaller countries sit slightly higher, so a neighbour drawn over them (India over Nepal) does not take the tap.
+  const altitude = useMemo(() => {
+    const ranked = [...countries].sort((a, b) => geoArea(b) - geoArea(a));
+    const alt = new Map(ranked.map((f, i) => [f, 0.004 + i * 0.002]));
+    return (d) => alt.get(d) ?? 0.004;
+  }, [countries]);
+
   const card = stats && <CountryCard s={stats} onClose={() => setActive(null)} />;
 
   return (
@@ -168,7 +181,7 @@ export default function W1Globe({ mobile }) {
             atmosphereAltitude={0.06}
             showGraticules
             polygonsData={countries}
-            polygonAltitude={0.004}
+            polygonAltitude={altitude}
             polygonCapColor={(d) => (d === active ? "rgba(241,245,249,0.14)" : d === hover ? "rgba(241,245,249,0.12)" : "rgba(241,245,249,0.04)")}
             polygonSideColor={() => "rgba(0,0,0,0)"}
             polygonStrokeColor={(d) => (d === hover || d === active ? "#F1F5F9" : "rgba(241,245,249,0.3)")}
