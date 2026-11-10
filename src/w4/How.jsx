@@ -70,7 +70,7 @@ export default function How({ onBack, onOpenUnions }) {
   return (
     <W1Ctx.Provider value={ctx}>
       <div className="w1" style={{ background: "#0A0A0A", minHeight: "100vh", overflowX: "hidden" }}>
-        <PageNav mobile={mobile} />
+        <PageNav mobile={mobile} current="How it works" />
         {mobile && menu && <MobileMenu onClose={() => setMenu(false)} />}
         {mobile ? (
           <><TabBar tab={tab} setTab={setTab} mobile /><Tab mobile /></>

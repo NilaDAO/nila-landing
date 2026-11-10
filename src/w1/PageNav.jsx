@@ -8,7 +8,7 @@ const navLink = { fontSize: 14, color: "#94A3B8", padding: "8px 12px" };
 const raisedBtn = { height: 44, borderRadius: 12, fontSize: 14, fontWeight: 700, padding: "0 20px", display: "inline-flex", alignItems: "center",
                     justifyContent: "center", gap: 8, boxSizing: "border-box", whiteSpace: "nowrap", color: "#F1F5F9", background: "#1F2733" };
 
-export default function PageNav({ mobile }) {
+export default function PageNav({ mobile, current }) {
   const { back } = useContext(W1Ctx);
   const size = mobile ? 32 : 36;
   return (
@@ -30,7 +30,8 @@ export default function PageNav({ mobile }) {
       ) : (
         <>
           <div style={{ display: "flex", gap: 20 }}>
-            {["nUSD", "Harvests", "How it works", "FAQ"].map((l) => <A key={l} k="" label={l} style={navLink}>{l}</A>)}
+            {["nUSD", "Harvests", "How it works", "FAQ"].map((l) => <A key={l} k="" label={l} aria-current={l === current ? "page" : undefined}
+                                                                     style={l === current ? { ...navLink, color: "#F1F5F9" } : navLink}>{l}</A>)}
           </div>
           <A k="" label="Meet the unions" style={raisedBtn}>
             Meet the unions
