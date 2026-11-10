@@ -13,13 +13,18 @@ const TN = { lat: 11.878858, lng: 78.964963, label: "Tamil Nadu · 3 unions" };
 // camera at (150 | 310 on mobile, −5, 0), fov 40; canvas width ÷ 2.2 (mobile ÷ 0.75, clipped to 72 %). The old desktop
 // looked at (0, 70, 0) with the controls off; the old mobile had the controls on, which globe.gl keeps aimed at the
 // centre. globe.gl resets the orbit target on every move, so the camera is turned by hand here: drag east–west, old
-// auto-rotate speed (OrbitControls 0.1 = one turn per 10 min), tilt fixed as before.
+// auto-rotate speed (OrbitControls 0.1 = one turn per 10 min), tilt fixed as before. Auto-rotate swings (AZ_MIN…AZ_MAX).
 const OLD = {
   desktop: { camX: 150, lookY: 70, ratio: 2.2, clip: 1 },
   mobile: { camX: 310, lookY: 0, ratio: 0.75, clip: 0.72 },
 };
 const AUTO = (2 * Math.PI) / 60 / 60 * 0.1 / 60; // rad per ms
 const DRAG = 0.005; // rad per px
+// Auto-rotate swings back and forth instead of turning all the way round: a full turn ends on the Pacific, which reads
+// as a blue ball, not a globe (Carst, 10 Nov). The camera faces longitude 90° − az (three-globe axes), so
+// az −0.79…+1.31 rad keeps the view between 135°E (Japan) and 15°E (Africa); start az 0 = 90°E.
+const AZ_MIN = -0.79, AZ_MAX = 1.31;
+const EASE = 0.25; // rad before an edge where the swing slows down
 
 const fmtUsd = (v) => {
   if (!v && v !== 0) return "no data";
@@ -152,16 +157,20 @@ export default function W1Globe({ mobile }) {
     g.camera().fov = 40;
     g.camera().updateProjectionMatrix();
     place();
-    if (import.meta.env.DEV) window.__w1globe = g;
+    if (import.meta.env.DEV) { window.__w1globe = g; window.__w1az = (v) => { az.current = v; place(); }; }
   };
   useEffect(() => {
     if (width) requestAnimationFrame(applyCamera);
   }, [width, cam]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    let raf, last = performance.now();
+    let raf, last = performance.now(), dir = -1;
     const tick = (now) => {
       if (!drag.current && !hoverRef.current) {
-        az.current -= AUTO * (now - last);
+        const a = ((az.current + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI; // a drag may wind past ±π
+        if (a <= AZ_MIN) dir = 1; else if (a >= AZ_MAX) dir = -1; // turn back at the edge (also after a drag past it)
+        const room = dir < 0 ? a - AZ_MIN : AZ_MAX - a;           // distance to the edge ahead
+        const slow = Math.min(1, Math.max(0.15, room / EASE));
+        az.current = a + dir * AUTO * slow * (now - last);
         place();
       }
       last = now;
