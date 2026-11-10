@@ -19,22 +19,29 @@ import Climate from "./Climate.jsx";
 const TABS = [["impact", "Impact", Impact], ["technical", "Technical", Technical], ["climate", "Climate", Climate]];
 const fromHash = (h) => (TABS.some(([k]) => k === h.slice(1)) ? h.slice(1) : "impact");
 
+// Desktop: tabs stacked in a left column, under the back button (Carst, 10 Nov), sticky while the content scrolls.
+// Mobile: one segmented row under the nav.
 function TabBar({ tab, setTab, mobile }) {
-  return (
-    <div style={{ paddingTop: mobile ? 16 : 32 }}>
-      <div role="tablist" aria-label="How it works"
-           style={{ maxWidth: 1152, margin: "0 auto", padding: mobile ? "0 16px" : "0 24px", boxSizing: "border-box", display: "flex" }}>
-        <div style={{ display: "inline-flex", gap: 2, padding: 2, borderRadius: 12, background: "#121212", boxShadow: "inset 0 0 0 1px #1F2733",
-                      width: mobile ? "100%" : "auto" }}>
+  const btn = (k) => ({ height: 40, padding: "0 14px", border: 0, borderRadius: 10, cursor: "pointer", font: "inherit", fontSize: 14, fontWeight: 700,
+                        textAlign: "left", background: tab === k ? "#1F2733" : "transparent", color: tab === k ? "#F1F5F9" : "#94A3B8" });
+  if (mobile) {
+    return (
+      <div role="tablist" aria-label="How it works" style={{ padding: "16px 16px 0" }}>
+        <div style={{ display: "flex", gap: 2, padding: 2, borderRadius: 12, background: "#121212", boxShadow: "inset 0 0 0 1px #1F2733" }}>
           {TABS.map(([k, label]) => (
-            <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)}
-                    style={{ flex: mobile ? 1 : "none", height: 40, padding: "0 18px", border: 0, borderRadius: 10, cursor: "pointer", font: "inherit",
-                             fontSize: 14, fontWeight: 700, background: tab === k ? "#1F2733" : "transparent", color: tab === k ? "#F1F5F9" : "#94A3B8" }}>
-              {label}
-            </button>
+            <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} style={{ ...btn(k), flex: 1, textAlign: "center" }}>{label}</button>
           ))}
         </div>
       </div>
+    );
+  }
+  return (
+    <div role="tablist" aria-orientation="vertical" aria-label="How it works"
+         style={{ position: "sticky", top: 24, display: "flex", flexDirection: "column", gap: 2, padding: 2, borderRadius: 12,
+                  background: "#121212", boxShadow: "inset 0 0 0 1px #1F2733" }}>
+      {TABS.map(([k, label]) => (
+        <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} style={btn(k)}>{label}</button>
+      ))}
     </div>
   );
 }
@@ -65,8 +72,14 @@ export default function How({ onBack, onOpenUnions }) {
       <div className="w1" style={{ background: "#0A0A0A", minHeight: "100vh", overflowX: "hidden" }}>
         <PageNav mobile={mobile} />
         {mobile && menu && <MobileMenu onClose={() => setMenu(false)} />}
-        <TabBar tab={tab} setTab={setTab} mobile={mobile} />
-        <Tab mobile={mobile} />
+        {mobile ? (
+          <><TabBar tab={tab} setTab={setTab} mobile /><Tab mobile /></>
+        ) : (
+          <div style={{ display: "grid", gridTemplateColumns: "160px minmax(0, 1fr)", gap: 8, padding: "48px 0 0 48px", alignItems: "start" }}>
+            <TabBar tab={tab} setTab={setTab} />
+            <div style={{ minWidth: 0, marginTop: -48 }}><Tab /></div>
+          </div>
+        )}
         <Footer />
         <ComingSoonChip on={soon} />
       </div>
