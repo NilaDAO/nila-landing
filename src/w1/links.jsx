@@ -28,8 +28,8 @@ const PENDING = new Set([
   "How do I verify independently?",
 ]);
 
-// Shown but switched off until W2 (harvests) exists (Carst, 10 Nov).
-const DISABLED = new Set(["Lock in a harvest"]);
+// Shown but switched off (dimmed, no action). Empty since "Lock in a harvest" got the Coming soon toast (Carst, 10 Nov).
+const DISABLED = new Set([]);
 
 function resolve(k, label, ctx) {
   if (DISABLED.has(label)) return { href: undefined, "aria-disabled": true, pending: true, disabled: true };
@@ -52,6 +52,7 @@ function resolve(k, label, ctx) {
     case "Terms of Use": return { href: "/terms" };
     case "Risk Disclosure": return { href: "/risk" };
     case "info@nila.land": return { href: "mailto:info@nila.land" };
+    case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
