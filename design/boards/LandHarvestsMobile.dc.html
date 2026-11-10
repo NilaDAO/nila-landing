@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Landing: harvests (mobile: desktop-only notice)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+html,body{overflow:hidden}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:#121212;color:#F1F5F9}
+a{color:#F1F5F9;text-decoration:none}a[role=button]{cursor:pointer}a:hover{color:#E8C25A}
+@keyframes nlR2L{0%{left:100%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:0%;opacity:0}}
+@keyframes nlL2R{0%{left:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes nlSpin{to{transform:rotate(360deg)}}
+@keyframes nlPulse{0%,70%,100%{background:#1F2733}35%{background:#F1F5F9}}
+@keyframes nlSway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.8deg)}}
+.nl-cane{transform-box:fill-box;transform-origin:50% 100%;animation:nlSway 5s ease-in-out infinite}
+.nl-acc{display:flex;gap:0}.nl-tab{flex:1 1 0;min-width:0;transition:flex .6s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+.nl-acc:hover .nl-tab{flex:1 1 0}.nl-acc .nl-tab:hover,.nl-acc:not(:hover) .nl-tab.on{flex:3.2 1 0}
+.nl-body{opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}.nl-tab:hover .nl-body,.nl-acc:not(:hover) .nl-tab.on .nl-body{opacity:1;transform:none}
+.nl-tab:hover .nl-lab,.nl-acc:not(:hover) .nl-tab.on .nl-lab{color:#F1F5F9}
+.nl-accm{flex-direction:column}.nl-accm .nl-tab{flex:none}.nl-accm .nl-body{max-height:0;overflow:hidden}.nl-accm .nl-tab.on .nl-body{max-height:200px}
+.nl-field{transition:transform 1.1s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .8s}.nl-stub{opacity:0;transition:opacity .5s,filter .8s}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-field{transform:translateY(72%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-field{transform:translateY(50%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-field{transform:translateY(18%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-field{transform:translateY(0);opacity:0;transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .5s 1.2s;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-stub{opacity:1;transition:opacity .5s 1.3s;}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-field{transform:translateY(80%);opacity:1;filter:sepia(1) saturate(1.5) hue-rotate(-18deg) brightness(.68);}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-stub{opacity:1;filter:sepia(1) saturate(1.5) hue-rotate(-18deg) brightness(.6);}
+.nl-L{opacity:0;transform:translateY(6%);transition:opacity .7s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-L-plan,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-L-plan{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-L-service,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-L-service{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-L-fund,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-L-fund{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-L-harvest,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-L-harvest{opacity:1;transform:none;animation:nlCut 2.4s forwards;}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-L-deliver,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-L-deliver{opacity:1;transform:none;}
+@keyframes nlCut{0%,50%{opacity:1}70%,100%{opacity:0}}
+.pk-r{position:absolute;opacity:0;pointer-events:none}.pk:not(:has(.pk-r:checked)) .pk-p-res{display:block}.pk:not(:has(.pk-r:checked)) label[for=pk-res]{box-shadow:0 0 0 2px #94A3B8}.pk-p{display:none}.pk-t{cursor:pointer;transition:background .2s,border-color .2s}.pk-t:hover{border-color:#94A3B8 !important}
+.pk:has(#pk-res:checked) .pk-p-res{display:block}.pk:has(#pk-res:checked) label[for=pk-res]{box-shadow:0 0 0 2px #94A3B8}
+.pk:has(#pk-svc:checked) .pk-p-svc{display:block}.pk:has(#pk-svc:checked) label[for=pk-svc]{background:#1F2733 !important;border-color:#94A3B8 !important}
+.pk:has(#pk-land:checked) .pk-p-land{display:block}.pk:has(#pk-land:checked) label[for=pk-land]{background:#1F2733 !important;border-color:#94A3B8 !important}
+.pk:has(#pk-mkt:checked) .pk-p-mkt{display:block}.pk:has(#pk-mkt:checked) label[for=pk-mkt]{background:#1F2733 !important;border-color:#94A3B8 !important}
+@keyframes nlMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes nlLive{0%{box-shadow:0 0 0 0 rgba(212,207,90,.7)}70%{box-shadow:0 0 0 7px rgba(212,207,90,0)}100%{box-shadow:0 0 0 0 rgba(212,207,90,0)}}
+@keyframes nlDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes nlFade{0%,85%{opacity:0}100%{opacity:1}}
+@keyframes nlStep{0%,6%{background:#1F2733;color:#F1F5F9}14%,92%{background:#F1F5F9;color:#121212}100%{background:#1F2733;color:#F1F5F9}}
+@keyframes nlLine{0%,6%{transform:scaleY(0)}14%,92%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes nlNext{0%{box-shadow:0 0 0 0 rgba(241,245,249,.6)}70%{box-shadow:0 0 0 8px rgba(241,245,249,0)}100%{box-shadow:0 0 0 0 rgba(241,245,249,0)}}
+@keyframes nlPop{0%{opacity:0;transform:scale(0)}6%{opacity:1;transform:scale(1.8)}10%,94%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+@keyframes nlWave{from{transform:translateX(0)}to{transform:translateX(-320px)}}
+.nl-coin{display:inline-block;cursor:default}.nl-shape{left:calc((var(--w) - var(--h)) / 2);width:var(--h);border-radius:50%;gap:0;transition:border-radius .9s cubic-bezier(.45,.05,.25,1),gap .6s cubic-bezier(.45,.05,.25,1) 1.2s}.nl-coin:hover .nl-shape{border-radius:24px;gap:10px;transition:gap .6s cubic-bezier(.45,.05,.25,1),border-radius .9s cubic-bezier(.45,.05,.25,1) 1.1s}.nl-part{background:#121212;box-shadow:inset 0 0 0 1px rgba(31,39,51,0);transition:border-radius .9s ease,box-shadow .4s ease .9s;border-radius:0}.nl-coin:hover .nl-part{box-shadow:inset 0 0 0 1px #1F2733;border-radius:6px;transition:box-shadow .4s ease .3s,border-radius .9s ease 1.1s}.nl-coin:hover .nl-part:first-child{border-radius:24px 24px 6px 6px}.nl-coin:hover .nl-part:last-child{border-radius:6px 6px 24px 24px}.nl-plab{opacity:0;transition:opacity .3s ease}.nl-coin:hover .nl-plab{opacity:1;transition:opacity .6s ease 1.7s}.nl-rim{border:1px solid #1F2733;transition:opacity .5s ease 1.3s}.nl-coin:hover .nl-rim{opacity:0;transition:opacity .5s ease .4s}
+.nl-scroll{overflow-x:auto;scrollbar-width:auto;scrollbar-color:#F1F5F9 #1F2733;padding-bottom:6px}.nl-scroll::-webkit-scrollbar{height:12px}.nl-scroll::-webkit-scrollbar-track{background:#1F2733;border-radius:9999px}.nl-scroll::-webkit-scrollbar-thumb{background:#F1F5F9;border-radius:9999px;border:3px solid #1F2733}.nl-scroll::-webkit-scrollbar-thumb:hover{background:#D4CF5A}
+@keyframes nlTick{0%,20%{opacity:.25}30%,90%{opacity:1}100%{opacity:.25}}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 1419px; background: #0A0A0A; color: #F1F5F9; font-family: 'Inter', system-ui, sans-serif; position: relative;"><nav style="position: relative; z-index: 5; height: 72px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between;"><a href="LandHomeMobile.dc.html"><img src="/_blob/4b8278e23536dd27822ad11d5527514f" alt="nila" style="width: 32px; height: 32px; display: block;"></a><span style="display: flex; gap: 8px; align-items: center;"><a href="#" aria-label="Menu" style="width: 40px; height: 40px; border-radius: 9999px; background: #1F2733; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F1F5F9" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></a></span></nav><section style="position: relative; overflow: hidden; background: #0A0A0A; "><div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,0.75) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.75) 1px, transparent 1px); background-size: 48px 48px;"></div><div style="position: relative;"><div style="padding: 24px 16px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;"><div style="display: flex; flex-direction: column; gap: 12px;"><span style="font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8;">Harvests</span><h1 style="margin: 0; font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">Lock in a harvest</h1><p style="margin: 0; font-size: 14px; line-height: 1.5; color: #94A3B8; max-width: 680px;">Bid on the coming harvests by delivery week. You pay what you bid.</p></div><div style="background: #121212; border: 1px solid #1C1F26; border-radius: 24px; box-shadow: rgba(0,0,0,0.15) 0 12px 10px 0, rgba(0,0,0,0.06) 0 5px 12px 2px; padding: 22px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; "><div style="display: flex; align-items: center; gap: 12px;"><span style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 9999px; background: #1F2733; display: flex; align-items: center; justify-content: center; overflow: hidden;"><span style="font-size: 14px;">▭</span></span><span style="font-size: 16px; font-weight: 700; line-height: 1.3;">Best on a larger screen</span></div><p style="margin: 0; font-size: 14px; line-height: 1.5; color: #F1F5F9; ">Open the harvest board on a laptop or desktop to bid.</p><div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; line-height: 1.5;"><span style="color: #94A3B8;">Paddy · last round</span><span style="font-weight: 700; color: #F1F5F9; text-align: right;">₹2,450/qtl</span></div><div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; line-height: 1.5;"><span style="color: #94A3B8;">Next close</span><span style="font-weight: 700; color: #F1F5F9; text-align: right;">Fri 23 Oct, 17:00 IST</span></div><a href="#" style="height: 44px; border-radius: 12px; font-size: 14px; font-weight: 700; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; white-space: nowrap; color: #F1F5F9; background: #1F2733; display: flex; width: 100%;">Copy link to nila.land/harvests</a></div></div></div></section><footer style="background: #121212; border-top: 1px solid #1F2733; padding: 40px 16px 24px;"><div style="max-width: 1152px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px;"><div style="display: flex; flex-direction: column; gap: 16px;"><img src="/_blob/4b8278e23536dd27822ad11d5527514f" alt="nila" style="width: 36px; height: 36px;"><p style="margin: 0; font-size: 14px; line-height: 1.5; color: #94A3B8; max-width: 300px;">Plan the year. Crop plans, services and harvests for women-led unions in Tamil Nadu.</p></div><div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8;">Platform</span><a href="#" style="font-size: 14px; line-height: 1.5;">nUSD</a><a href="#" style="font-size: 14px; line-height: 1.5;">Harvests</a><a href="#" style="font-size: 14px; line-height: 1.5;">How it works</a><a href="#" style="font-size: 14px; line-height: 1.5;">FAQ</a></div><div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8;">Audit</span><a href="#" style="font-size: 14px; line-height: 1.5;">Fact sheet</a><a href="#" style="font-size: 14px; line-height: 1.5;">facts.md</a><a href="#" style="font-size: 14px; line-height: 1.5;">Season ledger (CSV)</a><a href="#" style="font-size: 14px; line-height: 1.5;">Code (nila-soroban)</a></div><div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8;">Legal</span><a href="#" style="font-size: 14px; line-height: 1.5;">Privacy Policy</a><a href="#" style="font-size: 14px; line-height: 1.5;">Terms of Use</a><a href="#" style="font-size: 14px; line-height: 1.5;">Risk Disclosure</a></div><div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8;">Contact</span><a href="#" style="font-size: 14px; line-height: 1.5;">info@nila.land</a><a href="#" style="font-size: 14px; line-height: 1.5;">nila.land</a></div></div><div style="max-width: 1152px; margin: 32px auto 0; padding-top: 16px; border-top: 1px solid #1F2733; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; line-height: 1.4; color: #94A3B8;">© 2026 Blockchainforcommons · KvK 55518559 · Amsterdam · in India: Nila Farmer Livelihoods Trust, Reg. Book-4/26/2026, PAN AAFTN4490C</span></div></footer></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1419}}'>
+class Component extends DCLogic {
+  componentDidMount() { this._hc = () => { let h = ''; try { h = (window.location.hash || '').slice(1); } catch (e) {} if (h in this._S()) this.setState({ s: h }); }; window.addEventListener('hashchange', this._hc); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._hc); }
+  _S() { return {"": {}}; }
+  renderVals() {
+    const S = this._S();
+    let s = this.state && this.state.s;
+    if (s == null) { s = ''; try { s = (window.location.hash || '').slice(1); } catch (e) {} }
+    const v = Object.assign({}, S[s] || S['']);
+    Object.keys(S).forEach((k) => { v['go_' + (k || 'default')] = () => { this.setState({ s: k }); try { window.scrollTo(0, 0); } catch (e) {} }; });
+    return v;
+  }
+}
+</script>
+</body>
+</html>
