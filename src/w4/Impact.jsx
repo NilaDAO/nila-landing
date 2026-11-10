@@ -1,7 +1,11 @@
-// /how — Impact tab: what an impact funder asks, answered from the chain where we can and marked "Not yet" where
-// we cannot (docs/W4_frame.md §1). Figures are read from /audit/snapshot.json, the same file as the audit page.
+// /how — Impact tab (Carst, 10 Nov): the four things a financed season changes for her — food, income, pride,
+// independence — each with the proof we have today and, where we have none, a plain "not yet".
+// Figures are read from /audit/snapshot.json, the same file as the audit page.
 import { useEffect, useState } from "react";
-import { Section, Figures, Rows } from "./ui.jsx";
+import { Section, Figures } from "./ui.jsx";
+
+const MUTED = "#94A3B8";
+const DOT = { have: "#D4CF5A", not: "#E69283" };
 
 function useSnapshot() {
   const [s, setS] = useState(null);
@@ -11,16 +15,23 @@ function useSnapshot() {
   return s;
 }
 
-const ROWS = [
-  { title: "Who she is", s: "open",
-    body: "One member of Mother Theresa Union in Sankuraparam, in her own words and with her consent. We have not recorded it yet." },
-  { title: "Members", s: "self", body: "About 2,000 members in 3 unions in Tamil Nadu. The count comes from the unions’ own books." },
-  { title: "Women", s: "self", body: "About 90% of the members are women. Also from the unions, not from the chain." },
-  { title: "What a crop share costs her", s: "open",
-    body: "The rate of every share is on-chain. We have not yet set it next to what she paid a moneylender or microfinance lender before, with a source for that rate." },
-  { title: "What changed for her", s: "open",
-    body: "Not measured. The first full year plans run in 2026–27; after that season we publish her yield and income next to the season before." },
-];
+function Card({ n, title, body, proof }) {
+  return (
+    <div style={{ background: "#121212", border: "1px solid #1C1F26", borderRadius: 24, boxShadow: "var(--nl-shadow-card)", padding: "22px",
+                  display: "flex", flexDirection: "column", gap: 10 }}>
+      <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", color: MUTED }}>{n}</span>
+      <h3 style={{ margin: 0, fontSize: 24, fontWeight: 700, lineHeight: 1.25 }}>{title}</h3>
+      <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: MUTED }}>{body}</p>
+      <div style={{ marginTop: "auto", paddingTop: 12, borderTop: "1px solid #1F2733", display: "flex", flexDirection: "column", gap: 6 }}>
+        {proof.map(([k, text]) => (
+          <span key={text} style={{ display: "flex", gap: 8, alignItems: "baseline", fontSize: 13, lineHeight: 1.5, color: "#CBD5E1" }}>
+            <span style={{ width: 7, height: 7, borderRadius: 9999, background: DOT[k], flexShrink: 0, transform: "translateY(-1px)" }} />{text}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Impact({ mobile }) {
   const snap = useSnapshot();
@@ -32,9 +43,31 @@ export default function Impact({ mobile }) {
   const date = snap ? new Date(snap.polygon.time).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
   const v = (x) => (snap ? x : "—");
 
+  const cards = [
+    { n: "01", title: "Food that would not have been grown",
+      body: "Without seed money on the sowing date, a field is sown late, ratooned or left. Her crop share arrives inside the sowing window of the crop it pays for.",
+      proof: [["have", "The harvest her plan expects is on-chain, one food token per crop."],
+              ["not", "What she actually harvested: published per season from 2026–27."]] },
+    { n: "02", title: "An income she can live on",
+      body: "The plan chooses crops and inputs for what the season should earn. The harvest pays the share back; the rest is hers.",
+      proof: [["have", v(`${repaid} of ${closed} closed crop shares repaid in full.`)],
+              ["not", "Her income before and after: not measured yet."]] },
+    { n: "03", title: "Pride",
+      body: "The land title is in her name, on her own account. The plan is hers to change, and her choice stands. She does not ask a moneylender for seed.",
+      proof: [["have", "Titles and plans are hers on-chain, not the union’s or Nila’s."],
+              ["not", "In her own words: not recorded yet."]] },
+    { n: "04", title: "No debt that never ends",
+      body: "A crop share is paid back from the harvest it was planned for, principal and interest together. Paying only the interest to keep it open is not allowed.",
+      proof: [["have", v(`${count("defaulted")} defaults on ${loans.length} crop shares.`)],
+              ["not", "Due dates from the satellite harvest date: in the code, not switched on yet."]] },
+  ];
+
   return (
-    <Section mobile={mobile} eyebrow="Impact" title="What we can show, and what we can’t yet."
-             intro="The figures are read from Polygon mainnet by the same script as the audit page. Where we have no figure, the row says so.">
+    <Section mobile={mobile} eyebrow="Impact" title="Food, income, pride, independence."
+             intro="What a planned and financed season changes for her. Each card says what we can already show and what we cannot yet.">
+      <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 12 : 16 }}>
+        {cards.map((c) => <Card key={c.n} {...c} />)}
+      </div>
       <Figures mobile={mobile}
         items={[
           { value: v(`${repaid} of ${closed}`), label: "closed crop shares repaid in full" },
@@ -42,9 +75,9 @@ export default function Impact({ mobile }) {
           { value: v(String(count("live"))), label: "crop shares still running" },
           { value: v(String(snap?.polygon?.landTitles ?? "—")), label: "land titles" },
         ]}
-        note={snap && <>Read at Polygon block {snap.polygon.block.toLocaleString("en-US")}, {date}. {wallets} wallets have taken a crop share; a wallet is
-          not a person, so we do not turn that into a head count. <a href="/audit" style={{ color: "#F1F5F9", textDecoration: "underline" }}>Open the audit</a></>} />
-      <Rows mobile={mobile} rows={ROWS} />
+        note={snap && <>Read at Polygon block {snap.polygon.block.toLocaleString("en-US")}, {date}. {wallets} wallets have taken a crop share; a wallet is not
+          a person, so we do not turn that into a head count. About 2,000 members in 3 unions, about 90% women: the unions’ own figures.{" "}
+          <a href="/audit" style={{ color: "#F1F5F9", textDecoration: "underline" }}>Open the audit</a></>} />
     </Section>
   );
 }
