@@ -86,8 +86,8 @@ function CountryCard({ s, onClose }) {
         <Row label="Credit / Farmer" value={s.credit_per_farmer} />
         <Row label="Credit Need / Farmer" value={s.credit_need_per_farmer} />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, height: 44, padding: "0 14px",
-                    borderRadius: 12, border: "1px solid #1F2733", fontSize: 13 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "10px 0",
+                    borderTop: "1px solid #1F2733", borderBottom: "1px solid #1F2733", fontSize: 13 }}>
         <span style={{ color: "var(--nl-text-muted)" }}>Credit Gap</span>
         <span style={{ fontSize: 15, fontWeight: 700 }}>{s.credit_gap_pct}</span>
       </div>
