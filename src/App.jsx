@@ -19,7 +19,8 @@ import AuditPage from "./components/sections/AuditPage";
 import WfpPage from "./components/sections/WfpPage";
 const W1Home = lazy(() => import("./w1/Home.jsx"));
 const W1Audit = lazy(() => import("./w1/Audit.jsx"));
-const W4How = lazy(() => import("./w4/How.jsx"));
+const loadHow = () => import("./w4/How.jsx");
+const W4How = lazy(loadHow);
 
 // Redesign (dev/nila-design page 6) behind a flag: VITE_REDESIGN=1 at build time; ?w1 previews it in `npm run dev` only.
 const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV && new URLSearchParams(window.location.search).has("w1"));
@@ -42,7 +43,7 @@ export default function App() {
 }
 
 function NilaLanding() {
-  const [page, setPage] = useState("landing"); // "landing" | "unions"
+  const [page, setPage] = useState("landing"); // "landing" | "unions" | "how"
   const [navScrolled, setNavScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ name: "", email: "" });
@@ -51,6 +52,17 @@ function NilaLanding() {
   const [error, setError] = useState(null);
 
   const goToUnions = () => setPage("unions");
+  const goToHow = () => setPage("how");
+
+  // Redesign: dark page ground, so the home page fades to ink (not the old light ground) when a page slides in;
+  // and the /how chunk loads ahead so it slides in on the first tap.
+  useEffect(() => {
+    if (!REDESIGN) return undefined;
+    const prev = document.body.style.background;
+    document.body.style.background = "#0A0A0A";
+    const t = setTimeout(loadHow, 2000);
+    return () => { document.body.style.background = prev; clearTimeout(t); };
+  }, []);
   const goToLanding = () => setPage("landing");
 
   useEffect(() => {
@@ -131,12 +143,12 @@ function NilaLanding() {
       {/* Landing page content — desktop gets translateX slide, mobile gets fade-only
           (translateX on mobile widens the document and breaks fixed nav anchoring) */}
       <div style={{
-        transform: page === "unions" && window.innerWidth >= 768 ? "translateX(-30%)" : "translateX(0)",
-        opacity: page === "unions" ? 0 : 1,
+        transform: page !== "landing" && window.innerWidth >= 768 ? "translateX(-30%)" : "translateX(0)",
+        opacity: page !== "landing" ? 0 : 1,
         transition: "transform 0.45s cubic-bezier(0.32,0,0.18,1), opacity 0.45s cubic-bezier(0.32,0,0.18,1)",
-        pointerEvents: page === "unions" ? "none" : "auto",
+        pointerEvents: page !== "landing" ? "none" : "auto",
       }}>
-        {REDESIGN ? <Suspense fallback={null}><W1Home onOpenUnions={goToUnions} /></Suspense> : <>
+        {REDESIGN ? <Suspense fallback={null}><W1Home onOpenUnions={goToUnions} onOpenHow={goToHow} /></Suspense> : <>
         <Hero onOpenModal={openModal} onOpenUnions={goToUnions} />
         <WaveDivider direction="dark-to-light" />
         <MetricsBar />
@@ -165,6 +177,22 @@ function NilaLanding() {
             }}
           >
             <UnionsPage onBack={goToLanding} onOpenModal={openModal} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* W4 how it works — slides in the same way (Carst, 10 Nov) */}
+      <AnimatePresence>
+        {page === "how" && (
+          <motion.div
+            key="how"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.45, ease: [0.32, 0, 0.18, 1] }}
+            style={{ position: "fixed", inset: 0, zIndex: 200, overflowY: "auto" }}
+          >
+            <Suspense fallback={null}><W4How onBack={goToLanding} onOpenUnions={goToUnions} /></Suspense>
           </motion.div>
         )}
       </AnimatePresence>

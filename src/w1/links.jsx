@@ -4,10 +4,12 @@ import { useContext } from "react";
 import { W1Ctx } from "./ctx.js";
 import { homeHref } from "./util.js";
 
-// On the home page: smooth scroll. Elsewhere (/audit): go to the home page at that anchor.
-const scrollTo = (id) => () => {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+// On the home page: smooth scroll. In a slide-in page (ctx.back): slide back first. Elsewhere (/audit, /how):
+// go to the home page at that anchor.
+const scrollTo = (id, ctx) => () => {
+  const go = () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (ctx?.back) { ctx.back(); setTimeout(go, 460); return; }
+  if (document.getElementById(id)) go();
   else location.assign(homeHref(`#${id}`));
 };
 
@@ -33,11 +35,11 @@ const DISABLED = new Set([]);
 function resolve(k, label, ctx) {
   if (DISABLED.has(label)) return { href: undefined, "aria-disabled": true, pending: true, disabled: true };
   switch (label) {
-    case "": return { href: homeHref("/") };             // logo
+    case "": return ctx.back ? { href: homeHref("/"), onClick: ctx.back } : { href: homeHref("/") }; // logo (back button in a slide-in page)
     case "nila.land": return { href: homeHref("/") };
-    case "nUSD": return { href: homeHref("#nusd"), onClick: scrollTo("nusd") };
-    case "How it works": return { href: homeHref("#how"), onClick: scrollTo("how") };
-    case "FAQ": return { href: homeHref("#faq"), onClick: scrollTo("faq") };
+    case "nUSD": return { href: homeHref("#nusd"), onClick: scrollTo("nusd", ctx) };
+    case "How it works": return { href: homeHref("#how"), onClick: scrollTo("how", ctx) };
+    case "FAQ": return { href: homeHref("#faq"), onClick: scrollTo("faq", ctx) };
     case "Meet the unions":
     case "Check access": return { href: "#unions", onClick: ctx.openUnions };
     case "open the audit":
@@ -54,7 +56,7 @@ function resolve(k, label, ctx) {
     case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
-    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how") }; // W4, satellite section first (Carst, 10 Nov)
+    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how"), onClick: ctx.openHow || undefined }; // W4, slides in like Meet the unions (Carst, 10 Nov)
     case "View a live field": return { href: "#live", onClick: ctx.comingSoon }; // W4: no public live field view yet
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };

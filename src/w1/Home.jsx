@@ -57,7 +57,7 @@ function GlobeSection({ mobile }) {
 
 const Anchor = ({ id }) => <span id={id} style={{ display: "block", position: "relative", top: -8 }} />;
 
-export default function Home({ onOpenUnions }) {
+export default function Home({ onOpenUnions, onOpenHow }) {
   const mobile = useIsMobile();
   const [news, setNews] = useState(true);
   const [menu, setMenu] = useState(false);
@@ -70,6 +70,7 @@ export default function Home({ onOpenUnions }) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const ctx = {
     openUnions: () => { setMenu(false); onOpenUnions(); },
+    openHow: onOpenHow ? () => { setMenu(false); onOpenHow(); } : null,
     toggleMenu: () => setMenu((v) => !v),
     closeNews: () => setNews(false),
     comingSoon: () => { setMenu(false); comingSoon(); },
