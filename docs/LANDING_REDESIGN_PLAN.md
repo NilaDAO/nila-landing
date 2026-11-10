@@ -58,3 +58,12 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
   Ink country card, India open by default. WebGL failure → band hidden.
 - **Mobile menu** is not on the board; built from the List row look. Design to confirm.
 - 'Backed by' row shows SCF and MIT names (logos need written OK, see above).
+
+## Next steps (Carst, 10 Nov)
+
+| # | Step | Notes |
+|---|---|---|
+| S8 | **Audit on two chains** (`/audit`, `facts.md`) | Add a Stellar mainnet section: the 10 contract ids + nIN / USDC SACs from `handoffs/mainnet_contracts.env` (deployed 6 Nov), each linked to stellar.expert and read at a ledger. Members are still on Polygon: state "no crop shares on Stellar yet" until the move. Refresh the Polygon figures (last read 10 Oct, block 95,279,281). Footer "© 2026 Nila.land BV" → Blockchainforcommons (entity rule). Write a generator script (`scripts/audit/`) instead of hand edits: Polygon via eth_call/getLogs (as facts.md §5), Stellar via Soroban RPC for state and Horizon for history (RPC keeps ~7 days). |
+| S9 | **Season ledger (CSV)** | One row per crop plan: union, crop, acres, services value, harvest, settled at harvest. Chain gives the money side (loans, vouchers, food tokens, windows); crop / acres / harvest come from nila-sensing (plan engine, satellite EOS). Polygon loans carry no season id (facts.md l.81): map loan → food token → crop window. Same generator as S8. |
+| S10 | **W4 how it works** | Separate planning step: Carst is not happy with the board copy. |
+| S11 | **FAQ** | Drafts in `docs/W1_FAQ_draft.md`, Carst verifies one by one. |
