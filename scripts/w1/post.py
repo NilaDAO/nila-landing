@@ -39,3 +39,14 @@ for f in ('desktop/DHero.jsx', 'mobile/MHero.jsx'):
         assert s.count('>Lock in a harvest</A>') == 1, f
         s = s.replace('>Lock in a harvest</A>', '>Lock in a harvest' + ARROW + '</A>')
         open(f'{W}/{f}', 'w').write(s)
+
+# Home "How it works" heading: "Sow in season." (Avvaiyar) replaces "The deep explanation." and its subline (Carst, 10 Nov).
+HOW_OLD_H = '>The deep explanation.</h2>'
+HOW_OLD_P = 'For the ones who want to see the engine: the crop plan, the AI that drafts it and the satellite that checks it.'
+HOW_NEW_P = '<span lang="ta">பருவத்தே பயிர் செய்</span> · Avvaiyar'
+for f in ('desktop/DHow.jsx', 'mobile/MHow.jsx'):
+    s = open(f'{W}/{f}').read()
+    if HOW_OLD_H in s:
+        assert s.count(HOW_OLD_P) == 1, f
+        s = s.replace(HOW_OLD_H, '>Sow in season.</h2>').replace(HOW_OLD_P, HOW_NEW_P)
+        open(f'{W}/{f}', 'w').write(s)
