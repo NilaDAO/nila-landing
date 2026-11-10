@@ -180,7 +180,8 @@ export default function W1Globe({ mobile }) {
       name: p.name ?? p.admin,
       FarmCoops: num(p.cs), ProducerOrg: num(p.po), SHG_total: num(p.shg_i),
       SHG_female_pct: p.shg_f && p.shg_i ? `${Math.round((p.shg_f / p.shg_i) * 100)}%` : null,
-      fpop: num(p.fpop), fpop_ratio: p.ratio_pop_fpop != null ? `${p.ratio_pop_fpop}%` : null, // farmers ÷ pop_est (recomputed in the file, 10 Nov) pop: p.pop_est,
+      // fpop_ratio = farmers ÷ pop_est (recomputed in the file, 10 Nov)
+      fpop: num(p.fpop), fpop_ratio: p.ratio_pop_fpop != null ? `${p.ratio_pop_fpop}%` : null, pop: p.pop_est,
       aum_total: fmtUsd(p.aum_total_usd), credit_annual: fmtUsd(p.credit_annual_usd),
       aum_per_group: fmtUsd(p.aum_per_group_usd), credit_per_farmer: fmtUsd(p.credit_per_farmer_usd),
       credit_gap_pct: p.credit_gap_pct != null ? `${p.credit_gap_pct}%` : "no data",
