@@ -19,6 +19,7 @@ import AuditPage from "./components/sections/AuditPage";
 import WfpPage from "./components/sections/WfpPage";
 const W1Home = lazy(() => import("./w1/Home.jsx"));
 const W1Audit = lazy(() => import("./w1/Audit.jsx"));
+const W4How = lazy(() => import("./w4/How.jsx"));
 
 // Redesign (dev/nila-design page 6) behind a flag: VITE_REDESIGN=1 at build time; ?w1 previews it in `npm run dev` only.
 const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV && new URLSearchParams(window.location.search).has("w1"));
@@ -35,6 +36,7 @@ export default function App() {
   if (path === "/terms") return <TermsOfUse />;
   if (path === "/risk") return <RiskDisclosure />;
   if (path === "/audit") return REDESIGN ? <Suspense fallback={null}><W1Audit /></Suspense> : <AuditPage />;
+  if (path === "/how" && REDESIGN) return <Suspense fallback={null}><W4How /></Suspense>;
   if (path === "/wfp") return <WfpPage />;
   return <NilaLanding />;
 }

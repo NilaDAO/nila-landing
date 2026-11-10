@@ -15,7 +15,6 @@ const scrollTo = (id) => () => {
 // They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
 const PENDING = new Set([
   "The AI-guided crop plan What goes in, what comes out, and one member’s year.",
-  "Satellite on every field Land titles, food tokens and soils, seen every five days.",
   "Why yields turn around Predictable, regenerative, done together in the SHG.",
   "What does Nila offer?",
   "What is nUSD, and where does the yield come from?",
@@ -55,6 +54,8 @@ function resolve(k, label, ctx) {
     case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
     case "Build with Nila": return { href: "#build", onClick: ctx.comingSoon }; // no other services use Nila tokens yet (Carst, 10 Nov)
+    case "Satellite on every field Land titles, food tokens and soils, seen every five days.": return { href: homeHref("/how") }; // W4, satellite section first (Carst, 10 Nov)
+    case "View a live field": return { href: "#live", onClick: ctx.comingSoon }; // W4: no public live field view yet
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
     case "Close": return { href: "#close", onClick: ctx.closeNews };
