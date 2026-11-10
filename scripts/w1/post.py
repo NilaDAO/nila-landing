@@ -68,3 +68,9 @@ for f in ('desktop/DHow.jsx', 'mobile/MHow.jsx'):
         assert s.count(crosshair) == 1, f
         s = s.replace(crosshair, PEOPLE)
     open(f'{W}/{f}', 'w').write(s)
+
+# Footer tagline (Carst, 10 Nov): "credit unions", not "women-led unions".
+for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
+    s = open(f).read()
+    n = s.replace('harvests for women-led unions in Tamil Nadu', 'harvests for credit unions in Tamil Nadu')
+    if n != s: open(f, 'w').write(n)
