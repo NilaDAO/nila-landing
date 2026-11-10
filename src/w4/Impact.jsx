@@ -3,6 +3,7 @@
 // Figures are read from /audit/snapshot.json, the same file as the audit page.
 import { useEffect, useState } from "react";
 import { Section, Figures } from "./ui.jsx";
+import ImpactRings from "./ImpactRings.jsx";
 
 const MUTED = "#94A3B8";
 const DOT = { have: "#D4CF5A", not: "#E69283" };
@@ -42,6 +43,20 @@ export default function Impact({ mobile }) {
   const wallets = new Set(loans.map((l) => l._borrower)).size;
   const date = snap ? new Date(snap.polygon.time).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
   const v = (x) => (snap ? x : "—");
+  const sum = (k) => loans.reduce((a, l) => a + (parseFloat(l[k]) || 0), 0);
+  const lent = sum("amount_inr"), back = sum("principal_repaid_inr");
+  const lakh = (x) => `₹${(x / 1e5).toFixed(2)} lakh`;
+  const rings = [
+    { key: "food", name: "Food grown", value: null,
+      def: "Harvest gathered, as a share of the harvest her plan expected.",
+      figure: "Not measured yet. The planned harvest is on-chain per crop; the harvest record starts with 2026–27." },
+    { key: "repaid", name: "Repaid", value: snap && lent ? back / lent : null,
+      def: "Money lent as crop shares that has come back.",
+      figure: snap ? `${lakh(back)} of ${lakh(lent)} lent. ${count("live")} shares still running; ${repaid} of ${closed} closed shares repaid in full.` : "—" },
+    { key: "profit", name: "Profit for the family", value: null,
+      def: "Families whose season left more money than the season before.",
+      figure: "Not measured yet. Needs her income before and after, from the union." },
+  ];
 
   const cards = [
     { n: "01", title: "Food that would not have been grown",
@@ -65,6 +80,7 @@ export default function Impact({ mobile }) {
   return (
     <Section mobile={mobile} eyebrow="Impact" title="Food, income, pride, independence."
              intro="What a planned and financed season changes for her. Each card says what we can already show and what we cannot yet.">
+      <ImpactRings mobile={mobile} rings={rings} />
       <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 12 : 16 }}>
         {cards.map((c) => <Card key={c.n} {...c} />)}
       </div>
