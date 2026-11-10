@@ -51,8 +51,10 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 - **Season ledger (CSV)** links to the old `loan-tape.csv` until the season ledger exists.
 - **Metrics**: 58 / ₹ — / 4 are board figures, not read live. 58 = all loan IDs in facts.md incl. 1 removed.
 - **nUSD card (3–5 % target)** is on W1 as designed — counsel (X35) must clear it before the flag goes on.
-- **Globe** (`src/w1/W1Globe.jsx`, 10 Nov): own W1 globe from the old one's data and logic — horizon framing as on the
-  board (sphere size, Tamil Nadu marker + chip pinned to its coordinates), drag rotates east–west, tap a country → ink card
-  with its figures (India open by default; below the globe on mobile). No unpkg texture any more. WebGL failure → band hidden.
+- **Globe** (`src/w1/W1Globe.jsx`, 10 Nov): camera, canvas size, start position and fixed tilt copied from the old globe
+  (Carst). globe.gl forces its orbit target to the centre, so the camera is turned by hand: drag east–west on desktop
+  and mobile, old auto-rotate speed. Tap picks the smallest data country under the pointer (Nepal over India). The 11 data
+  countries are tappable; all other countries (Natural Earth 110m, `public/tex/world_110m.geojson`) are faint outlines.
+  Ink country card, India open by default. WebGL failure → band hidden.
 - **Mobile menu** is not on the board; built from the List row look. Design to confirm.
 - 'Backed by' row shows SCF and MIT names (logos need written OK, see above).

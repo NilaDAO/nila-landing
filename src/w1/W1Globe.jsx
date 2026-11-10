@@ -5,21 +5,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 import { MeshPhongMaterial, Color } from "three";
-import { geoArea } from "d3-geo";
+import { geoArea, geoContains } from "d3-geo";
 
 const TN = { lat: 11.878858, lng: 78.964963, label: "Tamil Nadu · 3 unions" };
 
-// Camera per layout, from the board: a sphere of 1248 px (desktop) / 720 px (mobile) whose top sits 70 / 50 px into
-// the band, with Tamil Nadu ~120 / 80 px below that top. fov 40 at altitude 0.52 gives that sphere size; looking
-// from latitude ≈ −14° puts Tamil Nadu there; the view offset moves the sphere centre below the band.
-// 10 Nov (Carst): start tilted further north (lat −6) so the Himalaya countries (Nepal) are not on the rim and can be
-// tapped; Tamil Nadu then sits mid-band. Drag up/down tilts between TILT.min and TILT.max (view latitude).
-const TILT = { min: -20, max: 8 }; // the country file covers South Asia only (11 countries): no tilting into empty north
-
-const CAM = {
-  desktop: { band: 520, alt: 0.52, lat: -6, centreY: 694 },
-  mobile: { band: 300, alt: 0.52, lat: -6, centreY: 410 },
+// Camera and canvas copied from the old globe's banner mode (components/sections/globe.jsx), as Carst asked (10 Nov):
+// camera at (150 | 310 on mobile, −5, 0), fov 40; canvas width ÷ 2.2 (mobile ÷ 0.75, clipped to 72 %). The old desktop
+// looked at (0, 70, 0) with the controls off; the old mobile had the controls on, which globe.gl keeps aimed at the
+// centre. globe.gl resets the orbit target on every move, so the camera is turned by hand here: drag east–west, old
+// auto-rotate speed (OrbitControls 0.1 = one turn per 10 min), tilt fixed as before.
+const OLD = {
+  desktop: { camX: 150, lookY: 70, ratio: 2.2, clip: 1 },
+  mobile: { camX: 310, lookY: 0, ratio: 0.75, clip: 0.72 },
 };
+const AUTO = (2 * Math.PI) / 60 / 60 * 0.1 / 60; // rad per ms
+const DRAG = 0.005; // rad per px
 
 const fmtUsd = (v) => {
   if (!v && v !== 0) return "no data";
@@ -28,6 +28,12 @@ const fmtUsd = (v) => {
   if (v >= 1e3) return `$${(v / 1e3).toFixed(0)}K`;
   return `$${v.toLocaleString()}`;
 };
+const nameOf = (f) => f.properties?.name || f.properties?.admin || f.properties?.NAME;
+// d3 needs rings wound clockwise; a ring the wrong way round covers the rest of the world (area > 2π).
+const reverseRings = (g) =>
+  g.type === "Polygon" ? { ...g, coordinates: g.coordinates.map((r) => [...r].reverse()) }
+  : { ...g, coordinates: g.coordinates.map((p) => p.map((r) => [...r].reverse())) };
+const rewound = (f) => (geoArea(f) > 2 * Math.PI ? { ...f, geometry: reverseRings(f.geometry) } : f);
 const num = (v) => (!v ? "no data" : v.toLocaleString());
 
 function marker() {
@@ -94,9 +100,10 @@ function CountryCard({ s, onClose }) {
 export default function W1Globe({ mobile }) {
   const ref = useRef(null);
   const box = useRef(null);
-  const cam = mobile ? CAM.mobile : CAM.desktop;
+  const cam = mobile ? OLD.mobile : OLD.desktop;
   const [width, setWidth] = useState(0);
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([]); // the countries with figures (tappable)
+  const [world, setWorld] = useState([]); // every other country, outline only, for reference
   const [hover, setHover] = useState(null);
   const [active, setActive] = useState(null);
 
@@ -111,35 +118,59 @@ export default function W1Globe({ mobile }) {
   }, []);
 
   useEffect(() => {
-    fetch("/tex/custom_updated.geojson")
-      .then((r) => r.json())
-      .then((geo) => {
-        const clean = (geo.features || []).filter((f) => (f.properties?.name || f.properties?.admin) && f.geometry);
+    Promise.all([fetch("/tex/custom_updated.geojson").then((r) => r.json()), fetch("/tex/world_110m.geojson").then((r) => r.json())])
+      .then(([geo, all]) => {
+        const clean = (geo.features || []).filter((f) => nameOf(f) && f.geometry);
+        const names = new Set(clean.map(nameOf));
         setCountries(clean);
-        setActive(clean.find((f) => (f.properties.name || f.properties.admin) === "India") || clean[0] || null);
+        setWorld((all.features || []).filter((f) => !names.has(nameOf(f))).map((f) => ({ ...f, ref: true })));
+        setActive(clean.find((f) => nameOf(f) === "India") || clean[0] || null);
       })
       .catch(() => {});
   }, []);
 
-  // Camera: horizon view with Tamil Nadu facing us; drag rotates east–west and tilts within TILT.
-  useEffect(() => {
+  const height = Math.round(width / cam.ratio);
+  const band = Math.round(height * cam.clip);
+
+  // Camera turned by hand (see OLD). Runs once globe.gl is ready (it sets its own camera first).
+  const az = useRef(0);
+  const drag = useRef(null); // { x, moved }
+  const hoverRef = useRef(null);
+  const place = () => {
     const g = ref.current;
-    if (!g || !width) return;
+    if (!g) return;
     const camera = g.camera();
-    const controls = g.controls();
-    camera.fov = 40;
-    g.pointOfView({ lat: cam.lat, lng: TN.lng, altitude: cam.alt }, 0);
-    controls.update();
-    Object.assign(controls, {
-      enabled: true, enableZoom: false, enablePan: false, enableRotate: true, rotateSpeed: 0.4,
-      // polar angle = 90° − view latitude
-      minPolarAngle: ((90 - TILT.max) * Math.PI) / 180, maxPolarAngle: ((90 - TILT.min) * Math.PI) / 180,
-      autoRotate: true, autoRotateSpeed: 0.1,
-    });
-    // vertical swipes keep scrolling the page; horizontal drags rotate the globe
-    g.renderer().domElement.style.touchAction = "pan-y";
+    camera.position.set(cam.camX * Math.cos(az.current), -5, cam.camX * Math.sin(az.current));
+    camera.lookAt(0, cam.lookY, 0);
+    g.controls().dispatchEvent({ type: "change" }); // lets globe.gl hide markers on the far side
+  };
+  const applyCamera = () => {
+    const g = ref.current;
+    if (!g) return;
+    g.controls().enabled = false;
+    g.camera().fov = 40;
+    g.camera().updateProjectionMatrix();
+    place();
     if (import.meta.env.DEV) window.__w1globe = g;
-  }, [width, cam]);
+  };
+  useEffect(() => {
+    if (width) requestAnimationFrame(applyCamera);
+  }, [width, cam]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    let raf, last = performance.now();
+    const tick = (now) => {
+      if (!drag.current && !hoverRef.current) {
+        az.current -= AUTO * (now - last);
+        place();
+      }
+      last = now;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [cam]); // eslint-disable-line react-hooks/exhaustive-deps
+  const onDown = (e) => { drag.current = { x: e.clientX, moved: 0 }; };
+  const onUp = () => { setTimeout(() => { drag.current = null; }, 0); };
 
   const stats = useMemo(() => {
     if (!active) return null;
@@ -156,43 +187,64 @@ export default function W1Globe({ mobile }) {
     };
   }, [active]);
 
-  // Smaller countries sit slightly higher, so a neighbour drawn over them (India over Nepal) does not take the tap.
-  const altitude = useMemo(() => {
-    const ranked = [...countries].sort((a, b) => geoArea(b) - geoArea(a));
-    const alt = new Map(ranked.map((f, i) => [f, 0.004 + i * 0.002]));
-    return (d) => alt.get(d) ?? 0.004;
-  }, [countries]);
+  // All shapes lie on one level (different heights shift neighbours against each other). Which country a tap or
+  // hover means is decided from the point on the globe: the smallest tappable country that contains it, so Nepal
+  // wins over the India shape drawn across it.
+  const bySize = useMemo(
+    () => countries.map((f) => [f, rewound(f)]).sort((a, b) => geoArea(a[1]) - geoArea(b[1])),
+    [countries],
+  );
+  const pick = (c) => (c ? bySize.find(([, g]) => geoContains(g, [c.lng, c.lat]))?.[0] || null : null);
+  if (import.meta.env.DEV) window.__w1pick = (lat, lng) => [nameOf(pick({ lat, lng }) || {}), bySize.map(([f, g]) => [nameOf(f), +geoArea(g).toFixed(4)])];
+  const shapes = useMemo(() => [...world, ...countries], [world, countries]);
+
+  const lastPoint = useRef(null);
+  const onMove = (e) => {
+    const g = ref.current;
+    if (!g) return;
+    if (drag.current && e.buttons) {
+      const dx = e.clientX - drag.current.x;
+      drag.current.x = e.clientX;
+      drag.current.moved += Math.abs(dx);
+      az.current += dx * DRAG;
+      place();
+      return;
+    }
+    const r = e.currentTarget.getBoundingClientRect();
+    lastPoint.current = g.toGlobeCoords(e.clientX - r.left, e.clientY - r.top);
+    const f = pick(lastPoint.current);
+    hoverRef.current = f;
+    if (f !== hover) setHover(f);
+  };
 
   const card = stats && <CountryCard s={stats} onClose={() => setActive(null)} />;
 
   return (
     <section style={{ position: "relative", overflow: "hidden", background: "#0A0A0A" }}>
-      <div ref={box} style={{ position: "relative", height: cam.band, cursor: hover ? "pointer" : "grab" }}>
+      <div ref={box} onPointerMove={onMove} onPointerDown={onDown} onPointerUp={onUp}
+           onPointerLeave={() => { setHover(null); hoverRef.current = null; drag.current = null; }}
+           style={{ position: "relative", height: band || 300, overflow: "hidden", touchAction: "pan-y", cursor: hover ? "pointer" : "grab" }}>
         {width > 0 && (
           <Globe
             ref={ref}
             width={width}
-            height={cam.band}
-            globeOffset={[0, cam.centreY - cam.band / 2]}
+            height={height}
             backgroundColor="rgba(0,0,0,0)"
             globeMaterial={material}
             showAtmosphere
             atmosphereColor="#F1F5F9"
             atmosphereAltitude={0.06}
             showGraticules
-            polygonsData={countries}
-            polygonAltitude={altitude}
-            polygonCapColor={(d) => (d === active ? "rgba(241,245,249,0.14)" : d === hover ? "rgba(241,245,249,0.12)" : "rgba(241,245,249,0.04)")}
+            showPointerCursor={false}
+            polygonsData={shapes}
+            polygonAltitude={0.004}
+            polygonCapColor={(d) => (d.ref ? "rgba(148,163,184,0.06)" : d === active ? "rgba(241,245,249,0.22)" : d === hover ? "rgba(241,245,249,0.16)" : "rgba(241,245,249,0.1)")}
             polygonSideColor={() => "rgba(0,0,0,0)"}
-            polygonStrokeColor={(d) => (d === hover || d === active ? "#F1F5F9" : "rgba(241,245,249,0.3)")}
+            polygonStrokeColor={(d) => (d.ref ? "rgba(148,163,184,0.28)" : d === hover || d === active ? "#F1F5F9" : "rgba(241,245,249,0.6)")}
             polygonsTransitionDuration={0}
-            onPolygonHover={(p) => {
-              setHover(p);
-              const c = ref.current?.controls();
-              if (c) c.autoRotate = !p;
-            }}
-            onPolygonClick={(p) => setActive(p)}
-            onGlobeClick={() => setActive(null)}
+            onGlobeReady={applyCamera}
+            onPolygonClick={() => { if (!(drag.current?.moved > 4)) setActive(pick(lastPoint.current)); }}
+            onGlobeClick={() => { if (!(drag.current?.moved > 4)) setActive(pick(lastPoint.current)); }}
             htmlElementsData={[TN]}
             htmlLat="lat"
             htmlLng="lng"
@@ -203,7 +255,7 @@ export default function W1Globe({ mobile }) {
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04, backgroundSize: "48px 48px",
                       backgroundImage: "linear-gradient(rgba(255,255,255,0.75) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.75) 1px, transparent 1px)" }} />
         {!mobile && card && (
-          <div style={{ position: "absolute", left: 48, top: 24, width: 360, maxHeight: cam.band - 48, overflowY: "auto", zIndex: 3 }}>{card}</div>
+          <div style={{ position: "absolute", left: 48, top: 24, width: 360, maxHeight: band - 48, overflowY: "auto", zIndex: 3 }}>{card}</div>
         )}
       </div>
       {mobile && card && <div style={{ position: "relative", zIndex: 3, padding: "0 16px 88px" }}>{card}</div>}
