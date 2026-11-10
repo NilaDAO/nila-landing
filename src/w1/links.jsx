@@ -48,7 +48,7 @@ function resolve(k, label, ctx) {
     case "Risk Disclosure": return { href: "/risk" };
     case "info@nila.land": return { href: "mailto:info@nila.land" };
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right
-    case "Read more": return { href: "https://github.com/NilaDAO/nila-scf45", target: "_blank" }; // SCF #45 record; swap for the SCF project page when there is a public URL
+    case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
     case "Close": return { href: "#close", onClick: ctx.closeNews };
     default:
