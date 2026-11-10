@@ -36,17 +36,18 @@ const reverseRings = (g) =>
 const rewound = (f) => (geoArea(f) > 2 * Math.PI ? { ...f, geometry: reverseRings(f.geometry) } : f);
 const num = (v) => (!v ? "no data" : v.toLocaleString());
 
+// Union marker: a plain green dot (Carst, 10 Nov; was the old green-yellow cross), with the board's chip beside it.
 function marker() {
   const el = document.createElement("div");
-  el.style.cssText = "display:flex;align-items:center;gap:8px;transform:translate(-5px,-50%);pointer-events:none;font-family:Inter,system-ui,sans-serif";
+  el.style.cssText = "position:relative;width:12px;height:12px;transform:translate(-50%,-50%);pointer-events:none;font-family:Inter,system-ui,sans-serif";
   el.innerHTML =
-    '<span style="width:10px;height:10px;border-radius:9999px;background:#F1F5F9;box-shadow:0 0 0 3px rgba(241,245,249,.25);flex-shrink:0"></span>' +
-    `<span style="display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:9999px;background:#1F2733;font-size:12px;font-weight:700;color:#F1F5F9;white-space:nowrap">${TN.label}</span>`;
+    '<span style="display:block;width:12px;height:12px;border-radius:9999px;background:#d4cf5a;border:1.5px solid #020617;box-sizing:border-box"></span>' +
+    `<span style="position:absolute;left:20px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:9999px;background:#1F2733;font-size:12px;font-weight:700;color:#F1F5F9;white-space:nowrap">${TN.label}</span>`;
   return el;
 }
 
 const Row = ({ label, value, note }) => (
-  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, fontSize: 14, lineHeight: 1.5 }}>
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, fontSize: 13, lineHeight: 1.5 }}>
     <span style={{ color: "var(--nl-text-muted)" }}>{label}</span>
     <span style={{ fontWeight: 700, color: "var(--nl-text)", textAlign: "right" }}>
       {value}{note && <span style={{ fontWeight: 400, color: "var(--nl-text-muted)" }}> {note}</span>}
@@ -54,7 +55,7 @@ const Row = ({ label, value, note }) => (
   </div>
 );
 const Eyebrow = ({ children }) => (
-  <span style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.5, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--nl-text-muted)" }}>{children}</span>
+  <span style={{ fontSize: 11, fontWeight: 700, lineHeight: 1.5, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--nl-text-muted)" }}>{children}</span>
 );
 
 function CountryCard({ s, onClose }) {
@@ -62,7 +63,7 @@ function CountryCard({ s, onClose }) {
     <div style={{ background: "var(--nl-surface-ink)", border: "1px solid #1C1F26", borderRadius: 24, boxShadow: "var(--nl-shadow-card)",
                   padding: 18, display: "flex", flexDirection: "column", gap: 14, boxSizing: "border-box" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        <span style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.3 }}>{s.name}</span>
+        <span style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.3 }}>{s.name}</span>
         <button type="button" aria-label="Close" onClick={onClose}
                 style={{ width: 40, height: 40, borderRadius: 9999, border: 0, background: "var(--nl-surface-raised)", display: "flex",
                          alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
@@ -71,7 +72,7 @@ function CountryCard({ s, onClose }) {
       </div>
       {Number.isFinite(s.pop) && (
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          <Row label="Farmer Pop" value={s.fpop} note={`(${s.fpop_ratio}%)`} />
+          <Row label="Farmer Pop" value={s.fpop} note={s.fpop_ratio && `(${s.fpop_ratio} of pop.)`} />
           <Row label="Coops" value={s.FarmCoops} />
           <Row label="Producer Orgs" value={s.ProducerOrg} />
           <Row label="Ag-SHGs" value={s.SHG_total} note={s.SHG_female_pct && `(${s.SHG_female_pct} female)`} />
@@ -86,12 +87,12 @@ function CountryCard({ s, onClose }) {
         <Row label="Credit Need / Farmer" value={s.credit_need_per_farmer} />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, height: 44, padding: "0 14px",
-                    borderRadius: 12, border: "1px solid #1F2733", fontSize: 14 }}>
+                    borderRadius: 12, border: "1px solid #1F2733", fontSize: 13 }}>
         <span style={{ color: "var(--nl-text-muted)" }}>Credit Gap</span>
-        <span style={{ fontSize: 16, fontWeight: 700 }}>{s.credit_gap_pct}</span>
+        <span style={{ fontSize: 15, fontWeight: 700 }}>{s.credit_gap_pct}</span>
       </div>
       {s.aum_sources && (
-        <p style={{ margin: 0, fontSize: 12, lineHeight: 1.4, color: "var(--nl-text-muted)" }}>Sources: {s.aum_sources}</p>
+        <p style={{ margin: 0, fontSize: 11, lineHeight: 1.4, color: "#64748B" }}>Sources: {s.aum_sources}</p>
       )}
     </div>
   );
@@ -179,7 +180,7 @@ export default function W1Globe({ mobile }) {
       name: p.name ?? p.admin,
       FarmCoops: num(p.cs), ProducerOrg: num(p.po), SHG_total: num(p.shg_i),
       SHG_female_pct: p.shg_f && p.shg_i ? `${Math.round((p.shg_f / p.shg_i) * 100)}%` : null,
-      fpop: num(p.fpop), fpop_ratio: num(p.ratio_pop_fpop), pop: p.pop_est,
+      fpop: num(p.fpop), fpop_ratio: p.fpop > 0 && p.pop_est > 0 ? `${Math.round((p.fpop / p.pop_est) * 100)}%` : null, // not ratio_pop_fpop: mixed definitions in the file pop: p.pop_est,
       aum_total: fmtUsd(p.aum_total_usd), credit_annual: fmtUsd(p.credit_annual_usd),
       aum_per_group: fmtUsd(p.aum_per_group_usd), credit_per_farmer: fmtUsd(p.credit_per_farmer_usd),
       credit_gap_pct: p.credit_gap_pct != null ? `${p.credit_gap_pct}%` : "no data",
