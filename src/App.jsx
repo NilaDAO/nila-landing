@@ -17,6 +17,10 @@ import RiskDisclosure from "./components/sections/LegalRiskDisclosure";
 import UnionsPage from "./components/sections/UnionsPage";
 import AuditPage from "./components/sections/AuditPage";
 import WfpPage from "./components/sections/WfpPage";
+const W1Home = lazy(() => import("./w1/Home.jsx"));
+
+// Redesign (dev/nila-design page 6) behind a flag: VITE_REDESIGN=1 at build time; ?w1 previews it in `npm run dev` only.
+const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV && new URLSearchParams(window.location.search).has("w1"));
 
 //////////////////////////////////////// NOTE /////////////////////////////////////////
 //                                                                                   //
@@ -119,7 +123,7 @@ function NilaLanding() {
         Visibility is controlled directly on the nav via the Navbar component receiving
         a hidden prop, using visibility+pointerEvents (no opacity transition on a parent).
       */}
-      <Navbar scrolled={navScrolled} onOpenUnions={goToUnions} hidden={page === "unions"} />
+      {!REDESIGN && <Navbar scrolled={navScrolled} onOpenUnions={goToUnions} hidden={page === "unions"} />}
 
       {/* Landing page content — desktop gets translateX slide, mobile gets fade-only
           (translateX on mobile widens the document and breaks fixed nav anchoring) */}
@@ -129,6 +133,7 @@ function NilaLanding() {
         transition: "transform 0.45s cubic-bezier(0.32,0,0.18,1), opacity 0.45s cubic-bezier(0.32,0,0.18,1)",
         pointerEvents: page === "unions" ? "none" : "auto",
       }}>
+        {REDESIGN ? <Suspense fallback={null}><W1Home onOpenUnions={goToUnions} /></Suspense> : <>
         <Hero onOpenModal={openModal} onOpenUnions={goToUnions} />
         <WaveDivider direction="dark-to-light" />
         <MetricsBar />
@@ -137,6 +142,7 @@ function NilaLanding() {
         <Suspense fallback={null}><WireGlobe banner /></Suspense>
         <InvestorFAQ />
         <Footer />
+        </>}
       </div>
 
       {/* Unions page — slides in as a fixed full-screen overlay */}

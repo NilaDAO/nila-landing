@@ -1,0 +1,79 @@
+/* W1 (nila.land home). Tokens from dev/nila-design/tokens.json; the rest is the board's own CSS
+   (nila-design/boards/LandHome.dc.html <helmet>), scoped to .w1. Regenerate, do not restyle by hand. */
+.w1 {
+  --nl-surface-ink: #121212;
+  --nl-surface-raised: #1f2733;
+  --nl-text: #f1f5f9;
+  --nl-text-muted: #94a3b8;
+  --nl-accent: #d4cf5a;
+  --nl-on-accent: var(--nl-surface-ink);
+  --nl-gold: #d4a634;
+  --nl-link-hover: #e8c25a;
+  --nl-handle: rgba(255,255,255,0.35);
+  --nl-ground-field: #8a9a2e;
+  --nl-ground-map: #25361f;
+  --nl-gutter: 8px;
+  --nl-gap-inline: 10px;
+  --nl-gap-stack: 14px;
+  --nl-sheet-padding: 18px;
+  --nl-title-padding: 8px;
+  --nl-button-padding-x: 24px;
+  --nl-radius-card: 24px;
+  --nl-radius-button: 12px;
+  --nl-radius-field: 12px;
+  --nl-radius-handle: 2px;
+  --nl-radius-round: 9999px;
+  --nl-shadow-card: 0 12px 10px 0 rgba(0,0,0,0.15), 0 5px 12px 2px rgba(0,0,0,0.06);
+  --nl-button-height: 44px;
+  --nl-field-height: 44px;
+  --nl-icon-button: 40px;
+  --nl-info-icon: 32px;
+  --nl-handle-width: 40px;
+}
+.w1{font-family:'Inter',system-ui,sans-serif;background:#121212;color:#F1F5F9}
+.w1 a{color:#F1F5F9;text-decoration:none}.w1 a:not([data-pending]):hover{color:#E8C25A}
+@keyframes nlR2L{0%{left:100%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:0%;opacity:0}}
+@keyframes nlL2R{0%{left:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes nlPulse{0%,70%,100%{background:#1F2733}35%{background:#F1F5F9}}
+@keyframes nlSway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.8deg)}}
+.nl-cane{transform-box:fill-box;transform-origin:50% 100%;animation:nlSway 5s ease-in-out infinite}
+.nl-acc{display:flex;gap:0}.nl-tab{flex:1 1 0;min-width:0;transition:flex .6s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+.nl-acc:hover .nl-tab{flex:1 1 0}.nl-acc .nl-tab:hover,.nl-acc:not(:hover) .nl-tab.on{flex:3.2 1 0}
+.nl-body{opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}.nl-tab:hover .nl-body,.nl-acc:not(:hover) .nl-tab.on .nl-body{opacity:1;transform:none}
+.nl-tab:hover .nl-lab,.nl-acc:not(:hover) .nl-tab.on .nl-lab{color:#F1F5F9}
+.nl-accm{flex-direction:column}.nl-accm .nl-tab{flex:none}.nl-accm .nl-body{max-height:0;overflow:hidden}.nl-accm .nl-tab.on .nl-body{max-height:200px}
+.nl-field{transition:transform 1.1s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .8s}.nl-stub{opacity:0;transition:opacity .5s,filter .8s}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-field{transform:translateY(72%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-field{transform:translateY(50%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-field{transform:translateY(18%);opacity:1;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-stub{opacity:0;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-field{transform:translateY(0);opacity:0;transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .5s 1.2s;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-stub{opacity:1;transition:opacity .5s 1.3s;}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-field,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-field{transform:translateY(80%);opacity:1;filter:sepia(1) saturate(1.5) hue-rotate(-18deg) brightness(.68);}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-stub,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-stub{opacity:1;filter:sepia(1) saturate(1.5) hue-rotate(-18deg) brightness(.6);}
+.nl-L{opacity:0;transform:translateY(6%);transition:opacity .7s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.nl-year:has(.nl-tab[data-s=plan]:hover) .nl-L-plan,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=plan]) .nl-L-plan{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=service]:hover) .nl-L-service,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=service]) .nl-L-service{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=fund]:hover) .nl-L-fund,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=fund]) .nl-L-fund{opacity:1;transform:none;}
+.nl-year:has(.nl-tab[data-s=harvest]:hover) .nl-L-harvest,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=harvest]) .nl-L-harvest{opacity:1;transform:none;animation:nlCut 2.4s forwards;}
+.nl-year:has(.nl-tab[data-s=deliver]:hover) .nl-L-deliver,.nl-year:has(.nl-acc:not(:hover) .nl-tab.on[data-s=deliver]) .nl-L-deliver{opacity:1;transform:none;}
+@keyframes nlCut{0%,50%{opacity:1}70%,100%{opacity:0}}
+.pk-r{position:absolute;opacity:0;pointer-events:none}.pk:not(:has(.pk-r:checked)) .pk-p-res{display:block}.pk:not(:has(.pk-r:checked)) label[for=pk-res]{box-shadow:0 0 0 2px #94A3B8}.pk-p{display:none}.pk-t{cursor:pointer;transition:background .2s,border-color .2s}.pk-t:hover{border-color:#94A3B8 !important}
+.pk:has(#pk-res:checked) .pk-p-res{display:block}.pk:has(#pk-res:checked) label[for=pk-res]{box-shadow:0 0 0 2px #94A3B8}
+.pk:has(#pk-svc:checked) .pk-p-svc{display:block}.pk:has(#pk-svc:checked) label[for=pk-svc]{background:#1F2733 !important;border-color:#94A3B8 !important}
+.pk:has(#pk-land:checked) .pk-p-land{display:block}.pk:has(#pk-land:checked) label[for=pk-land]{background:#1F2733 !important;border-color:#94A3B8 !important}
+.pk:has(#pk-mkt:checked) .pk-p-mkt{display:block}.pk:has(#pk-mkt:checked) label[for=pk-mkt]{background:#1F2733 !important;border-color:#94A3B8 !important}
+@keyframes nlMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes nlLive{0%{box-shadow:0 0 0 0 rgba(212,207,90,.7)}70%{box-shadow:0 0 0 7px rgba(212,207,90,0)}100%{box-shadow:0 0 0 0 rgba(212,207,90,0)}}
+@keyframes nlDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes nlFade{0%,85%{opacity:0}100%{opacity:1}}
+@keyframes nlStep{0%,6%{background:#1F2733;color:#F1F5F9}14%,92%{background:#F1F5F9;color:#121212}100%{background:#1F2733;color:#F1F5F9}}
+@keyframes nlLine{0%,6%{transform:scaleY(0)}14%,92%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes nlNext{0%{box-shadow:0 0 0 0 rgba(241,245,249,.6)}70%{box-shadow:0 0 0 8px rgba(241,245,249,0)}100%{box-shadow:0 0 0 0 rgba(241,245,249,0)}}
+@keyframes nlPop{0%{opacity:0;transform:scale(0)}6%{opacity:1;transform:scale(1.8)}10%,94%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+@keyframes nlWave{from{transform:translateX(0)}to{transform:translateX(-320px)}}
+.nl-coin{display:inline-block;cursor:default}.nl-shape{left:calc((var(--w) - var(--h)) / 2);width:var(--h);border-radius:50%;gap:0;transition:border-radius .9s cubic-bezier(.45,.05,.25,1),gap .6s cubic-bezier(.45,.05,.25,1) 1.2s}.nl-coin:hover .nl-shape{border-radius:24px;gap:10px;transition:gap .6s cubic-bezier(.45,.05,.25,1),border-radius .9s cubic-bezier(.45,.05,.25,1) 1.1s}.nl-part{background:#121212;box-shadow:inset 0 0 0 1px rgba(31,39,51,0);transition:border-radius .9s ease,box-shadow .4s ease .9s;border-radius:0}.nl-coin:hover .nl-part{box-shadow:inset 0 0 0 1px #1F2733;border-radius:6px;transition:box-shadow .4s ease .3s,border-radius .9s ease 1.1s}.nl-coin:hover .nl-part:first-child{border-radius:24px 24px 6px 6px}.nl-coin:hover .nl-part:last-child{border-radius:6px 6px 24px 24px}.nl-plab{opacity:0;transition:opacity .3s ease}.nl-coin:hover .nl-plab{opacity:1;transition:opacity .6s ease 1.7s}.nl-rim{border:1px solid #1F2733;transition:opacity .5s ease 1.3s}.nl-coin:hover .nl-rim{opacity:0;transition:opacity .5s ease .4s}
+.nl-scroll{overflow-x:auto;scrollbar-width:auto;scrollbar-color:#F1F5F9 #1F2733;padding-bottom:6px}.nl-scroll::-webkit-scrollbar{height:12px}.nl-scroll::-webkit-scrollbar-track{background:#1F2733;border-radius:9999px}.nl-scroll::-webkit-scrollbar-thumb{background:#F1F5F9;border-radius:9999px;border:3px solid #1F2733}.nl-scroll::-webkit-scrollbar-thumb:hover{background:#D4CF5A}
+@keyframes nlTick{0%,20%{opacity:.25}30%,90%{opacity:1}100%{opacity:.25}}

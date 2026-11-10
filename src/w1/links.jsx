@@ -1,0 +1,76 @@
+// Link wiring for the W1 sections. The generated sections render <A k label>; this file decides where each goes.
+// k = the board's href, label = the link's visible text (or aria-label).
+import { useContext } from "react";
+import { W1Ctx } from "./ctx.js";
+
+const scrollTo = (id) => () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+// Targets that do not exist yet (W2 harvests, W4 how it works, FAQ answers, SCF news page).
+// They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
+const PENDING = new Set([
+  "Lock in a harvest",
+  "Harvests",
+  "Read more",
+  "The AI-guided crop plan What goes in, what comes out, and one member’s year.",
+  "Satellite on every field Land titles, food tokens and soils, seen every five days.",
+  "Why yields turn around Predictable, regenerative, done together in the SHG.",
+  "What does Nila offer?",
+  "What is nUSD, and where does the yield come from?",
+  "What is a crop plan?",
+  "Who are the unions and the members?",
+  "What is a voucher?",
+  "What is a food token?",
+  "How does a buyer lock a harvest?",
+  "Where does funding go?",
+  "How do I verify independently?",
+  "Build with Nila",
+]);
+
+function resolve(k, label, ctx) {
+  switch (label) {
+    case "": return { href: "/" };                       // logo
+    case "nila.land": return { href: "/" };
+    case "nUSD": return { href: "#nusd", onClick: scrollTo("nusd") };
+    case "How it works": return { href: "#how", onClick: scrollTo("how") };
+    case "FAQ": return { href: "#faq", onClick: scrollTo("faq") };
+    case "Meet the unions":
+    case "Check access": return { href: "#unions", onClick: ctx.openUnions };
+    case "open the audit":
+    case "Open the audit":
+    case "audit ↗":
+    case "Fact sheet": return { href: "/audit" };
+    case "facts.md": return { href: "/audit/facts.md", target: "_blank" };
+    case "Season ledger (CSV)": return { href: "/audit/loan-tape.csv" }; // season ledger not built yet: loan tape until then
+    case "Code (nila-soroban)": return { href: "https://github.com/NilaDAO/nila-soroban", target: "_blank" };
+    case "Privacy Policy": return { href: "/privacy" };
+    case "Terms of Use": return { href: "/terms" };
+    case "Risk Disclosure": return { href: "/risk" };
+    case "info@nila.land": return { href: "mailto:info@nila.land" };
+    case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
+    case "Close": return { href: "#close", onClick: ctx.closeNews };
+    default:
+      if (!PENDING.has(label) && import.meta.env.DEV) console.warn("[w1] unwired link", k, label);
+      return { href: undefined, "aria-disabled": true, pending: true };
+  }
+}
+
+export function A({ k, label, children, style, ...rest }) {
+  const ctx = useContext(W1Ctx);
+  const { onClick, pending, ...t } = resolve(k, label, ctx);
+  const handle = (e) => {
+    if (onClick || pending) e.preventDefault();
+    onClick?.();
+  };
+  const rel = t.target === "_blank" ? "noopener noreferrer" : undefined;
+  return (
+    <a {...rest} {...t} rel={rel} onClick={handle} style={pending ? { ...style, cursor: "default" } : style}
+       data-pending={pending ? "" : undefined}>
+      {children}
+    </a>
+  );
+}
+
+// Inline SVG artwork from the board (kept as files in ../art, loaded with ?raw). display: contents keeps the board layout.
+export function Art({ svg }) {
+  return <span style={{ display: "contents" }} dangerouslySetInnerHTML={{ __html: svg }} />;
+}
