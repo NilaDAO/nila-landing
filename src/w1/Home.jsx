@@ -39,7 +39,7 @@ import MGlobeWave from "./mobile/MGlobeWave.jsx";
 import MFaq from "./mobile/MFaq.jsx";
 import MFooter from "./mobile/MFooter.jsx";
 
-const WireGlobe = lazy(() => import("../components/sections/globe"));
+const W1Globe = lazy(() => import("./W1Globe.jsx"));
 
 // Below this width the 390 board is used; the desktop board is fluid (max-width 1152) above it.
 const MOBILE_QUERY = "(max-width: 899px)";
@@ -62,20 +62,9 @@ class GlobeGuard extends Component {
   render() { return this.state.failed ? null : this.props.children; }
 }
 
-// Board: "Globe (three.js) as now; union markers in white." — the live globe in the board's section frame.
+// Board band "Globe (three.js) as now; union markers in white" → W1Globe (lazy: three.js is heavy).
 function GlobeSection({ mobile }) {
-  return (
-    <section style={{ position: "relative", overflow: "hidden", background: "#0A0A0A" }}>
-      <div style={{ position: "relative", height: mobile ? 360 : 520 }}>
-        <GlobeGuard><Suspense fallback={null}><WireGlobe banner /></Suspense></GlobeGuard>
-        <div style={{ position: "absolute", left: mobile ? "50%" : "44%", top: mobile ? 120 : 190, transform: mobile ? "translateX(-50%)" : undefined, pointerEvents: "none" }}>
-          <span style={{ display: "inline-flex", alignItems: "center", height: 24, padding: "0 8px", borderRadius: 9999, background: "#1F2733", fontSize: 12, fontWeight: 700, color: "#F1F5F9", whiteSpace: "nowrap" }}>
-            Tamil Nadu · 3 unions
-          </span>
-        </div>
-      </div>
-    </section>
-  );
+  return <GlobeGuard><Suspense fallback={<div style={{ height: mobile ? 300 : 520, background: "#0A0A0A" }} />}><W1Globe mobile={mobile} /></Suspense></GlobeGuard>;
 }
 
 const Anchor = ({ id }) => <span id={id} style={{ display: "block", position: "relative", top: -8 }} />;

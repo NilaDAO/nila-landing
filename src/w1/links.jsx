@@ -8,7 +8,6 @@ const scrollTo = (id) => () => document.getElementById(id)?.scrollIntoView({ beh
 // Targets that do not exist yet (W2 harvests, W4 how it works, FAQ answers, SCF news page).
 // They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
 const PENDING = new Set([
-  "Lock in a harvest",
   "Harvests",
   "Read more",
   "The AI-guided crop plan What goes in, what comes out, and one member’s year.",
@@ -26,7 +25,11 @@ const PENDING = new Set([
   "Build with Nila",
 ]);
 
+// Shown but switched off until W2 (harvests) exists (Carst, 10 Nov).
+const DISABLED = new Set(["Lock in a harvest"]);
+
 function resolve(k, label, ctx) {
+  if (DISABLED.has(label)) return { href: undefined, "aria-disabled": true, pending: true, disabled: true };
   switch (label) {
     case "": return { href: "/" };                       // logo
     case "nila.land": return { href: "/" };
@@ -56,14 +59,14 @@ function resolve(k, label, ctx) {
 
 export function A({ k, label, children, style, ...rest }) {
   const ctx = useContext(W1Ctx);
-  const { onClick, pending, ...t } = resolve(k, label, ctx);
+  const { onClick, pending, disabled, ...t } = resolve(k, label, ctx);
   const handle = (e) => {
     if (onClick || pending) e.preventDefault();
     onClick?.();
   };
   const rel = t.target === "_blank" ? "noopener noreferrer" : undefined;
   return (
-    <a {...rest} {...t} rel={rel} onClick={handle} style={pending ? { ...style, cursor: "default" } : style}
+    <a {...rest} {...t} rel={rel} onClick={handle} style={disabled ? { ...style, opacity: 0.4, cursor: "not-allowed" } : pending ? { ...style, cursor: "default" } : style}
        data-pending={pending ? "" : undefined}>
       {children}
     </a>

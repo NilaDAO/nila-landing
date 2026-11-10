@@ -44,14 +44,15 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 
 ## W1 — open before the flag is switched (Carst)
 
-- **Links with no target yet** (inert, listed in `src/w1/links.jsx` PENDING): *Lock in a harvest* (hero primary + buyers card) and
-  *Harvests* (W2 not built); the three *How it works* cards (W4 not built); *Read more* on the SCF news bar; *Build with Nila*;
-  all nine FAQ questions (the board has no answers — answers are an open point). The primary button on the page goes nowhere today.
+- **Lock in a harvest** (hero primary + buyers card) is shown disabled until W2 exists (Carst, 10 Nov).
+- **Links with no target yet** (inert, listed in `src/w1/links.jsx` PENDING): *Harvests* (W2 not built); the three *How it works* cards (W4 not built); *Read more* on the SCF news bar; *Build with Nila*;
+  all nine FAQ questions (the board has no answers — answers are an open point).
 - **Check access** opens the old unions page (W3 not built, as decided).
 - **Season ledger (CSV)** links to the old `loan-tape.csv` until the season ledger exists.
 - **Metrics**: 58 / ₹ — / 4 are board figures, not read live. 58 = all loan IDs in facts.md incl. 1 removed.
 - **nUSD card (3–5 % target)** is on W1 as designed — counsel (X35) must clear it before the flag goes on.
-- **Globe**: the live globe opens its India stats panel inside the W1 band (as on today's site); the board shows a plain dark sphere.
-  Its earth texture loads over http from unpkg (CORS error, pre-existing). A WebGL failure no longer blanks the page (guard added).
+- **Globe** (`src/w1/W1Globe.jsx`, 10 Nov): own W1 globe from the old one's data and logic — horizon framing as on the
+  board (sphere size, Tamil Nadu marker + chip pinned to its coordinates), drag rotates east–west, tap a country → ink card
+  with its figures (India open by default; below the globe on mobile). No unpkg texture any more. WebGL failure → band hidden.
 - **Mobile menu** is not on the board; built from the List row look. Design to confirm.
 - 'Backed by' row shows SCF and MIT names (logos need written OK, see above).
