@@ -53,9 +53,9 @@ function resolve(k, label, ctx) {
     case "facts.md": return { href: "/audit/facts.md", target: "_blank" };
     case "Season ledger (CSV)": return { href: "/audit/loan-tape.csv" }; // season ledger not built yet: loan tape until then
     case "Code (nila-soroban)": return { href: "https://github.com/NilaDAO/nila-soroban", target: "_blank" };
-    case "Privacy Policy": return { href: "/privacy" };
-    case "Terms of Use": return { href: "/terms" };
-    case "Risk Disclosure": return { href: "/risk" };
+    case "Privacy Policy": return { href: homeHref("/privacy") };
+    case "Terms of Use": return { href: homeHref("/terms") };
+    case "Risk Disclosure": return { href: homeHref("/risk") };
     case "info@nila.land": return { href: "mailto:info@nila.land" };
     case "Lock in a harvest":
     case "Harvests": return { href: "#harvests", onClick: ctx.comingSoon }; // W2 not built: chip bottom right

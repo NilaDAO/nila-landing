@@ -19,6 +19,7 @@ import AuditPage from "./components/sections/AuditPage";
 import WfpPage from "./components/sections/WfpPage";
 const W1Home = lazy(() => import("./w1/Home.jsx"));
 const W1Audit = lazy(() => import("./w1/Audit.jsx"));
+const W1Legal = lazy(() => import("./w1/Legal.jsx"));
 const loadHow = () => import("./w4/How.jsx");
 const W4How = lazy(loadHow);
 
@@ -33,6 +34,7 @@ const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV &
 
 export default function App() {
   const path = window.location.pathname;
+  if (REDESIGN && ["/privacy", "/terms", "/risk"].includes(path)) return <Suspense fallback={null}><W1Legal path={path} /></Suspense>;
   if (path === "/privacy") return <PrivacyPolicy />;
   if (path === "/terms") return <TermsOfUse />;
   if (path === "/risk") return <RiskDisclosure />;

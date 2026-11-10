@@ -79,3 +79,7 @@
 @keyframes nlTick{0%,20%{opacity:.25}30%,90%{opacity:1}100%{opacity:.25}}
 /* Overrides (scripts/w1/post.py), not in the board: nUSD coin more visible (Carst, 10 Nov). */
 .w1 .nl-part{background:#161B23}.w1 .nl-rim{border-color:#3A4556}.w1 .nl-coin:hover .nl-part{box-shadow:inset 0 0 0 1px #3A4556}
+/* Legal pages: the policy text keeps its Tailwind classes; set it at the W1 reading size. */
+.w1-legal .text-sm{font-size:16px;line-height:1.65}
+.w1-legal h2{font-size:22px !important;margin-bottom:12px}
+.w1-legal section a{text-decoration:underline}

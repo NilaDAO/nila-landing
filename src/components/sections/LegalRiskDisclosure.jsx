@@ -19,6 +19,26 @@ export default function RiskDisclosure() {
           Last updated: 1 February 2026 · Nila.land BV · Amsterdam, Netherlands
         </p>
 
+        <RiskBody />
+      </div>
+
+      {/* Footer */}
+      <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
+        <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
+          <span>© 2026 Nila.land BV</span>
+          <div className="flex gap-4">
+            <a href="/privacy" className="underline hover:opacity-80">Privacy Policy</a>
+            <a href="/terms" className="underline hover:opacity-80">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Policy text only; the old page above and the W1 page (src/w1/Legal.jsx) both render it.
+export function RiskBody() {
+  return (
         <div className="space-y-10 text-sm leading-relaxed" style={{ color: "var(--color-text-soft)" }}>
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>1. General investment risk</h2>
@@ -125,18 +145,5 @@ export default function RiskDisclosure() {
             </p>
           </section>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
-        <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
-          <div className="flex gap-4">
-            <a href="/privacy" className="underline hover:opacity-80">Privacy Policy</a>
-            <a href="/terms" className="underline hover:opacity-80">Terms of Use</a>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
