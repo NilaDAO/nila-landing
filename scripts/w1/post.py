@@ -30,3 +30,12 @@ import glob
 for f in glob.glob(f'{W}/*/*.jsx'):
     s = open(f).read(); n = s.replace('src="assets/', 'src="/w1/')
     if n != s: open(f, 'w').write(n)
+
+# Hero "Lock in a harvest" (primary) gets the same arrow as the other buttons (Carst, 10 Nov; not on the board).
+ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#121212" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>'
+for f in ('desktop/DHero.jsx', 'mobile/MHero.jsx'):
+    s = open(f'{W}/{f}').read()
+    if ARROW not in s:
+        assert s.count('>Lock in a harvest</A>') == 1, f
+        s = s.replace('>Lock in a harvest</A>', '>Lock in a harvest' + ARROW + '</A>')
+        open(f'{W}/{f}', 'w').write(s)
