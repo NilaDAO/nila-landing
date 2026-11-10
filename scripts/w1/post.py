@@ -5,13 +5,18 @@ h = [l for l in open(f'{W}/desktop/D.helmet.css').read().split('\n') if l.strip(
 assert h[0] == 'html,body{overflow:hidden}', h[0]
 h[1] = h[1].replace('body{margin:0;', '.w1{')
 h[2] = h[2].replace('a{color', '.w1 a{color').replace('a:hover{', '.w1 a:not([data-pending]):hover{')
+# Changes Carst asked for on top of the board (kept here so a regenerate keeps them).
+OVERRIDES = [
+    "/* Overrides (scripts/w1/post.py), not in the board: nUSD coin more visible (Carst, 10 Nov). */",
+    ".w1 .nl-part{background:#161B23}.w1 .nl-rim{border-color:#3A4556}.w1 .nl-coin:hover .nl-part{box-shadow:inset 0 0 0 1px #3A4556}",
+]
 tk = json.load(open(f'{DS}/tokens.json'))
 vs = [f"  --nl-{t['name']}: {t['value'] if not t['value'].startswith('{') else 'var(--nl-' + t['value'][1:-1] + ')'};"
       for g in ('color', 'spacing', 'radius', 'shadow', 'size') for t in tk[g]['tokens']]
 open(f'{W}/w1.css', 'w').write('\n'.join([
     "/* W1 (nila.land home). Tokens from dev/nila-design/tokens.json; the rest is the board's own CSS",
     "   (nila-design/boards/LandHome.dc.html <helmet>), scoped to .w1. Regenerate, do not restyle by hand. */",
-    ".w1 {", *vs, "}", *h[1:]]) + '\n')
+    ".w1 {", *vs, "}", *h[1:], *OVERRIDES]) + '\n')
 for f in ('desktop/D.helmet.css', 'mobile/M.helmet.css', 'desktop/DGlobe.jsx', 'mobile/MGlobe.jsx'):
     os.remove(f'{W}/{f}')
 for f in ('desktop/DMetrics.jsx', 'mobile/MMetrics.jsx'):

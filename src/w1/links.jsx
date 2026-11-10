@@ -2,8 +2,14 @@
 // k = the board's href, label = the link's visible text (or aria-label).
 import { useContext } from "react";
 import { W1Ctx } from "./ctx.js";
+import { homeHref } from "./util.js";
 
-const scrollTo = (id) => () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+// On the home page: smooth scroll. Elsewhere (/audit): go to the home page at that anchor.
+const scrollTo = (id) => () => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  else location.assign(homeHref(`#${id}`));
+};
 
 // Targets that do not exist yet (W2 harvests, W4 how it works, FAQ answers, SCF news page).
 // They render as inert links until Carst picks a target — see docs/LANDING_REDESIGN_PLAN.md.
@@ -29,17 +35,17 @@ const DISABLED = new Set(["Lock in a harvest"]);
 function resolve(k, label, ctx) {
   if (DISABLED.has(label)) return { href: undefined, "aria-disabled": true, pending: true, disabled: true };
   switch (label) {
-    case "": return { href: "/" };                       // logo
-    case "nila.land": return { href: "/" };
-    case "nUSD": return { href: "#nusd", onClick: scrollTo("nusd") };
-    case "How it works": return { href: "#how", onClick: scrollTo("how") };
-    case "FAQ": return { href: "#faq", onClick: scrollTo("faq") };
+    case "": return { href: homeHref("/") };             // logo
+    case "nila.land": return { href: homeHref("/") };
+    case "nUSD": return { href: homeHref("#nusd"), onClick: scrollTo("nusd") };
+    case "How it works": return { href: homeHref("#how"), onClick: scrollTo("how") };
+    case "FAQ": return { href: homeHref("#faq"), onClick: scrollTo("faq") };
     case "Meet the unions":
     case "Check access": return { href: "#unions", onClick: ctx.openUnions };
     case "open the audit":
     case "Open the audit":
     case "audit ↗":
-    case "Fact sheet": return { href: "/audit" };
+    case "Fact sheet": return { href: homeHref("/audit") };
     case "facts.md": return { href: "/audit/facts.md", target: "_blank" };
     case "Season ledger (CSV)": return { href: "/audit/loan-tape.csv" }; // season ledger not built yet: loan tape until then
     case "Code (nila-soroban)": return { href: "https://github.com/NilaDAO/nila-soroban", target: "_blank" };

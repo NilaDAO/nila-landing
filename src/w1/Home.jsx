@@ -4,6 +4,8 @@ import { Component, lazy, Suspense, useEffect, useState } from "react";
 import "./w1.css";
 import { W1Ctx } from "./ctx.js";
 import MobileMenu from "./MobileMenu.jsx";
+import { useIsMobile, useComingSoon } from "./util.js";
+import ComingSoonChip from "./ComingSoonChip.jsx";
 
 import DNews from "./desktop/DNews.jsx";
 import DHero from "./desktop/DHero.jsx";
@@ -41,20 +43,6 @@ import MFooter from "./mobile/MFooter.jsx";
 
 const W1Globe = lazy(() => import("./W1Globe.jsx"));
 
-// Below this width the 390 board is used; the desktop board is fluid (max-width 1152) above it.
-const MOBILE_QUERY = "(max-width: 899px)";
-
-function useIsMobile() {
-  const [m, setM] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(MOBILE_QUERY);
-    const on = () => setM(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return m;
-}
-
 // No WebGL (old phones, some browsers): drop the globe, keep the page.
 class GlobeGuard extends Component {
   state = { failed: false };
@@ -73,17 +61,18 @@ export default function Home({ onOpenUnions }) {
   const mobile = useIsMobile();
   const [news, setNews] = useState(true);
   const [menu, setMenu] = useState(false);
-  const [soon, setSoon] = useState(0); // "Coming soon" chip, bottom right, for pages not built yet
+  const [soon, comingSoon] = useComingSoon();
+  // Arriving from another page (/audit) with #nusd, #how, #faq or #unions.
   useEffect(() => {
-    if (!soon) return undefined;
-    const t = setTimeout(() => setSoon(0), 2500);
-    return () => clearTimeout(t);
-  }, [soon]);
+    const id = location.hash.slice(1);
+    if (id === "unions") { onOpenUnions(); return; }
+    if (id) setTimeout(() => document.getElementById(id)?.scrollIntoView({ block: "start" }), 300);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const ctx = {
     openUnions: () => { setMenu(false); onOpenUnions(); },
     toggleMenu: () => setMenu((v) => !v),
     closeNews: () => setNews(false),
-    comingSoon: () => { setMenu(false); setSoon(Date.now()); },
+    comingSoon: () => { setMenu(false); comingSoon(); },
   };
 
   const S = mobile
@@ -114,14 +103,7 @@ export default function Home({ onOpenUnions }) {
         <Anchor id="faq" />
         <S.Faq />
         <S.Footer />
-        {soon > 0 && (
-          <div role="status" aria-live="polite"
-               style={{ position: "fixed", right: 16, bottom: 16, zIndex: 60, display: "inline-flex", alignItems: "center", height: 32,
-                        padding: "0 14px", borderRadius: 9999, background: "var(--nl-surface-raised)", border: "1px solid #2A3442",
-                        boxShadow: "var(--nl-shadow-card)", fontSize: 12, fontWeight: 700, color: "var(--nl-text)" }}>
-            Coming soon
-          </div>
-        )}
+        <ComingSoonChip on={soon} />
       </div>
     </W1Ctx.Provider>
   );
