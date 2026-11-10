@@ -53,3 +53,4 @@ amplifytools.xcconfig
 _deprecated/
 src/components/_deprecated/
 .claude/settings.local.json
+scripts/audit/last-run.log

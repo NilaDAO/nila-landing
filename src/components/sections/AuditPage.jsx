@@ -195,7 +195,7 @@ export default function AuditPage() {
   useEffect(() => {
     fetch("/audit/facts.md")
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(setFactsText)
+      .then((t) => setFactsText(t.replace(/<!--[\s\S]*?-->\n?/g, ""))) // hide the generator's block markers
       .catch(() => setError(true));
   }, []);
 
@@ -240,6 +240,13 @@ export default function AuditPage() {
           >
             Download loan-tape.csv
           </a>
+          <a
+            href="/audit/snapshot.json"
+            className="rounded-lg border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition hover:opacity-80"
+            style={{ borderColor: "var(--color-accent)", color: "var(--color-accent)" }}
+          >
+            Download snapshot.json
+          </a>
         </div>
 
         {error && (
@@ -256,7 +263,7 @@ export default function AuditPage() {
 
       <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
         <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
+          <span>© 2026 Blockchainforcommons · KvK 55518559 · Amsterdam · in India: Nila Farmer Livelihoods Trust</span>
           <span><a href="/audit/facts.md" className="underline hover:opacity-80">facts.md</a></span>
         </div>
       </div>
