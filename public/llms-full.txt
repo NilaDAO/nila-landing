@@ -118,7 +118,7 @@ A: Read it from the chains yourself. The audit page lists every contract on Poly
 All enquiries go to info@nila.land. Use the subject line below so the right person answers.
 
 - Impact funders, foundations and grant makers: subject "Funding: <organisation>". Include the programme or grant name, the amount range, the deadline, and whether funds can go to a Dutch sole proprietorship. Nila's Indian trust cannot receive grants or foreign funds.
-- Institutional investors and RWA or crypto funds: subject "Investor: <organisation>". Include the type of fund, the jurisdiction and the ticket size. nUSD is not open for deposits.
+- Investors (people, funds, RWA or crypto funds): subject "Investor: <name>". Include who you are, the jurisdiction and the amount you have in mind. nUSD is not open for deposits.
 - Food buyers and sourcing teams: subject "Sourcing: <crop>". Include the crop and variety, the quantity per season, the delivery region and the quality conditions. The harvest board is not live; enquiries now help plan next season's crops.
 - Journalists and researchers: subject "Press: <outlet>". Include the deadline and the questions. Start from facts.md; its open-items list names what is not proven.
 - Farmer organisations in India (self-help groups, FPOs): subject "Union: <name, district>". Include the number of members and the crops grown. Nila works with unions in Tamil Nadu for now.

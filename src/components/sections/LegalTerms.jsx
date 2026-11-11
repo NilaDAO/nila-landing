@@ -57,14 +57,14 @@ export function TermsBody() {
               Nothing on the Site constitutes financial, investment, legal, or tax advice. The information presented is for informational purposes only. Investment in financial instruments carries risk, including loss of principal. Past performance does not guarantee future results.
             </p>
             <p className="mt-3">
-              The Site is directed exclusively at qualified investors as defined under applicable law. It does not constitute a public offering of securities in any jurisdiction.
+              The Site does not constitute a public offering of securities in any jurisdiction.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>4. Eligibility</h2>
             <p>
-              Nothing on the Site is an offer of nUSD or any other investment. Once nUSD is available, it is restricted to qualified or professional investors, and you will be asked to confirm that you meet the investor qualification criteria in your jurisdiction.
+              Nothing on the Site is an offer of nUSD or any other investment. Once nUSD is available, you will be asked to confirm that taking part is lawful in your jurisdiction.
             </p>
           </section>
 

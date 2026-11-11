@@ -123,7 +123,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>9. Investor suitability</h2>
             <p>
-              nUSD is intended for qualified investors who understand the risks of agricultural finance, digital assets, and emerging-market exposure. By investing, you represent that:
+              nUSD is for investors who understand the risks of agricultural finance, digital assets, and emerging-market exposure. By investing, you represent that:
             </p>
             <ul className="mt-3 list-disc pl-5 space-y-1">
               <li>You have read and understood this risk disclosure in full</li>
