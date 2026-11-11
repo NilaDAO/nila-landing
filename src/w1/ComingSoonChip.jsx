@@ -28,7 +28,8 @@ export default function ComingSoonChip({ on }) {
   if (!shown) return null;
   return createPortal(
     <div ref={el} className="w1" role="status" aria-live="polite"
-         style={{ position: "fixed", right: 16, bottom: 16, zIndex: 60, display: "inline-flex", alignItems: "center", gap: 8, height: 44,
+         style={{ position: "fixed", right: 16, bottom: 16, zIndex: 1000, // above the slide-in pages (App overlay is 200)
+                  display: "inline-flex", alignItems: "center", gap: 8, height: 44,
                   padding: "0 18px 0 14px", borderRadius: 12, background: RED, color: "var(--nl-surface-ink)",
                   boxShadow: "var(--nl-shadow-card)", fontSize: 14, fontWeight: 700, whiteSpace: "nowrap" }}>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
