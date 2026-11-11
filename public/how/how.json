@@ -62,10 +62,10 @@
         {
           "key": "work",
           "name": "Cheaper work",
-          "question": "How much less does a voucher machine hour cost than hired labour for the same work?",
-          "definition": "Saving of the voucher-paid machine work against hiring labour for the same work on the same area, as a share of the labour cost. A machine hour dearer than labour shows as 0, no saving. Machine cost: the union’s rate per machine hour (on-chain). Labour cost: the state’s cost of cultivation per hectare (Directorate of Economics and Statistics, Tamil Nadu, latest year to confirm).",
+          "question": "How much less does an acre of voucher machine work cost than hired labour for the same work?",
+          "definition": "Saving of the voucher-paid machine work against hiring labour for the same work on the same area, as a share of the labour cost. An acre of machine work dearer than labour shows as 0, no saving. Machine cost: the union’s price an acre per machine type (on-chain). Labour cost: the state’s cost of cultivation per hectare (Directorate of Economics and Statistics, Tamil Nadu, latest year to confirm).",
           "status": "2026–27",
-          "source": "Stellar machinery (rate per hour) · DES Cost of Cultivation, Tamil Nadu",
+          "source": "Stellar machinery (price an acre) · DES Cost of Cultivation, Tamil Nadu",
           "rings": [
             {
               "label": "Saving against hired labour",
@@ -238,12 +238,12 @@
           "key": "voucher",
           "name": "Voucher",
           "question": "What share of voucher work was done on time, before the farmer had the cash to pay for it?",
-          "definition": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed. The farmer shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when the farmer’s harvest pays back the crop advance. So the field is ploughed and sown on time, even in a month with no cash in the house. Outer ring: voucher hours used, of hours issued. Middle: voucher work done inside the crop’s sowing window; the tick is the same fields’ past on-time sowing. Inner: seasons or crops the field’s 8-year record never shows; a farmer doing as always shows as a low inner ring.",
+          "definition": "A voucher is a slip on the farmer’s phone that pays for a service from her union: acres of work with the union’s machines, seed the union bought, or space in its storage. She uses it instead of paying cash and repays it when her harvest pays back the crop advance. So the field is ploughed and sown on time, even in a month with no cash in the house. Outer ring: voucher acres used, of acres issued. Middle: voucher work done inside the crop’s sowing window; the tick is the same fields’ past on-time sowing. Inner: seasons or crops the field’s 8-year record never shows; a farmer doing as always shows as a low inner ring.",
           "status": "2026–27",
           "source": "Stellar machinery, fund_core · crop_calendar · satellite record per field",
           "rings": [
             {
-              "label": "Voucher hours used, of hours issued",
+              "label": "Voucher acres used, of acres issued",
               "value": null,
               "tick": null,
               "figure": "Counted from the first vouchers on Stellar, 2026–27.",
@@ -267,7 +267,7 @@
               "placeholderTick": null
             }
           ],
-          "explain": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed instead of cash. The machine owner or the seed shop is paid part at the job and the rest when the harvest pays back the crop advance."
+          "explain": "A voucher is a slip on the farmer’s phone that pays for a service from her union (machine work by the acre, seed, storage) instead of cash. She repays it when her harvest pays back the crop advance."
         }
       ]
     },

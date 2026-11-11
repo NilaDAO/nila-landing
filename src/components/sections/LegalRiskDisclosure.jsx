@@ -73,7 +73,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>4. Smart contract and technology risk</h2>
             <p>
-              Nila runs on smart contracts on the Stellar network (senior deposits, crop advances, vouchers, repayment). Crop advances made before November 2026 run on Polygon until they are repaid. The contracts are published at nila.land/audit, but no smart contract is guaranteed to be free of bugs or vulnerabilities, and the senior contract takes no deposits until it has been audited.
+              Nila runs on smart contracts on the Stellar network (senior deposits, crop advances, vouchers, repayment). Crop advances made before November 2026 run on Polygon until they are repaid. The contracts are published at nila.land/audit, but no smart contract is guaranteed to be free of bugs or vulnerabilities.
             </p>
             <p className="mt-3">
               Blockchain networks may experience congestion or outages. Third parties, including the stablecoin issuer (Circle, for USDC), network infrastructure providers and wallet software, are further points of failure outside Nila’s control.
@@ -113,7 +113,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>8. No guarantee of returns</h2>
             <p>
-              nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise: a senior investor earns only the interest on the voucher part of the crop advances its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop advance is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
+              nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise. Your USDC guarantees the vouchers in farmers’ year plans, and your return is the interest on those vouchers, earned in rupees and paid in USDC when the union exchanges them. A farmer pays at most about 1 paise per rupee a month on a crop advance. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
             </p>
             <p className="mt-3">
               Nila does not guarantee any rate of return. What you receive depends on how crop advances are repaid, the INR/USD rate and the union’s fees.
