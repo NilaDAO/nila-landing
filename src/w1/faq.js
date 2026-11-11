@@ -30,7 +30,7 @@ export const FAQ = [
   ],
   [
     "Where does funding go?",
-    "Into the services in a farmer's year plan, not into cash. Since November 2026, the cash part of a crop advance comes only from the union members' own savings. Outside money pays only for vouchers (tractor work by the acre, seed) and is paid back from the harvest."
+    "Into the services in a farmer's year plan, not into cash. Since November 2026, the cash part of a crop advance comes only from the union members' own savings. Outside money only guarantees vouchers (tractor work by the acre, seed), which are paid back from the harvest."
   ],
   [
     "How do I verify independently?",
