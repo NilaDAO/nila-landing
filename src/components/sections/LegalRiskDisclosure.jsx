@@ -43,7 +43,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>1. General investment risk</h2>
             <p>
-              Investing through Nila involves lending capital to agricultural self-help group (SHG) unions in India. As with any investment, there is a risk that you may lose part or all of your principal. Past repayment performance of SHG unions — including the widely cited 95%+ repayment rate across 30 years of NABARD data — does not guarantee future results.
+              Investing through Nila means financing crop shares: seasonal advances to members of farmer unions in Tamil Nadu, India, paid back from the harvest they finance. As with any investment, you may lose part or all of your principal. Past repayment of Nila’s crop shares (on-chain at nila.land/audit) does not guarantee future results.
             </p>
             <p className="mt-3">
               This is not a bank deposit. Your capital is not protected by any deposit guarantee scheme. You should only invest amounts you can afford to lose entirely.
@@ -53,40 +53,40 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>2. Agricultural and crop-cycle risk</h2>
             <p>
-              Loan facilities are backed by crop receivables — the projected harvest value from a union's members. Agricultural output is inherently uncertain. Droughts, floods, pest outbreaks, disease, and other climate events can reduce yields below expectations. If a harvest underperforms, the collateral value of food-token receivables may decline and repayment may be delayed or reduced.
+              A crop share is paid back from the harvest of the crop it finances. Agricultural output is uncertain: droughts, floods, pests, disease and other climate events can reduce yields below the plan. If a harvest fails or underperforms, repayment may be delayed, reduced or not happen.
             </p>
             <p className="mt-3">
-              Crop price volatility also affects receivable values. While Nila uses verified market pricing and satellite-based crop monitoring, these tools reduce — but do not eliminate — agricultural risk.
+              Crop prices also move. Nila uses satellite monitoring of every financed field and a crop calendar per crop; these reduce agricultural risk but do not remove it.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>3. Foreign exchange risk</h2>
             <p>
-              You deposit and receive returns in USDt (Tether on Polygon). Underlying loans to SHG unions are denominated and disbursed in Indian Rupees (INR). The INR/USD exchange rate fluctuates. An unfavourable movement in the exchange rate between disbursement and repayment can reduce your effective return, even if the union repays in full.
+              You deposit and are paid in USDC on the Stellar network. Crop shares are lent and repaid in Indian rupees (INR), and the interest is earned in rupees and paid to you in USDC at the exchange rate of the day it is paid. The INR/USD rate moves; an unfavourable movement can reduce your effective return, even if every crop share is repaid in full.
             </p>
             <p className="mt-3">
-              Nila does not hedge FX exposure on your behalf. The effective yield you receive is net of any FX movement during the loan cycle.
+              Nila does not hedge exchange-rate exposure on your behalf.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>4. Smart contract and technology risk</h2>
             <p>
-              Nila's lending infrastructure runs on Polygon (an Ethereum Layer 2 network). Smart contracts manage fund deposits, loan disbursements, collateral issuance, and repayment routing. While contracts are designed with security in mind, no smart contract is guaranteed to be free of bugs or vulnerabilities.
+              Nila runs on smart contracts on the Stellar network (senior deposits, crop shares, vouchers, repayment). Crop shares made before November 2026 run on Polygon until they are repaid. The contracts are published at nila.land/audit, but no smart contract is guaranteed to be free of bugs or vulnerabilities, and the senior contract takes no deposits until it has been audited.
             </p>
             <p className="mt-3">
-              Blockchain networks may experience congestion, forks, or outages. Third-party dependencies — including stablecoin issuers (Tether), RPC providers, and wallet software — introduce additional points of failure outside Nila's control.
+              Blockchain networks may experience congestion or outages. Third parties, including the stablecoin issuer (Circle, for USDC), network infrastructure providers and wallet software, are further points of failure outside Nila’s control.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>5. Liquidity risk</h2>
             <p>
-              Facilities operate on rolling 90-day cycles with a 2-week minimum hold period. After the minimum hold, you may request withdrawal at any cycle boundary, subject to facility liquidity. If your facility is fully deployed (i.e., all capital is lent out), your withdrawal will be queued for the next repayment event.
+              You may ask for your principal back at any time. It is paid in USDC at par after a 14-day unbonding period, less your part of any loss from crop shares that were not repaid.
             </p>
             <p className="mt-3">
-              This is agricultural lending with real crop cycles — not a money market fund. You should expect that capital may be locked for the duration of a crop cycle (typically 3–8 months). Typical wait times are disclosed per facility before you commit.
+              This is agricultural finance with real crop cycles, not a money market fund. A crop share runs until the harvest it finances (typically 3 to 8 months), and interest owed to you is paid once the union has exchanged the rupees for USDC.
             </p>
           </section>
 
@@ -96,17 +96,17 @@ export function RiskBody() {
               The regulatory environment for digital assets, stablecoins, and cross-border lending is evolving. Changes in regulation — in the Netherlands, India, or any jurisdiction relevant to your situation — may restrict, tax, or prohibit activities related to your investment.
             </p>
             <p className="mt-3">
-              Blockchainforcommons is registered in the Netherlands and operates under Dutch law. It is your responsibility to ensure that participating in Nila's facilities is lawful in your jurisdiction.
+              Blockchainforcommons is registered in the Netherlands and operates under Dutch law. It is your responsibility to ensure that participating in Nila is lawful in your jurisdiction.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>7. First-loss reserve</h2>
+            <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>7. Who takes losses first</h2>
             <p>
-              Each facility carries a dynamic first-loss reserve, funded from union surplus. The reserve starts at 10% of facility value, increases quickly upon defaults, and decreases gradually to a 0.1% floor when repayment is steady. The reserve absorbs losses before your principal is affected.
+              Members’ own savings in the union’s fund take losses before senior money. When a crop share is repaid, machine owners are paid first, then senior money, then the members’ own savings (interest and principal). The union also keeps a rainy-day fund from its interest fees.
             </p>
             <p className="mt-3">
-              However, the first-loss reserve is finite. In a severe default scenario — for example, a widespread crop failure affecting an entire union — the reserve may be insufficient to cover all losses. In that case, your principal would be impaired proportionally.
+              This protection is finite. In a severe case, for example a crop failure across a whole union, the members’ savings and the rainy-day fund may not cover the loss, and your principal would be reduced in proportion.
             </p>
           </section>
 
@@ -116,19 +116,19 @@ export function RiskBody() {
               nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise: a senior investor earns only the interest on the voucher part of the crop shares its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop share is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
             </p>
             <p className="mt-3">
-              Nila does not guarantee any specific rate of return. The yield you receive depends on union repayment performance, crop receivable values, FX movements, reserve utilisation, and facility fees.
+              Nila does not guarantee any rate of return. What you receive depends on how crop shares are repaid, the INR/USD rate and the union’s fees.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>9. Investor suitability</h2>
             <p>
-              Nila facilities are intended for qualified investors who understand the risks of agricultural lending, digital assets, and emerging-market exposure. By investing, you represent that:
+              nUSD is intended for qualified investors who understand the risks of agricultural finance, digital assets, and emerging-market exposure. By investing, you represent that:
             </p>
             <ul className="mt-3 list-disc pl-5 space-y-1">
               <li>You have read and understood this risk disclosure in full</li>
               <li>You are investing with funds you can afford to lose</li>
-              <li>You understand the illiquid nature of agricultural loan cycles</li>
+              <li>You understand that crop shares run until their harvest</li>
               <li>You are solely responsible for your own tax obligations related to any returns</li>
               <li>You are not a resident of a jurisdiction where this investment is prohibited</li>
             </ul>
