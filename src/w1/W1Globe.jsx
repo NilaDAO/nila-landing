@@ -1,5 +1,5 @@
 // W1 globe band (board: "Globe (three.js) as now; union markers in white").
-// Same data and behaviour as components/sections/globe.jsx (country polygons from /tex/custom_updated.geojson,
+// Same data and behaviour as components/sections/globe.jsx (country polygons from /tex/custom_updated.json,
 // tap a country → its figures), restyled to the design: dark sphere seen as a horizon, white union marker,
 // figures in an ink card. Drag rotates east–west; no zoom, so the page keeps scrolling.
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -124,7 +124,7 @@ export default function W1Globe({ mobile }) {
   }, []);
 
   useEffect(() => {
-    Promise.all([fetch("/tex/custom_updated.geojson").then((r) => r.json()), fetch("/tex/world_110m.geojson").then((r) => r.json())])
+    Promise.all([fetch("/tex/custom_updated.json").then((r) => r.json()), fetch("/tex/world_110m.json").then((r) => r.json())])
       .then(([geo, all]) => {
         const clean = (geo.features || []).filter((f) => nameOf(f) && f.geometry);
         const names = new Set(clean.map(nameOf));

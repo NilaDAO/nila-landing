@@ -53,7 +53,7 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 - **Globe** (`src/w1/W1Globe.jsx`, 10 Nov): camera, canvas size, start position and fixed tilt copied from the old globe
   (Carst). globe.gl forces its orbit target to the centre, so the camera is turned by hand: drag east–west on desktop
   and mobile, old auto-rotate speed. Tap picks the smallest data country under the pointer (Nepal over India). The 11 data
-  countries are tappable; all other countries (Natural Earth 110m, `public/tex/world_110m.geojson`) are faint outlines.
+  countries are tappable; all other countries (Natural Earth 110m, `public/tex/world_110m.json`) are faint outlines.
   Ink country card, India open by default. WebGL failure → band hidden.
 - **Mobile menu** is not on the board; built from the List row look. Design to confirm.
 - 'Backed by' row: SCF and "Dutch government · innovation grant" (no MIT, Carst 11 Nov); logos need written OK.

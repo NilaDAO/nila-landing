@@ -115,7 +115,7 @@ export default function WireGlobe({ banner = false }) {
   /* ------------------ Load GeoJSON ------------------ */
 
   useEffect(() => {
-    fetch('/tex/custom_updated.geojson')
+    fetch('/tex/custom_updated.json')
       .then(r => r.json())
       .then((geo) => {
         const feats = Array.isArray(geo.features) ? geo.features : []
