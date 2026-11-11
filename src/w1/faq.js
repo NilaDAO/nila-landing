@@ -22,7 +22,7 @@ export const FAQ = [
   ],
   [
     "What is a food token?",
-    "The record of one planned crop on her land: the crop, the field, the season and the harvest the plan expects. A crop share can only be drawn against it, inside that crop's sowing window. It is locked to her land title. It is a record, not an investment."
+    "The record of one planned crop on her land: the crop, the field, the season and the harvest the plan expects. A crop share can only be drawn against it, inside that crop's sowing window. It is tied to her land title: the title's number is part of the token. It is a record, not an investment."
   ],
   [
     "How does a buyer lock a harvest?",
