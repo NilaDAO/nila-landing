@@ -2,15 +2,75 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/bw2.png" />
+    <link rel="icon" type="image/png" href="/bw2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nila.land</title>
+    <title>Nila: plan the year. The protocol for agri-services in Tamil Nadu</title>
+    <meta name="description" content="Nila gives farmers in Tamil Nadu, India, a year crop plan and the money and services to carry it out, through their own unions. Crop advances paid back from the harvest, standing-crop records on Stellar and Polygon, and a public on-chain audit." />
+    <link rel="canonical" href="https://nila.land/" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nila" />
+    <meta property="og:url" content="https://nila.land/" />
+    <meta property="og:title" content="Nila: plan the year. The protocol for agri-services" />
+    <meta property="og:description" content="Year crop plans, crop advances and services for farmer unions in Tamil Nadu, India. Every figure checkable on-chain." />
+    <meta property="og:image" content="https://nila.land/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@NilaDAO" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="https://nila.land/llms.txt" />
+    <link rel="alternate" type="text/plain" title="llms-full.txt" href="https://nila.land/llms-full.txt" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://nila.land/#org",
+          "name": "Nila",
+          "alternateName": ["nila.land", "Nila Land"],
+          "url": "https://nila.land/",
+          "logo": "https://nila.land/bw2.png",
+          "email": "info@nila.land",
+          "address": { "@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL" },
+          "description": "Year crop plans, crop advances and agri-services for farmer unions (self-help groups and farmer producer organisations) in Tamil Nadu, India, recorded on Stellar and Polygon.",
+          "areaServed": { "@type": "AdministrativeArea", "name": "Tamil Nadu, India" },
+          "sameAs": ["https://x.com/NilaDAO", "https://www.linkedin.com/company/nilaland", "https://github.com/NilaDAO"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://nila.land/#site",
+          "url": "https://nila.land/",
+          "name": "Nila",
+          "publisher": { "@id": "https://nila.land/#org" }
+        }
+      ]
+    }
+    </script>
+    <!-- faq-jsonld: FAQPage from src/w1/faq.js, injected at build (vite.config.js) -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <div id="root"></div>
+  <body style="background:#0A0A0A;color:#F1F5F9">
+    <!-- Plain text for crawlers and AI agents that do not run JavaScript; React replaces it on load. Same facts as /llms.txt. -->
+    <div id="root">
+      <main style="max-width:720px;margin:0 auto;padding:96px 24px;font-family:Inter,system-ui,sans-serif;line-height:1.6">
+        <h1>Nila: plan the year.</h1>
+        <p>Nila gives farmers in Tamil Nadu, India, a year plan for every field and the money and services to carry it out, through their own unions (self-help groups and farmer producer organisations, about 2,000 members).</p>
+        <p>A crop advance pays for a planned crop and is paid back from its harvest. Services (machine work by the acre, seed, storage) come as vouchers. Each planned crop is a standing-crop record tied to the farmer's land title, on Polygon and Stellar.</p>
+        <p>nUSD is a dollar position on Stellar, in development, not open for deposits.</p>
+        <ul>
+          <li><a href="/how">How it works: impact, software and climate measures</a></li>
+          <li><a href="/audit">Audit fact sheet, read from Polygon and Stellar mainnet</a></li>
+          <li><a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/audit/snapshot.json">snapshot.json</a></li>
+          <li>Contact: <a href="mailto:info@nila.land">info@nila.land</a></li>
+        </ul>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

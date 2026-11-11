@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "audit": "node scripts/audit/refresh.mjs",
+    "prebuild": "node scripts/llms/build.mjs",
+    "llms": "node scripts/llms/build.mjs",
+    "crops": "node scripts/audit/crops.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
@@ -25,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@stellar/stellar-sdk": "^17.4.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",

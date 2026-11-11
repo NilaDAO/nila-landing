@@ -16,7 +16,14 @@ import TermsOfUse from "./components/sections/LegalTerms";
 import RiskDisclosure from "./components/sections/LegalRiskDisclosure";
 import UnionsPage from "./components/sections/UnionsPage";
 import AuditPage from "./components/sections/AuditPage";
-import WfpPage from "./components/sections/WfpPage";
+const W1Home = lazy(() => import("./w1/Home.jsx"));
+const W1Audit = lazy(() => import("./w1/Audit.jsx"));
+const W1Legal = lazy(() => import("./w1/Legal.jsx"));
+const loadHow = () => import("./w4/How.jsx");
+const W4How = lazy(loadHow);
+
+// Redesign (dev/nila-design page 6) behind a flag: VITE_REDESIGN=1 at build time; ?w1 previews it in `npm run dev` only.
+const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV && new URLSearchParams(window.location.search).has("w1"));
 
 //////////////////////////////////////// NOTE /////////////////////////////////////////
 //                                                                                   //
@@ -24,18 +31,34 @@ import WfpPage from "./components/sections/WfpPage";
 //                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////
 
+// Per-route title and canonical for search engines and AI crawlers that run JavaScript (index.html has the home's).
+const META = {
+  "/how": "How it works: impact, software and climate measures · Nila",
+  "/audit": "Audit fact sheet, read from Polygon and Stellar · Nila",
+  "/privacy": "Privacy Policy · Nila",
+  "/terms": "Terms of Use · Nila",
+  "/risk": "Risk Disclosure · Nila",
+};
+function setMeta(path) {
+  if (META[path]) document.title = META[path];
+  const c = document.querySelector('link[rel="canonical"]');
+  if (c) c.href = `https://nila.land${META[path] ? path : "/"}`;
+}
+
 export default function App() {
   const path = window.location.pathname;
+  setMeta(path);
+  if (REDESIGN && ["/privacy", "/terms", "/risk"].includes(path)) return <Suspense fallback={null}><W1Legal path={path} /></Suspense>;
   if (path === "/privacy") return <PrivacyPolicy />;
   if (path === "/terms") return <TermsOfUse />;
   if (path === "/risk") return <RiskDisclosure />;
-  if (path === "/audit") return <AuditPage />;
-  if (path === "/wfp") return <WfpPage />;
+  if (path === "/audit") return REDESIGN ? <Suspense fallback={null}><W1Audit /></Suspense> : <AuditPage />;
+  if (path === "/how" && REDESIGN) return <Suspense fallback={null}><W4How /></Suspense>;
   return <NilaLanding />;
 }
 
 function NilaLanding() {
-  const [page, setPage] = useState("landing"); // "landing" | "unions"
+  const [page, setPage] = useState("landing"); // "landing" | "unions" | "how"
   const [navScrolled, setNavScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ name: "", email: "" });
@@ -44,6 +67,17 @@ function NilaLanding() {
   const [error, setError] = useState(null);
 
   const goToUnions = () => setPage("unions");
+  const goToHow = () => setPage("how");
+
+  // Redesign: dark page ground, so the home page fades to ink (not the old light ground) when a page slides in;
+  // and the /how chunk loads ahead so it slides in on the first tap.
+  useEffect(() => {
+    if (!REDESIGN) return undefined;
+    const prev = document.body.style.background;
+    document.body.style.background = "#0A0A0A";
+    const t = setTimeout(loadHow, 2000);
+    return () => { document.body.style.background = prev; clearTimeout(t); };
+  }, []);
   const goToLanding = () => setPage("landing");
 
   useEffect(() => {
@@ -119,16 +153,17 @@ function NilaLanding() {
         Visibility is controlled directly on the nav via the Navbar component receiving
         a hidden prop, using visibility+pointerEvents (no opacity transition on a parent).
       */}
-      <Navbar scrolled={navScrolled} onOpenUnions={goToUnions} hidden={page === "unions"} />
+      {!REDESIGN && <Navbar scrolled={navScrolled} onOpenUnions={goToUnions} hidden={page === "unions"} />}
 
       {/* Landing page content — desktop gets translateX slide, mobile gets fade-only
           (translateX on mobile widens the document and breaks fixed nav anchoring) */}
       <div style={{
-        transform: page === "unions" && window.innerWidth >= 768 ? "translateX(-30%)" : "translateX(0)",
-        opacity: page === "unions" ? 0 : 1,
+        transform: page !== "landing" && window.innerWidth >= 768 ? "translateX(-30%)" : "translateX(0)",
+        opacity: page !== "landing" ? 0 : 1,
         transition: "transform 0.45s cubic-bezier(0.32,0,0.18,1), opacity 0.45s cubic-bezier(0.32,0,0.18,1)",
-        pointerEvents: page === "unions" ? "none" : "auto",
+        pointerEvents: page !== "landing" ? "none" : "auto",
       }}>
+        {REDESIGN ? <Suspense fallback={null}><W1Home onOpenUnions={goToUnions} onOpenHow={goToHow} /></Suspense> : <>
         <Hero onOpenModal={openModal} onOpenUnions={goToUnions} />
         <WaveDivider direction="dark-to-light" />
         <MetricsBar />
@@ -137,6 +172,7 @@ function NilaLanding() {
         <Suspense fallback={null}><WireGlobe banner /></Suspense>
         <InvestorFAQ />
         <Footer />
+        </>}
       </div>
 
       {/* Unions page — slides in as a fixed full-screen overlay */}
@@ -156,6 +192,22 @@ function NilaLanding() {
             }}
           >
             <UnionsPage onBack={goToLanding} onOpenModal={openModal} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* W4 how it works — slides in the same way (Carst, 10 Nov) */}
+      <AnimatePresence>
+        {page === "how" && (
+          <motion.div
+            key="how"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.45, ease: [0.32, 0, 0.18, 1] }}
+            style={{ position: "fixed", inset: 0, zIndex: 200, overflowY: "auto" }}
+          >
+            <Suspense fallback={null}><W4How onBack={goToLanding} onOpenUnions={goToUnions} /></Suspense>
           </motion.div>
         )}
       </AnimatePresence>

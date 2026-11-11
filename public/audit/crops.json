@@ -1,0 +1,301 @@
+{
+  "polygonBlock": 97126007,
+  "stellarLedger": 65421685,
+  "read": "2026-11-11T10:54:33.584Z",
+  "crops": [
+    {
+      "code": 0,
+      "name": "paddy",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 8,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 1
+        }
+      ]
+    },
+    {
+      "code": 1,
+      "name": "groundnut",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 12,
+          "last": 2
+        }
+      ]
+    },
+    {
+      "code": 2,
+      "name": "sugarcane",
+      "windows": [
+        {
+          "first": 12,
+          "last": 2
+        }
+      ]
+    },
+    {
+      "code": 3,
+      "name": "banana",
+      "windows": [
+        {
+          "first": 6,
+          "last": 6
+        },
+        {
+          "first": 2,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 5
+        }
+      ]
+    },
+    {
+      "code": 6,
+      "name": "sesame",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 12,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 3
+        }
+      ]
+    },
+    {
+      "code": 7,
+      "name": "cassava",
+      "windows": [
+        {
+          "first": 6,
+          "last": 6
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 4,
+          "last": 5
+        }
+      ]
+    },
+    {
+      "code": 8,
+      "name": "maize",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 1,
+          "last": 2
+        }
+      ]
+    },
+    {
+      "code": 9,
+      "name": "green_gram",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 9,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 3
+        }
+      ]
+    },
+    {
+      "code": 10,
+      "name": "horse_gram",
+      "windows": [
+        {
+          "first": 9,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        }
+      ]
+    },
+    {
+      "code": 11,
+      "name": "black_gram",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 9,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 2
+        }
+      ]
+    },
+    {
+      "code": 14,
+      "name": "fodder_sorghum",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 9,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 10
+        },
+        {
+          "first": 3,
+          "last": 4
+        }
+      ]
+    },
+    {
+      "code": 15,
+      "name": "cumbu_napier",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 10,
+          "last": 11
+        }
+      ]
+    },
+    {
+      "code": 16,
+      "name": "sunhemp",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 8,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 5
+        }
+      ]
+    },
+    {
+      "code": 17,
+      "name": "dhaincha",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 8,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 5
+        }
+      ]
+    },
+    {
+      "code": 18,
+      "name": "wild_indigo",
+      "windows": [
+        {
+          "first": 6,
+          "last": 7
+        },
+        {
+          "first": 8,
+          "last": 9
+        },
+        {
+          "first": 10,
+          "last": 11
+        },
+        {
+          "first": 12,
+          "last": 2
+        },
+        {
+          "first": 3,
+          "last": 5
+        }
+      ]
+    }
+  ]
+}

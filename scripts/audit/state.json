@@ -1,0 +1,15 @@
+{
+  "polygon": {
+    "block": 97069016,
+    "date": "2026-11-10",
+    "lastScannedBlock": 97069016,
+    "lastRepaid": {
+      "block": 96950215,
+      "date": "2026-11-08"
+    },
+    "lastClaimed": {
+      "block": 89817673,
+      "date": "2026-07-07"
+    }
+  }
+}

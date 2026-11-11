@@ -1,0 +1,413 @@
+{
+  "_note": "W4 /how categories and rings (design board W4b, artifact v1837, 11 Nov 2026). Edit texts here, not in code. value: fixed real share 0..1 or null; live: computed from /audit/snapshot.json (liveFigure names the figure field to use); tick: baseline share or null; placeholder/placeholderTick: shape for the blurred waiting view only, never shown as a number; explain: a plain line under the question, always sharp; segmented: the rings are parts of one whole, drawn as one segmented ring.",
+  "asOf": "2026-11-11",
+  "tabs": [
+    {
+      "key": "impact",
+      "name": "Impact",
+      "title": "Timed by soil and market, not by what she can afford.",
+      "categories": [
+        {
+          "key": "soilmarket",
+          "name": "Decided by soil and market",
+          "question": "What share of field seasons is sown when the soil was ready, against the same fields before?",
+          "definition": "From the satellite record per field: when the soil was ready to sow (moisture and condition) and when the crop started (start of season, SOS) and ended (EOS). Sown within a few weeks of the soil being ready = a decision the soil set. Ready but sown late, or left fallow = held back by something else: not enough hands or money. The tick is the same fields’ past seasons.",
+          "status": "2026–27 · baseline from the record",
+          "source": "Satellite record per field (soil condition, SOS, EOS) · plan records",
+          "rings": [
+            {
+              "label": "Seasons sown when the soil was ready",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27; the past seasons from the 8-year record.",
+              "placeholder": 0.78,
+              "placeholderTick": 0.46
+            },
+            {
+              "label": "Seasons left fallow while the soil was ready",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27; lower is better.",
+              "placeholder": 0.08,
+              "placeholderTick": 0.27
+            }
+          ]
+        },
+        {
+          "key": "land",
+          "name": "More from the same land",
+          "question": "How many seasons a year does financed land carry a crop, and what share of its crops yields above the baseline?",
+          "definition": "Outer: cropped seasons per year on financed land, out of three (Kuruvai, Samba, summer); the tick is the same fields over their 8 years before the first plan. Middle: share of financed crops whose harvest, estimated from satellite and checked on the ground by the union, is above the baseline made from a subset of our own field records.",
+          "status": "baseline now · effect 2026–27",
+          "source": "Satellite record per field · satellite yield estimate · union ground check",
+          "rings": [
+            {
+              "label": "Seasons cropped per year, of three",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27; the tick from the 8-year record.",
+              "placeholder": 0.64,
+              "placeholderTick": 0.47
+            },
+            {
+              "label": "Crops above their yield baseline",
+              "value": null,
+              "tick": null,
+              "figure": "The yield baseline comes later, once crop-type detection is mature.",
+              "placeholder": 0.58,
+              "placeholderTick": null
+            }
+          ]
+        },
+        {
+          "key": "work",
+          "name": "Cheaper work",
+          "question": "How much less does an acre of voucher machine work cost than hired labour for the same work?",
+          "definition": "Saving of the voucher-paid machine work against hiring labour for the same work on the same area, as a share of the labour cost. An acre of machine work dearer than labour shows as 0, no saving. Machine cost: the union’s price an acre per machine type (on-chain). Labour cost: the state’s cost of cultivation per hectare (Directorate of Economics and Statistics, Tamil Nadu, latest year to confirm).",
+          "status": "2026–27",
+          "source": "Stellar machinery (price an acre) · DES Cost of Cultivation, Tamil Nadu",
+          "rings": [
+            {
+              "label": "Saving against hired labour",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the first vouchers on Stellar, 2026–27.",
+              "placeholder": 0.31,
+              "placeholderTick": null
+            }
+          ]
+        },
+        {
+          "key": "hard",
+          "name": "Hard months and cattle",
+          "question": "What share of farmers got through the months they named hardest without selling a cow?",
+          "definition": "Farmers sell a cow to get through the hard months. From the plan’s intake answers, asked again each plan year. Outer: farmers whose herd held or grew from one plan year to the next. Middle: of the months the farmer named hardest, the share with a harvest or cash above zero in the plan; the tick is when the same fields were harvested in the 8-year record. Inner: the herd’s yearly fodder grown on her own fields (cows × a daily feed need per cow from a named source).",
+          "status": "2026–27 · herd from the second year",
+          "source": "Plan intake answers · plan cash flow · satellite record per field",
+          "rings": [
+            {
+              "label": "Farmers whose herd held through the year",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the second plan year: the intake asks the herd size each year.",
+              "placeholder": 0.83,
+              "placeholderTick": null
+            },
+            {
+              "label": "Hard months with cash or a harvest",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the plans accepted for 2026–27.",
+              "placeholder": 0.67,
+              "placeholderTick": 0.33
+            },
+            {
+              "label": "Herd fodder grown on her own fields",
+              "value": null,
+              "tick": null,
+              "figure": "Needs the feed need per cow from a named source.",
+              "placeholder": 0.55,
+              "placeholderTick": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "technical",
+      "name": "Software-guided",
+      "title": "Known in the village for decades, now on a record any buyer or investor can check.",
+      "categories": [
+        {
+          "key": "satellite",
+          "name": "Satellite witness",
+          "question": "What share of the farmers’ sowings, harvests and field borders did the satellite confirm?",
+          "definition": "An independent witness for the farmer. The satellite confirms that the planned crop was sown, that it reached harvest and where the field lies. Neither the farmer nor the union produces it, so a buyer or investor can rely on it.",
+          "status": "2026–27",
+          "source": "nila-sensing (Sentinel-1 and -2) · Stellar fund_core (report_maturity)",
+          "rings": [
+            {
+              "label": "Sowings confirmed",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the first Stellar crop advances, 2026–27.",
+              "placeholder": 0.88,
+              "placeholderTick": null
+            },
+            {
+              "label": "Harvests confirmed",
+              "value": null,
+              "tick": null,
+              "figure": "0 of 18 running crop advances on Polygon carry a satellite harvest date. Not switched on yet.",
+              "placeholder": 0.62,
+              "placeholderTick": null,
+              "live": "dueDateSet",
+              "liveFigure": "figSeen"
+            },
+            {
+              "label": "Field borders accepted as the satellite drew them",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the leaders’ border checks.",
+              "placeholder": 0.81,
+              "placeholderTick": null
+            }
+          ]
+        },
+        {
+          "key": "agronomist",
+          "name": "Agronomist in the pocket",
+          "question": "What share of financed farmers has a year plan for every field, and what share changed it themselves?",
+          "definition": "An AI drafts the year plan from the field’s satellite history, the district crop calendar and the farmer’s own answers. The farmer changes it and that choice stands. Amounts and dates come from fixed rules in the code.",
+          "status": "2026–27",
+          "source": "Plan records (nila-sensing plan engine)",
+          "rings": [
+            {
+              "label": "Financed farmers with a year plan for every field",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the plans accepted for 2026–27.",
+              "placeholder": 0.92,
+              "placeholderTick": null
+            },
+            {
+              "label": "Plans the farmer changed before accepting",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the plan records.",
+              "placeholder": 0.44,
+              "placeholderTick": null
+            }
+          ]
+        },
+        {
+          "key": "cropshare",
+          "name": "Crop advance",
+          "question": "What share of crop-advance harvests is sold above the local price of the harvest week?",
+          "definition": "A crop advance is the farmer’s harvest on a public record before it is sown, with a track record behind it. Bargaining power shows as selling above the harvest-week price instead of at it, because the share does not force a sale to pay a moneylender. The middle and inner rings are the track record outside money lends on.",
+          "status": "now (record) · sales need W2",
+          "source": "Polygon GenericFundCore, block 97,069,016 · union local price (crop_calendar) · harvest board",
+          "rings": [
+            {
+              "label": "Harvests sold above the harvest-week local price",
+              "value": null,
+              "tick": null,
+              "figure": "Needs sale records: the harvest board (W2) is not live.",
+              "placeholder": 0.57,
+              "placeholderTick": null
+            },
+            {
+              "label": "Closed crop advances repaid in full",
+              "value": null,
+              "tick": null,
+              "figure": "39 of 39 closed. 0 defaults. 18 still running.",
+              "placeholder": 1.0,
+              "placeholderTick": null,
+              "live": "closedRepaid"
+            },
+            {
+              "label": "Outside money in the fund",
+              "value": null,
+              "tick": null,
+              "figure": "₹7,65,714.47 of ₹10,08,315.02 in the GroundUp Fund.",
+              "placeholder": 0.7594,
+              "placeholderTick": null,
+              "live": "outsideShare"
+            }
+          ]
+        },
+        {
+          "key": "certificate",
+          "name": "Certificate",
+          "question": "What share of certified lots sells above the uncertified price of the same crop and week?",
+          "definition": "A certificate states how the crop was grown, from the plan and the satellite record. It counts only if buyers pay more for it. The ring is the share of certified lots sold above the uncertified price of the same crop in the same week.",
+          "status": "need",
+          "source": "Certificates · harvest board sale records",
+          "rings": [
+            {
+              "label": "Certified lots sold above the uncertified price",
+              "value": null,
+              "tick": null,
+              "figure": "No certified lots sold yet.",
+              "placeholder": 0.62,
+              "placeholderTick": null
+            }
+          ]
+        },
+        {
+          "key": "voucher",
+          "name": "Voucher",
+          "question": "What share of voucher work was done on time, before the farmer had the cash to pay for it?",
+          "definition": "A voucher is a slip on the farmer’s phone that pays for a service from her union: acres of work with the union’s machines, seed the union bought, or space in its storage. She uses it instead of paying cash and repays it when her harvest pays back the crop advance. So the field is ploughed and sown on time, even in a month with no cash in the house. Outer ring: voucher acres used, of acres issued. Middle: voucher work done inside the crop’s sowing window; the tick is the same fields’ past on-time sowing. Inner: seasons or crops the field’s 8-year record never shows; a farmer doing as always shows as a low inner ring.",
+          "status": "2026–27",
+          "source": "Stellar machinery, fund_core · crop_calendar · satellite record per field",
+          "rings": [
+            {
+              "label": "Voucher acres used, of acres issued",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from the first vouchers on Stellar, 2026–27.",
+              "placeholder": 0.81,
+              "placeholderTick": null
+            },
+            {
+              "label": "Voucher work inside the sowing window",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27; past seasons from the satellite record.",
+              "placeholder": 0.86,
+              "placeholderTick": 0.58
+            },
+            {
+              "label": "Financed seasons new for that field",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27 against the 8-year record.",
+              "placeholder": 0.24,
+              "placeholderTick": null
+            }
+          ],
+          "explain": "A voucher is a slip on the farmer’s phone that pays for a service from her union (machine work by the acre, seed, storage) instead of cash. She repays it when her harvest pays back the crop advance."
+        }
+      ]
+    },
+    {
+      "key": "climate",
+      "name": "Climate",
+      "title": "India: 6.6% of its farmland written off. In Tamil Nadu, 24% lies fallow for 1 to 5 years. Can we turn it around?",
+      "categories": [
+        {
+          "key": "stock",
+          "name": "Land leaving farming",
+          "question": "What share of India’s farmland is sown, fallow, or culturable waste?",
+          "definition": "India’s land use statistics follow land out of farming in steps: current fallow (not sown this year), other fallow (1 to 5 years), culturable waste (not cultivated for 5 years or more in a row, though it could still be farmed). Land built on or under water is counted apart, as land put to non-agricultural uses. Shares are of all land that could be farmed (net sown + fallows + culturable waste): 176.6 million hectares in 2023–24 (provisional). Land put to non-agricultural uses rose from 9.4 million hectares in 1950–51 to 28.5 million. Tamil Nadu 2020–21: 61% sown, 24% fallow for 1 to 5 years, 4% culturable waste.",
+          "status": "now · national statistics",
+          "source": "Land Use Statistics at a Glance 2023–24, table I (DES, Ministry of Agriculture; provisional) · Statistical Hand Book of Tamil Nadu 2020–21, table 4.2",
+          "rings": [
+            {
+              "label": "Sown this year",
+              "value": 0.7868,
+              "tick": null,
+              "figure": "139.0 million ha of 176.6 million ha.",
+              "placeholder": 0.7868,
+              "placeholderTick": null
+            },
+            {
+              "label": "Current fallow: not sown this year",
+              "value": 0.0844,
+              "tick": null,
+              "figure": "14.9 million ha.",
+              "placeholder": 0.0844,
+              "placeholderTick": null
+            },
+            {
+              "label": "Other fallow: 1 to 5 years",
+              "value": 0.0632,
+              "tick": null,
+              "figure": "11.2 million ha.",
+              "placeholder": 0.0632,
+              "placeholderTick": null
+            },
+            {
+              "label": "Culturable waste: not cultivated for 5 years or more",
+              "value": 0.0656,
+              "tick": null,
+              "figure": "11.6 million ha.",
+              "placeholder": 0.0656,
+              "placeholderTick": null
+            }
+          ],
+          "segmented": true
+        },
+        {
+          "key": "pressure",
+          "name": "Fewer fields, cropped more often",
+          "question": "How much of Tamil Nadu’s land is still sown, and what share of it is cropped twice or more?",
+          "definition": "Food output has not fallen: Tamil Nadu’s foodgrain production rose from 103.9 to 116.9 lakh tonnes between 2018–19 and 2022–23. The same food comes from fewer fields cropped more often, so each remaining hectare carries more. Outer: land sown at least once in 2020–21, as a share of 2006–07. Middle: sown land cropped twice or more in the year; the tick is 2006–07.",
+          "status": "now · state statistics",
+          "source": "Statistical Hand Book of Tamil Nadu 2020–21, tables 4.2 and 4.12 (DES Chennai) · Tamil Nadu policy note via DT Next, 27 Jun 2024",
+          "rings": [
+            {
+              "label": "Land sown, of the 2006–07 area",
+              "value": 0.943,
+              "tick": null,
+              "figure": "48.33 lakh ha in 2020–21 against 51.26 lakh ha in 2006–07.",
+              "placeholder": 0.943,
+              "placeholderTick": null
+            },
+            {
+              "label": "Sown land cropped twice or more",
+              "value": 0.274,
+              "tick": 0.14,
+              "figure": "13.22 lakh ha of 48.33 lakh ha in 2020–21; 14% in 2006–07.",
+              "placeholder": 0.274,
+              "placeholderTick": 0.14
+            }
+          ]
+        },
+        {
+          "key": "yearsleft",
+          "name": "Years left in farming",
+          "question": "What share of the financed area is on the path out of farming, and how many years does it have left?",
+          "definition": "The same steps, read from the satellite record per field zone: a zone not cropped for a full year is on the path out; not cropped for 5 years in a row, it counts as culturable waste. The rate at which zones around our unions moved down these steps over the last 8 years gives the expected years left. Outer: financed area not cropped for a full year at least once in the last 3 years; the tick is the same fields before their first plan.",
+          "status": "baseline from the record",
+          "source": "Satellite record per field zone (8 years) · neighbouring fields (to add)",
+          "rings": [
+            {
+              "label": "Financed area on the path out of farming",
+              "value": null,
+              "tick": null,
+              "figure": "Baseline from the 8-year record; needs the same record for neighbouring fields to set the rate.",
+              "placeholder": 0.18,
+              "placeholderTick": 0.31
+            }
+          ]
+        },
+        {
+          "key": "tide",
+          "name": "Turning the tide",
+          "question": "What share of the financed fields that were on the path out came back into farming?",
+          "definition": "Of the financed zones that had been fallow for a full year or more, the share cropped again in two of the last three seasons. The tick is the same share among neighbouring fields without a plan, over the same years.",
+          "status": "2026–27",
+          "source": "Satellite record per field zone · neighbouring fields",
+          "rings": [
+            {
+              "label": "Fallow zones back in farming",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27.",
+              "placeholder": 0.52,
+              "placeholderTick": 0.21
+            }
+          ]
+        },
+        {
+          "key": "signals",
+          "name": "Early signals",
+          "question": "Is the soil covered and the vegetation recovering on the financed fields?",
+          "definition": "Land goes out of farming slowly; these move first. Outer: financed area covered by a crop or green manure in the dry months; tick = the same fields’ 8-year dry-season cover. Middle: financed fields whose vegetation index is above their own 8-year baseline.",
+          "status": "baseline now · effect 2026–27",
+          "source": "Satellite record per field · plan records",
+          "rings": [
+            {
+              "label": "Financed area covered in the dry months",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27.",
+              "placeholder": 0.7,
+              "placeholderTick": 0.28
+            },
+            {
+              "label": "Fields greener than their own baseline",
+              "value": null,
+              "tick": null,
+              "figure": "Counted from 2026–27.",
+              "placeholder": 0.6,
+              "placeholderTick": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

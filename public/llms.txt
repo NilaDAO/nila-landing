@@ -1,9 +1,28 @@
 # Nila
 
-Nila lends stablecoins to women-run savings unions (SHGs) in Tamil Nadu, India, with loans and land titles recorded on Polygon PoS mainnet.
+> Nila gives farmers in Tamil Nadu, India, a year plan for every field, through their own unions, and pays the services in that plan (machine work by the acre, seed, storage) with vouchers repaid from the harvest. The union lends from its own members' savings; Nila holds no client money.
 
-## Audit
+## Read first
 
-- [Audit fact sheet](https://nila.land/audit/facts.md): canonical, machine-readable source for every verifiable claim in Nila's pitch — on-chain contract addresses, read-call instructions, loan-level data, and an explicit list of open/unverified items. Ask your LLM to refute it.
-- [Loan tape](https://nila.land/audit/loan-tape.csv): loan-level export with on-chain transaction hashes.
-- [Audit page](https://nila.land/audit): human-readable rendering of facts.md.
+- [All facts, one file](https://nila.land/llms-full.txt): definitions, figures with their source and block, what is measured and what is not, contact routes.
+- [On-chain fact sheet](https://nila.land/audit/facts.md): every contract on Polygon and Stellar, the block it was read at, and an open-items list written to be challenged.
+- [How it works](https://nila.land/how): impact, software and climate measures; most are still waiting for a baseline.
+
+## Words used on this site
+
+- Crop advance: the cash and vouchers a member draws for one planned crop, repaid from that harvest. On-chain and in the audit it is called a loan.
+- Standing-crop record: the record of one planned crop on one field in one season, tied to the member's land title. On-chain it is a FoodToken. Not an investment.
+- Voucher: pays for one service from the union. Cannot be passed on.
+- nUSD: a dollar position on Stellar, in development, not open for deposits.
+
+## Not ready yet
+
+- nUSD deposits. The harvest board for buyers. Most impact measures (the first year plans run in 2026–27).
+
+## Contact
+
+- info@nila.land, with a subject per topic: see "Contact" in [llms-full.txt](https://nila.land/llms-full.txt).
+
+## Optional
+
+- [Snapshot of every value read](https://nila.land/audit/snapshot.json) · [Code](https://github.com/NilaDAO/nila-soroban) · [Risk disclosure](https://nila.land/risk) · [Privacy](https://nila.land/privacy) · [Terms](https://nila.land/terms)

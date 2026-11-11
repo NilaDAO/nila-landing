@@ -1,0 +1,7 @@
+// Generated from nila-design/boards/LandHomeMobile.dc.html (W1). Re-generate, do not restyle by hand.
+
+export default function MWave3() {
+  return (
+    <div style={{lineHeight: '0', background: '#0E1014'}}><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{display: 'block', width: '100%', height: '64px'}}><path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="#0A0A0A"></path></svg></div>
+  );
+}

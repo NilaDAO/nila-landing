@@ -1,0 +1,42 @@
+{
+  "_note": "Public addresses only. Polygon: DEV_MAP §4 / nila-integrations config. Stellar: handoffs/mainnet_contracts.env (deployed 6 Nov 2026, tag mainnet-2026-11-06). RPC endpoints can be overridden with POLYGON_RPC / STELLAR_RPC.",
+  "polygon": {
+    "rpc": "https://polygon-bor-rpc.publicnode.com",
+    "explorer": "https://polygonscan.com/address/",
+    "txExplorer": "https://polygonscan.com/tx/",
+    "union": "0xF18E4966731bD6D3a56c1eb23Da7C708c9C48070",
+    "contracts": {
+      "landTitle": "0x636060dbC695a8232992b28c1765828263f17251",
+      "nin": "0x3221749c0C37958375EE92332E5ba7d73eC45865",
+      "foodToken": "0x27D83C98666AD0e5dA79e5FEE24133557Bd8D2e8",
+      "core": "0x4173BbaF66A4f9A2705d05B800e8602370366756",
+      "viewer": "0x435A12c4fD4B5a2D1D2ae6AB19D431D62084AdDA",
+      "roles": "0xc0a03f3A5319cE29205AeED7FDC0e6013e3E9bF9",
+      "fxPool": "0xBaE307FE0A453955c649cD8f81e3DA572dF448eA"
+    },
+    "logChunk": 9999
+  },
+  "stellar": {
+    "rpc": "https://rpc.lightsail.network/",
+    "horizon": "https://horizon.stellar.org",
+    "explorer": "https://stellar.expert/explorer/public/contract/",
+    "accountExplorer": "https://stellar.expert/explorer/public/account/",
+    "deployedOn": "2026-11-06",
+    "tag": "mainnet-2026-11-06",
+    "defaultUnion": "GCDSPDDG6H343Y3E24DOYJNC6CBSCC6GIPJXF6HED4DLLXKCEKKLXEXW",
+    "contracts": {
+      "roles": "CCZOASMPMTKWLLKBYULQOCE4UGUDZ5AK4PFIO6R7KRPWIOCRK56MQ7SA",
+      "land_title (temporary)": "CDGXC3GRMNSSM4GTRTF7HB4GD47BKOB7F5QTZJV5YZ5GYRKS6QOW54TX",
+      "fund_viewer": "CDXOPXECBXUNF5F4ETZVGTZ73MDHSG2JNNNSU2542OIMPFGQ7GJLGVII",
+      "fund_core": "CAJ2JJLZJ3QDV3BFYP5IH2SO3GYTIW7NLK2MK5YFUNXFDQ6T3ZOCQGZJ",
+      "fx_pool": "CDTG4XSKBFJQCSPXEAYXEOUW5HE7BMIHYIXT4X5HJMHGDEJC5ZPT34XM",
+      "machinery": "CDZ36IMSAEMIL54DDK2APEZPPKNEGMJ7ZWLES2TYXKYTYZKKQKKXC4XJ",
+      "crop_calendar": "CCSB26TZKGMASFLVHRTJJNVJL3APP5NX5MZ7EJVQTRE7AQBBJLCESNDC",
+      "senior": "CD3T5LXYQBNW4LE743RIMFUOHVKCX72QXBXFYXB6IJSTTX5LYSO4445S",
+      "account deployer": "CDLG5L7NYR56UJ7DPK6VP4X6OZPWXIGG7G3NPUBM762ELOWL2X4RYSDU",
+      "nIN (Stellar asset contract)": "CAWW5N5OJ53CEBK2TSAZEIU6SWYHU3CDXSK6N7Q3RLKFVBX2MX5UHODN",
+      "USDC (Stellar asset contract)": "CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75"
+    },
+    "nin": { "code": "nIN", "issuer": "GABG43CGVHEJBZ24ABEULUCY6SZCETNKC6YNFXQNDFN5H4SKEXG6IG5A", "decimals": 7 }
+  }
+}

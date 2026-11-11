@@ -11,9 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
-.env.*
-dist-flat.zip
 
 # Editor directories and files
 .vscode/*
@@ -47,3 +44,13 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# nila lane setup 2026-11-10
+.env
+.env.*
+!.env.example
+*.zip
+_deprecated/
+src/components/_deprecated/
+.claude/settings.local.json
+scripts/audit/last-run.log

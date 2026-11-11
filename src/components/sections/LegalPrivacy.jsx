@@ -16,14 +16,31 @@ export default function PrivacyPolicy() {
           Privacy Policy
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Nila.land BV · Amsterdam, Netherlands
+          Last updated: 11 November 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
+        <PrivacyBody />
+      </div>
+
+      {/* Footer */}
+      <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
+        <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
+          <span>© 2026 Blockchainforcommons</span>
+          <span><a href="/terms" className="underline hover:opacity-80">Terms of Use</a></span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Policy text only; the old page above and the W1 page (src/w1/Legal.jsx) both render it.
+export function PrivacyBody() {
+  return (
         <div className="space-y-10 text-sm leading-relaxed" style={{ color: "var(--color-text-soft)" }}>
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>1. Who we are</h2>
             <p>
-              Nila.land BV ("Nila", "we", "us") is incorporated in the Netherlands (KvK: [XXXXXXXX]) with its registered office at [Address], Amsterdam. We operate the website nila.land and related investor services.
+              Nila ("Nila", "we", "us") is run by Blockchainforcommons (KvK 55518559), Amsterdam, the Netherlands, and in India by the Nila Farmer Livelihoods Trust (Reg. Book-4/26/2026, PAN AAFTN4490C). We operate the website nila.land and related investor services.
             </p>
             <p className="mt-3">
               For questions about this policy, contact us at <a href="mailto:info@nila.land" className="underline" style={{ color: "var(--color-accent)" }}>info@nila.land</a>.
@@ -32,12 +49,7 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>2. What data we collect</h2>
-            <p>When you submit the Information Memorandum request form, we collect:</p>
-            <ul className="mt-3 list-disc pl-5 space-y-1">
-              <li>Your name or organisation name</li>
-              <li>Your email address</li>
-              <li>The date and time of your submission</li>
-            </ul>
+            <p>This website has no forms and asks for no personal data. When you email us at info@nila.land, we keep your name, email address and message.</p>
             <p className="mt-3">
               We do not collect payment data, passport data, or any sensitive personal data at this stage. We do not use cookies beyond what is technically necessary to serve the website.
             </p>
@@ -47,8 +59,8 @@ export default function PrivacyPolicy() {
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>3. How we use your data</h2>
             <p>We use your data solely to:</p>
             <ul className="mt-3 list-disc pl-5 space-y-1">
-              <li>Send you the requested Information Memorandum</li>
-              <li>Follow up on your investor enquiry</li>
+              <li>Answer your email</li>
+              <li>Follow up on your enquiry</li>
             </ul>
             <p className="mt-3">We do not sell, rent, or share your data with third parties for marketing purposes.</p>
           </section>
@@ -87,15 +99,5 @@ export default function PrivacyPolicy() {
             </p>
           </section>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="px-6 py-8 border-t text-xs" style={{ borderColor: "rgba(255,255,255,0.07)", color: "var(--color-text-soft)" }}>
-        <div className="mx-auto max-w-3xl flex justify-between flex-wrap gap-3">
-          <span>© 2026 Nila.land BV</span>
-          <span><a href="/terms" className="underline hover:opacity-80">Terms of Use</a></span>
-        </div>
-      </div>
-    </div>
   );
 }
