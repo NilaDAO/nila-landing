@@ -18,7 +18,7 @@ export const FAQ = [
   ],
   [
     "What is a voucher?",
-    "A slip on the farmer's phone that pays for one service: so many acres of tractor work, or this seed. She shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when her harvest pays back the crop share. It cannot be passed on to someone else and pays only for the work in her plan."
+    "A slip on the farmer's phone that pays for one service from her union: so many acres of work with the union's machines, seed the union bought, or space in the union's storage. She uses it instead of paying cash and repays it when her harvest pays back the crop share. For now a voucher pays only for the union's own services; contracts with outside machine owners and seed shops are in the pipeline. It cannot be passed on to someone else and pays only for the work in her plan."
   ],
   [
     "What is a food token?",
