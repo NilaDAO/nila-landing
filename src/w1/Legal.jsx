@@ -47,7 +47,7 @@ export default function Legal({ path }) {
               <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: "column", gap: mobile ? 16 : 20 }}>
                 <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#94A3B8" }}>Legal</span>
                 <h1 style={{ margin: 0, fontSize: mobile ? 40 : 64, fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em" }}>{title}</h1>
-                <p style={{ margin: 0, fontSize: 14, color: "#94A3B8" }}>Last updated: 1 February 2026</p>
+                <p style={{ margin: 0, fontSize: 14, color: "#94A3B8" }}>Last updated: 11 November 2026</p>
                 <nav style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
                   {OTHERS.map(([href, p]) => (
                     <a key={href} href={homeHref(href)} aria-current={href === path ? "page" : undefined}

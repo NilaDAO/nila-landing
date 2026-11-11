@@ -16,7 +16,7 @@ export default function TermsOfUse() {
           Terms of Use
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
+          Last updated: 11 November 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <TermsBody />
@@ -64,7 +64,7 @@ export function TermsBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>4. Eligibility</h2>
             <p>
-              Access to certain sections of the Site and to the Information Memorandum is restricted to qualified or professional investors. By requesting the Information Memorandum, you represent and warrant that you meet the applicable investor qualification criteria in your jurisdiction.
+              Nothing on the Site is an offer of nUSD or any other investment. Once nUSD is available, it is restricted to qualified or professional investors, and you will be asked to confirm that you meet the investor qualification criteria in your jurisdiction.
             </p>
           </section>
 

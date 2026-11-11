@@ -16,7 +16,7 @@ export default function RiskDisclosure() {
           Risk Disclosure
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
+          Last updated: 11 November 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <RiskBody />

@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
           Privacy Policy
         </h1>
         <p className="mb-12 text-sm" style={{ color: "var(--color-text-soft)" }}>
-          Last updated: 1 February 2026 · Blockchainforcommons · Amsterdam, Netherlands
+          Last updated: 11 November 2026 · Blockchainforcommons · Amsterdam, Netherlands
         </p>
 
         <PrivacyBody />
@@ -49,12 +49,7 @@ export function PrivacyBody() {
 
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>2. What data we collect</h2>
-            <p>When you submit the Information Memorandum request form, we collect:</p>
-            <ul className="mt-3 list-disc pl-5 space-y-1">
-              <li>Your name or organisation name</li>
-              <li>Your email address</li>
-              <li>The date and time of your submission</li>
-            </ul>
+            <p>This website has no forms and asks for no personal data. When you email us at info@nila.land, we keep your name, email address and message.</p>
             <p className="mt-3">
               We do not collect payment data, passport data, or any sensitive personal data at this stage. We do not use cookies beyond what is technically necessary to serve the website.
             </p>
@@ -64,8 +59,8 @@ export function PrivacyBody() {
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>3. How we use your data</h2>
             <p>We use your data solely to:</p>
             <ul className="mt-3 list-disc pl-5 space-y-1">
-              <li>Send you the requested Information Memorandum</li>
-              <li>Follow up on your investor enquiry</li>
+              <li>Answer your email</li>
+              <li>Follow up on your enquiry</li>
             </ul>
             <p className="mt-3">We do not sell, rent, or share your data with third parties for marketing purposes.</p>
           </section>
