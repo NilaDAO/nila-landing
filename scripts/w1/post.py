@@ -106,3 +106,12 @@ for f in ['src/w1/desktop/DFaq.jsx', 'src/w1/mobile/MFaq.jsx']:
         s = s[:i] + '<FaqList />' + s[j:]
         s = s.replace('import { A } from "../links.jsx";', 'import FaqList from "../FaqList.jsx";')
         open(f, 'w').write(s)
+
+# Footer social links (Carst, 11 Nov): X and LinkedIn icons under the Contact links (src/w1/Social.jsx).
+NL = "<A k='#' label=\"nila.land\" style={{fontSize: '14px', lineHeight: '1.5'}}>nila.land</A>"
+for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
+    s = open(f).read()
+    if '<Social />' not in s and NL in s:
+        s = s.replace(NL, NL + '<Social />', 1)
+        s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport Social from "../Social.jsx";')
+        open(f, 'w').write(s)

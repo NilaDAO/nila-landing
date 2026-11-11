@@ -1,9 +1,6 @@
-# *
 User-agent: *
 Allow: /
 
-# Host
-Host: https://www.nila.land
-
-# Sitemaps
-Sitemap: https://www.nila.land/sitemap.xml
+# sitemap.txt is the same list as sitemap.xml in plain text (served even where .xml is not).
+Sitemap: https://nila.land/sitemap.xml
+Sitemap: https://nila.land/sitemap.txt
