@@ -115,3 +115,8 @@ for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
         s = s.replace(NL, NL + '<Social />', 1)
         s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport Social from "../Social.jsx";')
         open(f, 'w').write(s)
+
+# nUSD card (Carst, 11 Nov): open to anyone, ask them to check it is legal where they live.
+for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
+    s = open(f).read(); n = s.replace('In development. Target, not guaranteed.<', 'In development. Target, not guaranteed. Check that taking part is legal where you live.<')
+    if n != s: open(f, 'w').write(n)

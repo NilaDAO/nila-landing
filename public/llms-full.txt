@@ -90,7 +90,7 @@ Q: What does Nila offer?
 A: A year plan for every field a farmer works, and the money and services to carry it out. She plans the three seasons with her union. At sowing, tractor work by the acre and seed come as vouchers, and the cash part of her crop advance comes from the union members' own savings. Both are paid back from the harvest the plan expects.
 
 Q: What is nUSD, and where does the yield come from?
-A: nUSD is a dollar position on Stellar, still in development. The dollars guarantee the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars.
+A: nUSD is a dollar position on Stellar, still in development. The dollars guarantee the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars. Check that taking part is legal where you live.
 
 Q: What is a crop plan?
 A: Her year on one page: the crop on each field in each season (Kuruvai, Samba, summer), what it costs, what it should bring in, and which services she needs when. An AI agent writes the first draft. Its context: her answers in the app; 8 years of satellite record per field, gathered by remote sensing (what grew when, and whether the soil is tired from the same crop again and again); the season's weather outlook (NOAA); the district crop calendar; reference prices per crop; and the state's agronomy tables (TNAU). The amounts follow fixed rules in the code, not the AI. She changes it with her union leader, and her choice stands.

@@ -6,7 +6,7 @@ export const FAQ = [
   ],
   [
     "What is nUSD, and where does the yield come from?",
-    "nUSD is a dollar position on Stellar, still in development. The dollars guarantee the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars. The target is 3–5% a year, not guaranteed."
+    "nUSD is a dollar position on Stellar, still in development. The dollars guarantee the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars. The target is 3–5% a year, not guaranteed. Check that taking part is legal where you live."
   ],
   [
     "What is a crop plan?",
