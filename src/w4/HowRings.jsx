@@ -22,33 +22,42 @@ const pct = (v) => (v == null ? "—" : `${Math.round(v * 100)}%`);
 const clamp = (v) => Math.max(0, Math.min(1, v));
 
 // slots: [{ shown, v, tick, dashed }] × 3; segs: up to 4 shares of one whole, drawn in the outer slot.
-function Rings({ slots, segs, size, label }) {
+// thick: a single circle (one ring, or the segmented ring) is drawn wider in the outer slot (Carst, 11 Nov); r and
+// stroke-width change through CSS, so the switch animates like the rest.
+const THICK = { r: 156, sw: 28 }; // inner edge 142 clears the middle track (133 + 9)
+function Rings({ slots, segs, size, label, thick }) {
   let acc = 0;
+  const r0 = thick ? THICK.r : R[0], sw0 = thick ? THICK.sw : SW, len0 = 2 * Math.PI * r0;
+  const GEO = `r .8s ${EASE}, stroke-width .8s ${EASE}`;
   return (
     <svg className="w4-rings" width={size} height={size} viewBox="0 0 340 340" role="img" aria-label={label}
          style={{ flexShrink: 0, display: "block", overflow: "visible" }}>
       {slots.map((s, i) => {
         const f = s.v == null ? 0 : clamp(s.v);
+        const r = i ? R[i] : r0, sw = i ? SW : sw0, len = i ? LEN[i] : len0;
         return (
           <g key={i}>
             <circle cx={C} cy={C} r={R[i]} fill="none" stroke="#1F2733" strokeWidth={SW}
-                    style={{ transition: "opacity .4s", opacity: s.shown ? 1 : 0.25, strokeDasharray: s.dashed ? "2 6" : "none" }} />
+                    style={{ r, strokeWidth: sw, transition: `opacity .4s, ${GEO}`, opacity: s.shown ? 1 : 0.25, strokeDasharray: s.dashed ? "2 6" : "none" }} />
             <circle cx={C} cy={C} r={R[i]} fill="none" stroke="#D4CF5A" strokeWidth={SW} strokeLinecap="round" transform={`rotate(-90 ${C} ${C})`}
-                    style={{ strokeDasharray: `${(LEN[i] * f).toFixed(1)} ${LEN[i].toFixed(1)}`, opacity: s.v != null && f > 0 ? 1 : 0,
-                             transition: `stroke-dasharray .8s ${EASE}, opacity .3s` }} />
-            <line x1={C} y1={C - R[i] - 14} x2={C} y2={C - R[i] + 14} stroke="#F1F5F9" strokeWidth={3} strokeLinecap="round"
+                    style={{ r, strokeWidth: sw, strokeDasharray: `${(len * f).toFixed(1)} ${len.toFixed(1)}`, opacity: s.v != null && f > 0 ? 1 : 0,
+                             transition: `stroke-dasharray .8s ${EASE}, opacity .3s, ${GEO}` }} />
+            <line x1={C} y1={C - r - sw / 2 - 5} x2={C} y2={C - r + sw / 2 + 5} stroke="#F1F5F9" strokeWidth={3} strokeLinecap="round"
                   style={{ transformBox: "view-box", transformOrigin: `${C}px ${C}px`, transform: `rotate(${((s.tick ?? 0) * 360).toFixed(1)}deg)`,
                            opacity: s.tick == null ? 0 : 1, transition: `transform .8s ${EASE}, opacity .3s` }} />
           </g>
         );
       })}
       {SEGCOL.map((col, j) => {
-        const f = segs[j] == null ? 0 : clamp(segs[j]), gap = f > 0.01 ? 2 : 0, len = LEN[0];
-        const dash = `0 ${(len * acc).toFixed(1)} ${Math.max(0, len * f - gap).toFixed(1)} ${len.toFixed(1)}`;
+        // Rounded segments: a round cap adds sw/2 at each end, so each dash is shortened by the caps and a gap and
+        // placed by dashoffset (a zero-length lead dash would draw a dot at 12 o'clock).
+        const f = segs[j] == null ? 0 : clamp(segs[j]), gap = 4;
+        const d = Math.max(0, len0 * f - sw0 - gap), start = len0 * acc + sw0 / 2 + gap / 2;
         acc += f;
         return (
-          <circle key={`seg${j}`} cx={C} cy={C} r={R[0]} fill="none" stroke={col} strokeWidth={SW} transform={`rotate(-90 ${C} ${C})`}
-                  style={{ strokeDasharray: dash, opacity: f > 0 ? 1 : 0, transition: `stroke-dasharray .8s ${EASE}, opacity .3s` }} />
+          <circle key={`seg${j}`} cx={C} cy={C} r={R[0]} fill="none" stroke={col} strokeWidth={SW} strokeLinecap="round" transform={`rotate(-90 ${C} ${C})`}
+                  style={{ r: r0, strokeWidth: sw0, strokeDasharray: `${d.toFixed(1)} ${(len0 - d).toFixed(1)}`, strokeDashoffset: (-start).toFixed(1),
+                           opacity: f > 0 ? 1 : 0, transition: `stroke-dasharray .8s ${EASE}, stroke-dashoffset .8s ${EASE}, opacity .3s, ${GEO}` }} />
         );
       })}
     </svg>
@@ -89,7 +98,7 @@ export function RingCard({ tab, cat, nums, mobile }) {
              style={{ transition: "filter .3s, opacity .3s", filter: waiting ? "blur(8px)" : "none", opacity: waiting ? 0.45 : 1,
                       pointerEvents: waiting ? "none" : undefined, userSelect: waiting ? "none" : undefined }}>
           <div style={{ display: "flex", flexDirection: mobile ? "column" : "row", gap: mobile ? 18 : 32, alignItems: "center" }}>
-            <Rings slots={slots} segs={segs} size={mobile ? 200 : 260} label={aria} />
+            <Rings slots={slots} segs={segs} size={mobile ? 200 : 260} label={aria} thick={seg || cat.rings.length === 1} />
             <ol style={{ listStyle: "none", margin: 0, padding: 0, flex: 1, minWidth: 0, alignSelf: "stretch", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               {cat.rings.slice(0, seg ? 4 : 3).map((r, i) => {
                 const v = waiting ? null : vals[i].v;
