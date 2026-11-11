@@ -113,7 +113,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>8. No guarantee of returns</h2>
             <p>
-              Nila sets no target return. A senior investor earns only the interest on the voucher part of the crop shares its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop share is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
+              nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise: a senior investor earns only the interest on the voucher part of the crop shares its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop share is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
             </p>
             <p className="mt-3">
               Nila does not guarantee any specific rate of return. The yield you receive depends on union repayment performance, crop receivable values, FX movements, reserve utilisation, and facility fees.

@@ -74,3 +74,15 @@ for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
     s = open(f).read()
     n = s.replace('harvests for women-led unions in Tamil Nadu', 'harvests for credit unions in Tamil Nadu')
     if n != s: open(f, 'w').write(n)
+
+# nUSD stack (Carst, 11 Nov): name the layers around nUSD, so it reads as one layer in an investor's yield stack.
+PLAB = "nl-plab\" style={{fontSize: '12px', fontWeight: '400', letterSpacing: '0.04em', color: '#1F2733'}}>Layer"
+PLAB_NEW = ["nl-plab\" style={{fontSize: '13px', fontWeight: '700', letterSpacing: '0.04em', color: '#94A3B8'}}>Crypto yield",
+            "nl-plab\" style={{fontSize: '13px', fontWeight: '700', letterSpacing: '0.04em', color: '#94A3B8'}}>Treasury yield"]
+for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
+    s = open(f).read()
+    if s.count(PLAB) == 2:
+        s = s.replace(PLAB, PLAB_NEW[0], 1).replace(PLAB, PLAB_NEW[1], 1)
+        s = s.replace('aria-label="nUSD, target yield 3 to 5 percent a year; one layer in a yield stack"',
+                      'aria-label="nUSD, target yield 3 to 5 percent a year: the farm layer between crypto yield and treasury yield in an investor\'s stack"')
+        open(f, 'w').write(s)
