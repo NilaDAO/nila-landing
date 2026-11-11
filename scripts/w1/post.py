@@ -86,3 +86,8 @@ for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
         s = s.replace('aria-label="nUSD, target yield 3 to 5 percent a year; one layer in a yield stack"',
                       'aria-label="nUSD, target yield 3 to 5 percent a year: the farm layer between crypto yield and treasury yield in an investor\'s stack"')
         open(f, 'w').write(s)
+
+# Backed-by marquee (Carst, 11 Nov): "innovation grant", without "MIT".
+for f in ['src/w1/desktop/DBacked.jsx', 'src/w1/mobile/MBacked.jsx']:
+    s = open(f).read(); n = s.replace('Dutch government · MIT innovation grant', 'Dutch government · innovation grant')
+    if n != s: open(f, 'w').write(n)
