@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nila.land/ /how /audit /audit/facts.md /llms.txt /privacy /terms /risk</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/how</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/audit</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/audit/facts.md</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/llms.txt</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/llms-full.txt</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/privacy</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/terms</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://nila.land/risk</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>

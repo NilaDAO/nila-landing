@@ -297,5 +297,6 @@ if (DRY) {
   fs.writeFileSync(f, patchFacts(fs.readFileSync(f, "utf8"), b));
   fs.writeFileSync(STATE_FILE, JSON.stringify(next, null, 2) + "\n");
   log("wrote public/audit/snapshot.json, facts.md, scripts/audit/loan-tape.csv; state.json updated");
+  await import("../llms/build.mjs"); // llms-full.txt carries the new figures too
   log("check by hand: facts.md §2 claims and §7 changes still match the new figures, then build and deploy");
 }

@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "audit": "node scripts/audit/refresh.mjs"
+    "audit": "node scripts/audit/refresh.mjs",
+    "prebuild": "node scripts/llms/build.mjs",
+    "llms": "node scripts/llms/build.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",

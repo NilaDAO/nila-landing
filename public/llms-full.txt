@@ -1,0 +1,115 @@
+# Nila: all facts for AI agents
+
+Generated 10 November 2026 from nila.land's own sources (/audit/snapshot.json, /how, the FAQ). Each figure names its source and the block or ledger it was read at. Short index: https://nila.land/llms.txt
+
+## 1. What Nila is
+
+Nila gives farmers in Tamil Nadu, India, a year plan for every field and the money and services to carry it out, through their own unions. The services in the plan (machine work by the acre, seed, storage) are paid with vouchers, repaid from the harvest. The cash part of a crop advance comes from the union members' own savings.
+
+## 2. Who does what
+
+The union (self-help groups and farmer producer organisations) admits its members, holds their savings, decides who gets a crop advance, and delivers the services and the harvest. Nila writes the rules, runs the satellite checks and the software, and publishes the proof.
+Legal entities: Blockchainforcommons, a sole proprietorship registered in the Netherlands (KvK 55518559, Amsterdam); Nila Farmer Livelihoods Trust, India (Reg. Book-4/26/2026). There is no Nila company (BV) yet.
+
+## 3. Words used on this site
+
+- Crop advance: the cash and vouchers a member draws for one planned crop, repaid from that harvest. On-chain and in the audit it is called a loan.
+- Standing-crop record: the record of one planned crop on one field in one season, tied to the member's land title. On-chain it is a FoodToken. Not an investment.
+- Voucher: pays for one service from the union. Cannot be passed on.
+- Year plan (crop plan): the crop on each field in each season, its cost, what it should bring in and the services it needs.
+- nUSD: a dollar position on Stellar, in development, not open for deposits.
+
+## 4. Where the money comes from
+
+Since November 2026 the cash part of a crop advance comes only from the union members' own savings. Outside money only guarantees vouchers; it never becomes cash lent to a farmer. Members hold no tradeable token.
+
+## 5. Figures
+
+- Land titles on-chain: 60 (facts.md, Polygon block 97,069,016, 10 November 2026).
+- Closed crop advances (loans) repaid in full: 39 of 39; defaults: 0 (facts.md, Polygon block 97,069,016, 10 November 2026).
+- Crop advances still running on Polygon: 18 (facts.md, Polygon block 97,069,016, 10 November 2026).
+- Members' own savings in the Polygon fund: ₹2,42,600.54 of ₹10,08,315.02, 24% (facts.md, Polygon block 97,069,016, 10 November 2026).
+- Stellar mainnet contracts deployed 6 November 2026; crop advances drawn on Stellar so far: 0 (facts.md, Stellar ledger 65,404,591, 10 November 2026).
+- Members: about 2,000 in 3 unions, about 90% women. These are the unions' own figures, not on-chain.
+
+## 6. What is measured and what is not
+
+Impact: Timed by soil and market, not by what she can afford.
+- Decided by soil and market: What share of field seasons is sown when the soil was ready, against the same fields before? Status: 2026–27 · baseline from the record; waiting for a baseline or data. Source: Satellite record per field (soil condition, SOS, EOS) · plan records.
+- More from the same land: How many seasons a year does financed land carry a crop, and what share of its crops yields above the baseline? Status: baseline now · effect 2026–27; waiting for a baseline or data. Source: Satellite record per field · satellite yield estimate · union ground check.
+- Cheaper work: How much less does an acre of voucher machine work cost than hired labour for the same work? Status: 2026–27; waiting for a baseline or data. Source: Stellar machinery (price an acre) · DES Cost of Cultivation, Tamil Nadu.
+- Hard months and cattle: What share of farmers got through the months they named hardest without selling a cow? Status: 2026–27 · herd from the second year; waiting for a baseline or data. Source: Plan intake answers · plan cash flow · satellite record per field.
+
+Software-guided: Known in the village for decades, now on a record any buyer or investor can check.
+- Satellite witness: What share of the farmers’ sowings, harvests and field borders did the satellite confirm? Status: 2026–27; measured now. Source: nila-sensing (Sentinel-1 and -2) · Stellar fund_core (report_maturity).
+- Agronomist in the pocket: What share of financed farmers has a year plan for every field, and what share changed it themselves? Status: 2026–27; waiting for a baseline or data. Source: Plan records (nila-sensing plan engine).
+- Crop advance: What share of crop-advance harvests is sold above the local price of the harvest week? Status: now (record) · sales need W2; measured now. Source: Polygon GenericFundCore, block 97,069,016 · union local price (crop_calendar) · harvest board.
+- Certificate: What share of certified lots sells above the uncertified price of the same crop and week? Status: need; waiting for a baseline or data. Source: Certificates · harvest board sale records.
+- Voucher: What share of voucher work was done on time, before the farmer had the cash to pay for it? Status: 2026–27; waiting for a baseline or data. Source: Stellar machinery, fund_core · crop_calendar · satellite record per field.
+
+Climate: India: 6.6% of its farmland written off. In Tamil Nadu, 24% lies fallow for 1 to 5 years. Can we turn it around?
+- Land leaving farming: What share of India’s farmland is sown, fallow, or culturable waste? Status: now · national statistics; measured now. Source: Land Use Statistics at a Glance 2023–24, table I (DES, Ministry of Agriculture; provisional) · Statistical Hand Book of Tamil Nadu 2020–21, table 4.2.
+- Fewer fields, cropped more often: How much of Tamil Nadu’s land is still sown, and what share of it is cropped twice or more? Status: now · state statistics; measured now. Source: Statistical Hand Book of Tamil Nadu 2020–21, tables 4.2 and 4.12 (DES Chennai) · Tamil Nadu policy note via DT Next, 27 Jun 2024.
+- Years left in farming: What share of the financed area is on the path out of farming, and how many years does it have left? Status: baseline from the record; waiting for a baseline or data. Source: Satellite record per field zone (8 years) · neighbouring fields (to add).
+- Turning the tide: What share of the financed fields that were on the path out came back into farming? Status: 2026–27; waiting for a baseline or data. Source: Satellite record per field zone · neighbouring fields.
+- Early signals: Is the soil covered and the vegetation recovering on the financed fields? Status: baseline now · effect 2026–27; waiting for a baseline or data. Source: Satellite record per field · plan records.
+Not measured at all yet: household income, food security, yield gains.
+
+## 7. Not ready yet
+
+nUSD (not open for deposits). The harvest board for buyers (not live). Crop advances on Stellar (the first year plans run in 2026–27). Baselines for most measures in section 6.
+
+## 8. How to verify
+
+- On-chain fact sheet with every contract on Polygon and Stellar, read calls and an open-items list written to be challenged: https://nila.land/audit/facts.md
+- Every value read, per crop advance with tx hashes: https://nila.land/audit/snapshot.json
+- Stellar contract code: https://github.com/NilaDAO/nila-soroban
+
+## 9. Questions and answers
+
+Q: What does Nila offer?
+A: A year plan for every field a farmer works, and the money and services to carry it out. She plans the three seasons with her union. At sowing, tractor work by the acre and seed come as vouchers, and the cash part of her crop advance comes from the union members' own savings. Both are paid back from the harvest the plan expects.
+
+Q: What is nUSD, and where does the yield come from?
+A: nUSD is a dollar position on Stellar, still in development. The dollars guarantee the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars.
+
+Q: What is a crop plan?
+A: Her year on one page: the crop on each field in each season (Kuruvai, Samba, summer), what it costs, what it should bring in, and which services she needs when. An AI agent writes the first draft. Its context: her answers in the app; 8 years of satellite record per field, gathered by remote sensing (what grew when, and whether the soil is tired from the same crop again and again); the season's weather outlook (NOAA); the district crop calendar; reference prices per crop; and the state's agronomy tables (TNAU). The amounts follow fixed rules in the code, not the AI. She changes it with her union leader, and her choice stands.
+
+Q: Who are the unions and the members?
+A: Self-help groups and farmer producer organisations in Tamil Nadu, with about 2,000 members, about 90% of them women (their own figures). The group admits its members, holds their savings and decides who gets a crop advance; Nila does not. It also runs collective growing programmes and balances supply to demand, so not every member grows the same crop. On-chain so far: 60 land titles, and 39 of 39 closed crop advances repaid in full, with no defaults.
+
+Q: What is a voucher?
+A: A slip on the farmer's phone that pays for one service from her union: so many acres of work with the union's machines, seed the union bought, or space in the union's storage. She uses it instead of paying cash and repays it when her harvest pays back the crop advance. For now a voucher pays only for the union's own services; contracts with outside machine owners and seed shops are in the pipeline. It cannot be passed on to someone else and pays only for the work in her plan.
+
+Q: What is a standing-crop record?
+A: The record of one planned crop on her land: the crop, the field, the season and the harvest the plan expects. A crop advance can only be drawn against it, inside that crop's sowing window. It is tied to her land title: the title's number is part of the record. It is a record, not an investment.
+
+Q: How does a buyer lock a harvest?
+A: On the harvest board, which is not live yet. The buyer picks a time window and a place, chooses what to buy and how much, and confirms the quality conditions, based on the farms' benchmarks. It pays a deposit, which is locked in a smart contract, and the union is notified. The union is responsible for delivering the produce at the right time and place. When the buyer accepts the delivery, it pays the rest; if it does not, the deposit is returned.
+
+Q: Where does funding go?
+A: Into the services in a farmer's year plan, not into cash. Since November 2026, the cash part of a crop advance comes only from the union members' own savings. Outside money only guarantees vouchers (tractor work by the acre, seed), which are paid back from the harvest.
+
+Q: How do I verify independently?
+A: Read it from the chains yourself. The audit page lists every contract on Polygon (the first seasons) and Stellar (since 6 November 2026), with the block it was read at and a link to the explorer. facts.md has the same in plain text, with prompts for handing it to any AI and asking what does not add up. The contract code is public: nila-soroban on GitHub.
+
+## 10. Contact
+
+All enquiries go to info@nila.land. Use the subject line below so the right person answers.
+
+- Impact funders, foundations and grant makers: subject "Funding: <organisation>". Include the programme or grant name, the amount range, the deadline, and whether funds can go to a Dutch sole proprietorship. Nila's Indian trust cannot receive grants or foreign funds.
+- Institutional investors and RWA or crypto funds: subject "Investor: <organisation>". Include the type of fund, the jurisdiction and the ticket size. nUSD is not open for deposits.
+- Food buyers and sourcing teams: subject "Sourcing: <crop>". Include the crop and variety, the quantity per season, the delivery region and the quality conditions. The harvest board is not live; enquiries now help plan next season's crops.
+- Journalists and researchers: subject "Press: <outlet>". Include the deadline and the questions. Start from facts.md; its open-items list names what is not proven.
+- Farmer organisations in India (self-help groups, FPOs): subject "Union: <name, district>". Include the number of members and the crops grown. Nila works with unions in Tamil Nadu for now.
+
+## 11. What Nila does not do
+
+- Nila does not lend to farmers and holds no client money; the union lends from its members' savings.
+- Outside money does not become cash lent to farmers.
+- No token sale. Members hold no tradeable token; vouchers and standing-crop records cannot be sold.
+- nUSD is not open for deposits.
+- No grants to the Indian trust.
+- No carbon or methane claims.
+- No promise of a return, a harvest volume or a delivery date.

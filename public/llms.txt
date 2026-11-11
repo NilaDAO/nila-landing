@@ -1,23 +1,28 @@
 # Nila
 
-Nila gives farmers in Tamil Nadu, India, a year plan for every field and the money and services to carry it out, through their own unions (self-help groups and farmer producer organisations, about 2,000 members). A crop advance pays for a planned crop and is paid back from its harvest; the cash part comes from the union members' own savings, services (machine work by the acre, seed, storage) come as vouchers. Each planned crop is a standing-crop record tied to the farmer's land title. Records and crop advances are on Polygon (first seasons) and Stellar (since 6 November 2026).
+> Nila gives farmers in Tamil Nadu, India, a year plan for every field, through their own unions, and pays the services in that plan (machine work by the acre, seed, storage) with vouchers repaid from the harvest. The union lends from its own members' savings; Nila holds no client money.
 
-nUSD is a dollar position on Stellar, still in development: the dollars guarantee the vouchers, the return is the interest on them. Target 3–5% a year, not guaranteed.
+## Read first
 
-Words: "crop advance" (on-chain and in the audit: loan), "standing-crop record" (on-chain: FoodToken).
+- [All facts, one file](https://nila.land/llms-full.txt): definitions, figures with their source and block, what is measured and what is not, contact routes.
+- [On-chain fact sheet](https://nila.land/audit/facts.md): every contract on Polygon and Stellar, the block it was read at, and an open-items list written to be challenged.
+- [How it works](https://nila.land/how): impact, software and climate measures; most are still waiting for a baseline.
 
-## Audit
+## Words used on this site
 
-- [Audit fact sheet](https://nila.land/audit/facts.md): every verifiable claim with its on-chain source, read calls and open items. Ask your LLM to refute it.
-- [Snapshot](https://nila.land/audit/snapshot.json): every value read from the chains, per crop advance, with block and ledger.
-- [Audit page](https://nila.land/audit): the fact sheet for people.
+- Crop advance: the cash and vouchers a member draws for one planned crop, repaid from that harvest. On-chain and in the audit it is called a loan.
+- Standing-crop record: the record of one planned crop on one field in one season, tied to the member's land title. On-chain it is a FoodToken. Not an investment.
+- Voucher: pays for one service from the union. Cannot be passed on.
+- nUSD: a dollar position on Stellar, in development, not open for deposits.
 
-## Pages
+## Not ready yet
 
-- [Home](https://nila.land/): what Nila offers, with the FAQ.
-- [How it works](https://nila.land/how): impact, software and climate measures, with what is measured and what is still waiting for a baseline.
-- [Code](https://github.com/NilaDAO/nila-soroban): the Stellar contracts.
+- nUSD deposits. The harvest board for buyers. Most impact measures (the first year plans run in 2026–27).
 
 ## Contact
 
-info@nila.land
+- info@nila.land, with a subject per topic: see "Contact" in [llms-full.txt](https://nila.land/llms-full.txt).
+
+## Optional
+
+- [Snapshot of every value read](https://nila.land/audit/snapshot.json) · [Code](https://github.com/NilaDAO/nila-soroban) · [Risk disclosure](https://nila.land/risk) · [Privacy](https://nila.land/privacy) · [Terms](https://nila.land/terms)
