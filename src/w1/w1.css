@@ -86,3 +86,12 @@
 /* /how rings: no ring animation for reduced motion; category chips scroll without a bar */
 @media (prefers-reduced-motion: reduce){.w4-rings circle,.w4-rings line{transition:none !important}}
 .w4-chips::-webkit-scrollbar{display:none}
+/* nUSD stack on touch screens (no hover, Carst 11 Nov): show it opened, so the named layers are visible. */
+@media (hover: none){
+  .w1 .nl-coin .nl-shape{border-radius:24px;gap:10px}
+  .w1 .nl-coin .nl-part{box-shadow:inset 0 0 0 1px #3A4556;border-radius:6px}
+  .w1 .nl-coin .nl-part:first-child{border-radius:24px 24px 6px 6px}
+  .w1 .nl-coin .nl-part:last-child{border-radius:6px 6px 24px 24px}
+  .w1 .nl-coin .nl-plab{opacity:1}
+  .w1 .nl-coin .nl-rim{opacity:0}
+}

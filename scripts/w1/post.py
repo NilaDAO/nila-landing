@@ -91,3 +91,8 @@ for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
 for f in ['src/w1/desktop/DBacked.jsx', 'src/w1/mobile/MBacked.jsx']:
     s = open(f).read(); n = s.replace('Dutch government · MIT innovation grant', 'Dutch government · innovation grant')
     if n != s: open(f, 'w').write(n)
+
+# Footer (Carst, 11 Nov): the CSV link is the loan tape; there is no season ledger yet.
+for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
+    s = open(f).read(); n = s.replace('Season ledger (CSV)', 'Loan tape (CSV)')
+    if n != s: open(f, 'w').write(n)
