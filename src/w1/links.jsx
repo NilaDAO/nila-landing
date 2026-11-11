@@ -51,7 +51,6 @@ function resolve(k, label, ctx) {
     case "audit ↗":
     case "Fact sheet": return { href: homeHref("/audit") };
     case "facts.md": return { href: "/audit/facts.md", target: "_blank" };
-    case "Loan tape (CSV)": return { href: "/audit/loan-tape.csv" };
     case "Code (nila-soroban)": return { href: "https://github.com/NilaDAO/nila-soroban", target: "_blank" };
     case "Privacy Policy": return { href: homeHref("/privacy") };
     case "Terms of Use": return { href: homeHref("/terms") };

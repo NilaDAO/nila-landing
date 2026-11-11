@@ -13,7 +13,6 @@ import { useIsMobile, useComingSoon, homeHref, headings } from "./util.js";
 
 const FILES = [
   { href: "/audit/facts.md", name: "facts.md", what: "This page as plain text" },
-  { href: "/audit/loan-tape.csv", name: "loan-tape.csv", what: "Every Polygon loan, read from contract storage" },
   { href: "/audit/snapshot.json", name: "snapshot.json", what: "Every value the last refresh read" },
 ];
 
@@ -32,7 +31,7 @@ function Header({ mobile }) {
           <a href="/audit/facts.md" target="_blank" rel="noopener noreferrer" style={{ color: "#F1F5F9", textDecoration: "underline" }}>facts.md</a>{" "}
           into any AI and ask it to find what does not add up.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3, 1fr)", gap: 8, marginTop: mobile ? 8 : 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(2, 1fr)", gap: 8, marginTop: mobile ? 8 : 16 }}>
           {FILES.map((f) => (
             <a key={f.name} href={f.href} download={f.name === "facts.md" ? undefined : f.name} target={f.name === "facts.md" ? "_blank" : undefined}
                rel="noopener noreferrer"

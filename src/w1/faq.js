@@ -34,6 +34,6 @@ export const FAQ = [
   ],
   [
     "How do I verify independently?",
-    "Read it from the chains yourself. The audit page lists every contract on Polygon (the first seasons) and Stellar (since 6 November 2026), with the block it was read at and a link to the explorer. facts.md has the same in plain text, with prompts for handing it to any AI and asking what does not add up. A CSV has one row per crop advance. The contract code is public: nila-soroban on GitHub."
+    "Read it from the chains yourself. The audit page lists every contract on Polygon (the first seasons) and Stellar (since 6 November 2026), with the block it was read at and a link to the explorer. facts.md has the same in plain text, with prompts for handing it to any AI and asking what does not add up. The contract code is public: nila-soroban on GitHub."
   ]
 ];

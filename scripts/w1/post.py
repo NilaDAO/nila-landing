@@ -92,9 +92,10 @@ for f in ['src/w1/desktop/DBacked.jsx', 'src/w1/mobile/MBacked.jsx']:
     s = open(f).read(); n = s.replace('Dutch government · MIT innovation grant', 'Dutch government · innovation grant')
     if n != s: open(f, 'w').write(n)
 
-# Footer (Carst, 11 Nov): the CSV link is the loan tape; there is no season ledger yet.
+# Footer (Carst, 11 Nov): no CSV link (the season ledger / loan tape is dropped from the site).
+CSV = "<A k='#' label=\"Season ledger (CSV)\" style={{fontSize: '14px', lineHeight: '1.5'}}>Season ledger (CSV)</A>"
 for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
-    s = open(f).read(); n = s.replace('Season ledger (CSV)', 'Loan tape (CSV)')
+    s = open(f).read(); n = s.replace(CSV, '')
     if n != s: open(f, 'w').write(n)
 
 # FAQ answers (Carst, 11 Nov): the board's question links become the FaqList accordion (src/w1/FaqList.jsx, text in faq.js).
