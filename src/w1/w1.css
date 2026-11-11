@@ -83,3 +83,6 @@
 .w1-legal .text-sm{font-size:16px;line-height:1.65}
 .w1-legal h2{font-size:22px !important;margin-bottom:12px}
 .w1-legal section a{text-decoration:underline}
+/* /how rings: no ring animation for reduced motion; category chips scroll without a bar */
+@media (prefers-reduced-motion: reduce){.w4-rings circle,.w4-rings line{transition:none !important}}
+.w4-chips::-webkit-scrollbar{display:none}
