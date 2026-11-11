@@ -32,8 +32,23 @@ const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV &
 //                                                                                   //
 ///////////////////////////////////////////////////////////////////////////////////////
 
+// Per-route title and canonical for search engines and AI crawlers that run JavaScript (index.html has the home's).
+const META = {
+  "/how": "How it works: impact, software and climate measures · Nila",
+  "/audit": "Audit fact sheet, read from Polygon and Stellar · Nila",
+  "/privacy": "Privacy Policy · Nila",
+  "/terms": "Terms of Use · Nila",
+  "/risk": "Risk Disclosure · Nila",
+};
+function setMeta(path) {
+  if (META[path]) document.title = META[path];
+  const c = document.querySelector('link[rel="canonical"]');
+  if (c) c.href = `https://nila.land${META[path] ? path : "/"}`;
+}
+
 export default function App() {
   const path = window.location.pathname;
+  setMeta(path);
   if (REDESIGN && ["/privacy", "/terms", "/risk"].includes(path)) return <Suspense fallback={null}><W1Legal path={path} /></Suspense>;
   if (path === "/privacy") return <PrivacyPolicy />;
   if (path === "/terms") return <TermsOfUse />;
