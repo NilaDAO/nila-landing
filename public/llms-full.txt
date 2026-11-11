@@ -23,6 +23,25 @@ Legal entities: Blockchainforcommons, a sole proprietorship registered in the Ne
 
 Since November 2026 the cash part of a crop advance comes only from the union members' own savings. Outside money only guarantees vouchers; it never becomes cash lent to a farmer. Members hold no tradeable token.
 
+## 4b. Crops
+
+Crops a crop advance can be drawn for, with their sowing months on the Stellar crop calendar (crop_calendar, ledger 65,421,685; names from the Polygon FoodToken, block 97,126,007; read 11 November 2026). New crops are added over time.
+
+- Paddy: sown Jun–Jul, Aug–Sep, Oct–Nov, Dec–Jan
+- Groundnut: sown Jun–Jul, Dec–Feb
+- Sugarcane: sown Dec–Feb
+- Banana: sown Jun, Feb, Mar–May
+- Sesame: sown Jun–Jul, Dec–Feb, Mar
+- Cassava: sown Jun, Oct–Nov, Apr–May
+- Maize: sown Jun–Jul, Oct–Nov, Jan–Feb
+- Green gram: sown Jun–Jul, Sep, Oct–Nov, Dec–Feb, Mar
+- Horse gram: sown Sep, Oct–Nov
+- Black gram: sown Jun–Jul, Sep, Oct–Nov, Dec–Feb
+- Fodder sorghum: sown Jun–Jul, Sep, Oct, Mar–Apr
+- Cumbu napier: sown Jun–Jul, Oct–Nov
+
+Green manures (their own crop advance, ploughed back into the soil, not sold): sunhemp, dhaincha, wild indigo.
+
 ## 5. Figures
 
 - Land titles on-chain: 60 (facts.md, Polygon block 97,069,016, 10 November 2026).

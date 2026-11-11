@@ -11,6 +11,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const snap = read("public/audit/snapshot.json");
 const how = read("public/how/how.json");
+const crops = fs.existsSync(path.join(ROOT, "public/audit/crops.json")) ? read("public/audit/crops.json") : null;
+// Green manures: the soil covers in nila-sensing plan/reference/soil_v1.json (own crop advance, ploughed in, not sold).
+const GREEN = new Set(["sunhemp", "dhaincha", "wild_indigo"]);
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const label = (n) => n.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase());
+const months = (ws) => ws.map((w) => (w.first === w.last ? MON[w.first - 1] : `${MON[w.first - 1]}–${MON[w.last - 1]}`)).join(", ");
 
 const day = (t) => new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 const inr = (x) => `₹${Number(x).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -54,6 +60,14 @@ Legal entities: Blockchainforcommons, a sole proprietorship registered in the Ne
 ## 4. Where the money comes from
 
 Since November 2026 the cash part of a crop advance comes only from the union members' own savings. Outside money only guarantees vouchers; it never becomes cash lent to a farmer. Members hold no tradeable token.
+
+## 4b. Crops
+
+${crops ? `Crops a crop advance can be drawn for, with their sowing months on the Stellar crop calendar (crop_calendar, ledger ${crops.stellarLedger.toLocaleString("en-US")}; names from the Polygon FoodToken, block ${crops.polygonBlock.toLocaleString("en-US")}; read ${day(crops.read)}). New crops are added over time.
+
+${crops.crops.filter((c) => c.windows.length && !GREEN.has(c.name)).map((c) => `- ${label(c.name)}: sown ${months(c.windows)}`).join("\n")}
+
+Green manures (their own crop advance, ploughed back into the soil, not sold): ${crops.crops.filter((c) => GREEN.has(c.name)).map((c) => label(c.name).toLowerCase()).join(", ")}.` : "Not read yet (npm run crops)."}
 
 ## 5. Figures
 

@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "audit": "node scripts/audit/refresh.mjs",
     "prebuild": "node scripts/llms/build.mjs",
-    "llms": "node scripts/llms/build.mjs"
+    "llms": "node scripts/llms/build.mjs",
+    "crops": "node scripts/audit/crops.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
