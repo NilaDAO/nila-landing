@@ -28,7 +28,7 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 | S3 | ~~W4 `/how` as on the board~~ replaced by S10 (ring diagram, board W4b) | W4 | done 2026-11-11, see S10 |
 | S4 | ~~W3~~ — old 'Meet the unions' pages kept (Carst, 10 Nov) | — | |
 | S5 | W2 `/harvests`: board + lot page, desktop; W2m notice on mobile | W2 | no bidding contract or backend exists — static/read-only until decided |
-| S6 | Routes and cleanup: drop `/wfp`, keep `/audit` and legal, sitemap/llms.txt, remove `.env` from folder | — | `/audit` (10 Nov) and `/privacy` `/terms` `/risk` (11 Nov, `src/w1/Legal.jsx`) in the W1 style; rest open |
+| S6 | Routes and cleanup: ~~drop `/wfp`~~ (removed 11 Nov), keep `/audit` and legal, sitemap/llms.txt, remove `.env` from folder | — | `/audit` (10 Nov) and `/privacy` `/terms` `/risk` (11 Nov, `src/w1/Legal.jsx`) in the W1 style; rest open |
 | S7 | Visual check 1440 + 390 against the boards; `npm run build`; hand `dist/` to Carst | all | |
 
 ## Open points that block going live (from `nila-design/notes/page-landing.md`)

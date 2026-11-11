@@ -16,7 +16,6 @@ import TermsOfUse from "./components/sections/LegalTerms";
 import RiskDisclosure from "./components/sections/LegalRiskDisclosure";
 import UnionsPage from "./components/sections/UnionsPage";
 import AuditPage from "./components/sections/AuditPage";
-import WfpPage from "./components/sections/WfpPage";
 const W1Home = lazy(() => import("./w1/Home.jsx"));
 const W1Audit = lazy(() => import("./w1/Audit.jsx"));
 const W1Legal = lazy(() => import("./w1/Legal.jsx"));
@@ -55,7 +54,6 @@ export default function App() {
   if (path === "/risk") return <RiskDisclosure />;
   if (path === "/audit") return REDESIGN ? <Suspense fallback={null}><W1Audit /></Suspense> : <AuditPage />;
   if (path === "/how" && REDESIGN) return <Suspense fallback={null}><W4How /></Suspense>;
-  if (path === "/wfp") return <WfpPage />;
   return <NilaLanding />;
 }
 
