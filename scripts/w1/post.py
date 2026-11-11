@@ -96,3 +96,12 @@ for f in ['src/w1/desktop/DBacked.jsx', 'src/w1/mobile/MBacked.jsx']:
 for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
     s = open(f).read(); n = s.replace('Season ledger (CSV)', 'Loan tape (CSV)')
     if n != s: open(f, 'w').write(n)
+
+# FAQ answers (Carst, 11 Nov): the board's question links become the FaqList accordion (src/w1/FaqList.jsx, text in faq.js).
+for f in ['src/w1/desktop/DFaq.jsx', 'src/w1/mobile/MFaq.jsx']:
+    s = open(f).read()
+    if 'FaqList' not in s:
+        i = s.index('<A k='); j = s.rindex('</A>') + 4
+        s = s[:i] + '<FaqList />' + s[j:]
+        s = s.replace('import { A } from "../links.jsx";', 'import FaqList from "../FaqList.jsx";')
+        open(f, 'w').write(s)
