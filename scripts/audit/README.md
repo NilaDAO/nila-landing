@@ -5,7 +5,7 @@ Reads Polygon mainnet and Stellar mainnet (read-only, no keys) and rewrites the 
 | File | What changes |
 |---|---|
 | `public/audit/facts.md` | only the `<!-- gen:… -->` blocks: header, §1 Polygon tables, §1b Stellar. §2–§8 stay hand-written |
-| `public/audit/loan-tape.csv` | status, repaid, interest, outstanding, maturity and repayment columns per Polygon loan |
+| `scripts/audit/loan-tape.csv` | the loan list the refresh starts from; status, repaid, interest, outstanding, maturity and repayment columns per Polygon loan. Not published since 11 Nov (Carst): `snapshot.json` carries the same per loan |
 | `public/audit/snapshot.json` | every value read, with block / ledger |
 | `scripts/audit/state.json` | last scanned Polygon block and last close / claim events (commit it) |
 

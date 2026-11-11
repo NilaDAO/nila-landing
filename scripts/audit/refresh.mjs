@@ -108,14 +108,14 @@ async function readPolygon(state) {
 }
 
 function readTape() {
-  const f = path.join(OUT, "loan-tape.csv");
+  const f = path.join(HERE, "loan-tape.csv"); // input list of loan ids; not published (Carst, 11 Nov)
   const [head, ...lines] = fs.readFileSync(f, "utf8").trim().split("\n");
   const cols = head.split(",");
   return { cols, rows: lines.map((l) => Object.fromEntries(l.split(",").map((x, i) => [cols[i], x]))) };
 }
 function writeTape(t) {
   const body = [t.cols.join(","), ...t.rows.map((r) => t.cols.map((c) => r[c] ?? "").join(","))].join("\n") + "\n";
-  fs.writeFileSync(path.join(OUT, "loan-tape.csv"), body);
+  fs.writeFileSync(path.join(HERE, "loan-tape.csv"), body);
 }
 
 // ───────────────────────────── Stellar ─────────────────────────────
@@ -234,7 +234,7 @@ function blocks(pg, st, prev) {
       `4. Distinct borrower addresses: ${borrowersAll.size} across all loans (${borrowersLive.size} on live loans).`,
       `5. ${small.length} of the ${repaid.length} repaid loans are ≤ ₹1,500 (₹${fmt(small.reduce((t, r) => t + r._principal, 0), 0)} in total).`,
       "",
-      "Full loan-level detail, including tx hashes: [`loan-tape.csv`](/audit/loan-tape.csv). Machine-readable snapshot of every figure on this page: [`snapshot.json`](/audit/snapshot.json).",
+      "Machine-readable snapshot of every figure on this page, including every loan with its tx hashes: [`snapshot.json`](/audit/snapshot.json).",
     ].join("\n"),
 
     stellar: [
@@ -296,6 +296,6 @@ if (DRY) {
   const f = path.join(OUT, "facts.md");
   fs.writeFileSync(f, patchFacts(fs.readFileSync(f, "utf8"), b));
   fs.writeFileSync(STATE_FILE, JSON.stringify(next, null, 2) + "\n");
-  log("wrote public/audit/snapshot.json, loan-tape.csv, facts.md; state.json updated");
+  log("wrote public/audit/snapshot.json, facts.md, scripts/audit/loan-tape.csv; state.json updated");
   log("check by hand: facts.md §2 claims and §7 changes still match the new figures, then build and deploy");
 }

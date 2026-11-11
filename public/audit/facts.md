@@ -71,7 +71,7 @@ Other on-chain facts:
 4. Distinct borrower addresses: 37 across all loans (17 on live loans).
 5. 14 of the 39 repaid loans are ≤ ₹1,500 (₹7,665 in total).
 
-Full loan-level detail, including tx hashes: [`loan-tape.csv`](/audit/loan-tape.csv). Machine-readable snapshot of every figure on this page: [`snapshot.json`](/audit/snapshot.json).
+Machine-readable snapshot of every figure on this page, including every loan with its tx hashes: [`snapshot.json`](/audit/snapshot.json).
 <!-- /gen:polygon-loans -->
 
 ---
@@ -159,7 +159,7 @@ Viewer.getUnion("0xF18E4966731bD6D3a56c1eb23Da7C708c9C48070")
 Viewer.getTreasuryBalances("0xF18E4966731bD6D3a56c1eb23Da7C708c9C48070")
 Viewer.getFundTotalsByTranche(0 | 1, union, bytes32("GroundUp Fund"))   # 0 = junior, 1 = senior
 
-# Per-loan status (loanId = bytes32, zero-padded form of the loan_id column in loan-tape.csv)
+# Per-loan status (loanId = bytes32, zero-padded form of loan_id in snapshot.json)
 Core.loans(union, loanId)            # principal, principalPaid, interestPaid, defaulted, liquidated, maturityTs, ...
 Viewer.getBorrowerInfo(union, loanId) # outstanding incl. accrued interest, dueDate, closed
 
