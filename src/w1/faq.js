@@ -26,7 +26,7 @@ export const FAQ = [
   ],
   [
     "How does a buyer lock a harvest?",
-    "With the harvest board. It is not live yet."
+    "On the harvest board, which is not live yet. The buyer picks a time window and a place, chooses what to buy and how much, and confirms the quality conditions, based on the farms' benchmarks. It pays a deposit, which is locked in a smart contract, and the union is notified. The union is responsible for delivering the produce at the right time and place. When the buyer accepts the delivery, it pays the rest; if it does not, the deposit is returned."
   ],
   [
     "Where does funding go?",
