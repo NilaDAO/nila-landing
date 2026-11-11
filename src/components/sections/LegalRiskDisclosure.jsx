@@ -43,7 +43,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>1. General investment risk</h2>
             <p>
-              Investing through Nila means financing crop shares: seasonal advances to members of farmer unions in Tamil Nadu, India, paid back from the harvest they finance. As with any investment, you may lose part or all of your principal. Past repayment of Nila’s crop shares (on-chain at nila.land/audit) does not guarantee future results.
+              Investing through Nila means financing crop advances: seasonal advances to members of farmer unions in Tamil Nadu, India, paid back from the harvest they finance. As with any investment, you may lose part or all of your principal. Past repayment of Nila’s crop advances (on-chain at nila.land/audit) does not guarantee future results.
             </p>
             <p className="mt-3">
               This is not a bank deposit. Your capital is not protected by any deposit guarantee scheme. You should only invest amounts you can afford to lose entirely.
@@ -53,7 +53,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>2. Agricultural and crop-cycle risk</h2>
             <p>
-              A crop share is paid back from the harvest of the crop it finances. Agricultural output is uncertain: droughts, floods, pests, disease and other climate events can reduce yields below the plan. If a harvest fails or underperforms, repayment may be delayed, reduced or not happen.
+              A crop advance is paid back from the harvest of the crop it finances. Agricultural output is uncertain: droughts, floods, pests, disease and other climate events can reduce yields below the plan. If a harvest fails or underperforms, repayment may be delayed, reduced or not happen.
             </p>
             <p className="mt-3">
               Crop prices also move. Nila uses satellite monitoring of every financed field and a crop calendar per crop; these reduce agricultural risk but do not remove it.
@@ -63,7 +63,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>3. Foreign exchange risk</h2>
             <p>
-              You deposit and are paid in USDC on the Stellar network. Crop shares are lent and repaid in Indian rupees (INR), and the interest is earned in rupees and paid to you in USDC at the exchange rate of the day it is paid. The INR/USD rate moves; an unfavourable movement can reduce your effective return, even if every crop share is repaid in full.
+              You deposit and are paid in USDC on the Stellar network. Crop advances are lent and repaid in Indian rupees (INR), and the interest is earned in rupees and paid to you in USDC at the exchange rate of the day it is paid. The INR/USD rate moves; an unfavourable movement can reduce your effective return, even if every crop advance is repaid in full.
             </p>
             <p className="mt-3">
               Nila does not hedge exchange-rate exposure on your behalf.
@@ -73,7 +73,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>4. Smart contract and technology risk</h2>
             <p>
-              Nila runs on smart contracts on the Stellar network (senior deposits, crop shares, vouchers, repayment). Crop shares made before November 2026 run on Polygon until they are repaid. The contracts are published at nila.land/audit, but no smart contract is guaranteed to be free of bugs or vulnerabilities, and the senior contract takes no deposits until it has been audited.
+              Nila runs on smart contracts on the Stellar network (senior deposits, crop advances, vouchers, repayment). Crop advances made before November 2026 run on Polygon until they are repaid. The contracts are published at nila.land/audit, but no smart contract is guaranteed to be free of bugs or vulnerabilities, and the senior contract takes no deposits until it has been audited.
             </p>
             <p className="mt-3">
               Blockchain networks may experience congestion or outages. Third parties, including the stablecoin issuer (Circle, for USDC), network infrastructure providers and wallet software, are further points of failure outside Nila’s control.
@@ -83,10 +83,10 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>5. Liquidity risk</h2>
             <p>
-              You may ask for your principal back at any time. It is paid in USDC at par after a 14-day unbonding period, less your part of any loss from crop shares that were not repaid.
+              You may ask for your principal back at any time. It is paid in USDC at par after a 14-day unbonding period, less your part of any loss from crop advances that were not repaid.
             </p>
             <p className="mt-3">
-              This is agricultural finance with real crop cycles, not a money market fund. A crop share runs until the harvest it finances (typically 3 to 8 months), and interest owed to you is paid once the union has exchanged the rupees for USDC.
+              This is agricultural finance with real crop cycles, not a money market fund. A crop advance runs until the harvest it finances (typically 3 to 8 months), and interest owed to you is paid once the union has exchanged the rupees for USDC.
             </p>
           </section>
 
@@ -103,7 +103,7 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>7. Who takes losses first</h2>
             <p>
-              Members’ own savings in the union’s fund take losses before senior money. When a crop share is repaid, machine owners are paid first, then senior money, then the members’ own savings (interest and principal). The union also keeps a rainy-day fund from its interest fees.
+              Members’ own savings in the union’s fund take losses before senior money. When a crop advance is repaid, machine owners are paid first, then senior money, then the members’ own savings (interest and principal). The union also keeps a rainy-day fund from its interest fees.
             </p>
             <p className="mt-3">
               This protection is finite. In a severe case, for example a crop failure across a whole union, the members’ savings and the rainy-day fund may not cover the loss, and your principal would be reduced in proportion.
@@ -113,10 +113,10 @@ export function RiskBody() {
           <section>
             <h2 className="mb-3 text-base font-semibold" style={{ color: "var(--color-text-on-dark)" }}>8. No guarantee of returns</h2>
             <p>
-              nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise: a senior investor earns only the interest on the voucher part of the crop shares its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop share is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
+              nUSD targets 3–5% a year, paid in USDC. It is a target, not a promise: a senior investor earns only the interest on the voucher part of the crop advances its USDC backs, earned in rupees and paid in USDC when the union exchanges them. The interest on a crop advance is capped at 12.5% in the contract code. Senior deposits are capped at zero until the contract is audited. Actual returns may be higher or lower than the target, and may be zero or negative in adverse scenarios.
             </p>
             <p className="mt-3">
-              Nila does not guarantee any rate of return. What you receive depends on how crop shares are repaid, the INR/USD rate and the union’s fees.
+              Nila does not guarantee any rate of return. What you receive depends on how crop advances are repaid, the INR/USD rate and the union’s fees.
             </p>
           </section>
 
@@ -128,7 +128,7 @@ export function RiskBody() {
             <ul className="mt-3 list-disc pl-5 space-y-1">
               <li>You have read and understood this risk disclosure in full</li>
               <li>You are investing with funds you can afford to lose</li>
-              <li>You understand that crop shares run until their harvest</li>
+              <li>You understand that crop advances run until their harvest</li>
               <li>You are solely responsible for your own tax obligations related to any returns</li>
               <li>You are not a resident of a jurisdiction where this investment is prohibited</li>
             </ul>

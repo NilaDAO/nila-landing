@@ -130,7 +130,7 @@
               "label": "Sowings confirmed",
               "value": null,
               "tick": null,
-              "figure": "Counted from the first Stellar crop shares, 2026–27.",
+              "figure": "Counted from the first Stellar crop advances, 2026–27.",
               "placeholder": 0.88,
               "placeholderTick": null
             },
@@ -138,7 +138,7 @@
               "label": "Harvests confirmed",
               "value": null,
               "tick": null,
-              "figure": "0 of 18 running crop shares on Polygon carry a satellite harvest date. Not switched on yet.",
+              "figure": "0 of 18 running crop advances on Polygon carry a satellite harvest date. Not switched on yet.",
               "placeholder": 0.62,
               "placeholderTick": null,
               "live": "dueDateSet",
@@ -182,9 +182,9 @@
         },
         {
           "key": "cropshare",
-          "name": "Crop share",
-          "question": "What share of crop-share harvests is sold above the local price of the harvest week?",
-          "definition": "A crop share is the farmer’s harvest on a public record before it is sown, with a track record behind it. Bargaining power shows as selling above the harvest-week price instead of at it, because the share does not force a sale to pay a moneylender. The middle and inner rings are the track record outside money lends on.",
+          "name": "Crop advance",
+          "question": "What share of crop-advance harvests is sold above the local price of the harvest week?",
+          "definition": "A crop advance is the farmer’s harvest on a public record before it is sown, with a track record behind it. Bargaining power shows as selling above the harvest-week price instead of at it, because the share does not force a sale to pay a moneylender. The middle and inner rings are the track record outside money lends on.",
           "status": "now (record) · sales need W2",
           "source": "Polygon GenericFundCore, block 97,069,016 · union local price (crop_calendar) · harvest board",
           "rings": [
@@ -197,7 +197,7 @@
               "placeholderTick": null
             },
             {
-              "label": "Closed crop shares repaid in full",
+              "label": "Closed crop advances repaid in full",
               "value": null,
               "tick": null,
               "figure": "39 of 39 closed. 0 defaults. 18 still running.",
@@ -238,7 +238,7 @@
           "key": "voucher",
           "name": "Voucher",
           "question": "What share of voucher work was done on time, before the farmer had the cash to pay for it?",
-          "definition": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed. The farmer shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when the farmer’s harvest pays back the crop share. So the field is ploughed and sown on time, even in a month with no cash in the house. Outer ring: voucher hours used, of hours issued. Middle: voucher work done inside the crop’s sowing window; the tick is the same fields’ past on-time sowing. Inner: seasons or crops the field’s 8-year record never shows; a farmer doing as always shows as a low inner ring.",
+          "definition": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed. The farmer shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when the farmer’s harvest pays back the crop advance. So the field is ploughed and sown on time, even in a month with no cash in the house. Outer ring: voucher hours used, of hours issued. Middle: voucher work done inside the crop’s sowing window; the tick is the same fields’ past on-time sowing. Inner: seasons or crops the field’s 8-year record never shows; a farmer doing as always shows as a low inner ring.",
           "status": "2026–27",
           "source": "Stellar machinery, fund_core · crop_calendar · satellite record per field",
           "rings": [
@@ -267,7 +267,7 @@
               "placeholderTick": null
             }
           ],
-          "explain": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed instead of cash. The machine owner or the seed shop is paid part at the job and the rest when the harvest pays back the crop share."
+          "explain": "A voucher is a slip on the farmer’s phone that pays for tractor hours or seed instead of cash. The machine owner or the seed shop is paid part at the job and the rest when the harvest pays back the crop advance."
         }
       ]
     },

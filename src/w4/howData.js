@@ -21,7 +21,7 @@ export function liveNumbers(snap) {
     closedRepaid: repaid + defaulted ? { v: repaid / (repaid + defaulted),
       fig: `${repaid} of ${repaid + defaulted} closed. ${defaulted} ${defaulted === 1 ? "default" : "defaults"}. ${live} still running.` } : null,
     dueDateSet: live ? { v: dated / live, fig: `${dated} of ${live} carry a due date on-chain.${notOn}`,
-      figSeen: `${dated} of ${live} running crop shares on Polygon carry a due date.${notOn}` } : null,
+      figSeen: `${dated} of ${live} running crop advances on Polygon carry a due date.${notOn}` } : null,
     outsideShare: jr + sr ? { v: sr / (jr + sr), fig: `${inr(sr)} of ${inr(jr + sr)} in the GroundUp Fund.` } : null,
   };
 }

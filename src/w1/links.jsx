@@ -21,7 +21,7 @@ const PENDING = new Set([
   "What is a crop plan?",
   "Who are the unions and the members?",
   "What is a voucher?",
-  "What is a food token?",
+  "What is a standing-crop record?",
   "How does a buyer lock a harvest?",
   "Where does funding go?",
   "How do I verify independently?",
