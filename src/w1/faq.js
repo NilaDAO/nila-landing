@@ -2,11 +2,11 @@
 export const FAQ = [
   [
     "What does Nila offer?",
-    "A year plan for every field a farmer works, and the money and services to carry it out. She plans the three seasons with her union. At sowing, tractor hours and seed come as vouchers, and the cash part of her crop share comes from the union members' own savings. Both are paid back from the harvest the plan expects."
+    "A year plan for every field a farmer works, and the money and services to carry it out. She plans the three seasons with her union. At sowing, tractor work by the acre and seed come as vouchers, and the cash part of her crop share comes from the union members' own savings. Both are paid back from the harvest the plan expects."
   ],
   [
     "What is nUSD, and where does the yield come from?",
-    "nUSD is a dollar position on Stellar, still in development. The dollars pay for the vouchers in farmers' year plans: tractor hours and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars. The target is 3–5% a year, not guaranteed. The interest on a crop share is capped at 12.5% in the contract code, and deposits stay capped at zero until the contracts are audited."
+    "nUSD is a dollar position on Stellar, still in development. The dollars pay for the vouchers in farmers' year plans: tractor work by the acre and seed at sowing, paid back from the harvest. The return is the interest on those vouchers, earned in rupees and paid out in dollars. The target is 3–5% a year, not guaranteed. The interest on a crop share is capped at 12.5% in the contract code, and deposits stay capped at zero until the contracts are audited."
   ],
   [
     "What is a crop plan?",
@@ -18,7 +18,7 @@ export const FAQ = [
   ],
   [
     "What is a voucher?",
-    "A slip on the farmer's phone that pays for one service: so many tractor hours, or this seed. She shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when her harvest pays back the crop share. It cannot be passed on to someone else and pays only for the work in her plan."
+    "A slip on the farmer's phone that pays for one service: so many acres of tractor work, or this seed. She shows it to the machine owner or the seed shop instead of paying cash. The owner gets part of the price at the job and the rest when her harvest pays back the crop share. It cannot be passed on to someone else and pays only for the work in her plan."
   ],
   [
     "What is a food token?",
@@ -30,7 +30,7 @@ export const FAQ = [
   ],
   [
     "Where does funding go?",
-    "Into the services in a farmer's year plan, not into cash. Since November 2026, the cash part of a crop share comes only from the union members' own savings. Outside money pays only for vouchers (tractor hours, seed) and is paid back from the harvest. The interest is not Nila's income; how Nila charges for its services is not settled yet."
+    "Into the services in a farmer's year plan, not into cash. Since November 2026, the cash part of a crop share comes only from the union members' own savings. Outside money pays only for vouchers (tractor work by the acre, seed) and is paid back from the harvest. The interest is not Nila's income; how Nila charges for its services is not settled yet."
   ],
   [
     "How do I verify independently?",
