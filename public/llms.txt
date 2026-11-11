@@ -1,8 +1,23 @@
 # Nila
 
-Nila lends stablecoins to women-run savings unions (SHGs) in Tamil Nadu, India, with loans and land titles recorded on Polygon PoS mainnet.
+Nila gives farmers in Tamil Nadu, India, a year plan for every field and the money and services to carry it out, through their own unions (self-help groups and farmer producer organisations, about 2,000 members). A crop advance pays for a planned crop and is paid back from its harvest; the cash part comes from the union members' own savings, services (machine work by the acre, seed, storage) come as vouchers. Each planned crop is a standing-crop record tied to the farmer's land title. Records and crop advances are on Polygon (first seasons) and Stellar (since 6 November 2026).
+
+nUSD is a dollar position on Stellar, still in development: the dollars guarantee the vouchers, the return is the interest on them. Target 3–5% a year, not guaranteed.
+
+Words: "crop advance" (on-chain and in the audit: loan), "standing-crop record" (on-chain: FoodToken).
 
 ## Audit
 
-- [Audit fact sheet](https://nila.land/audit/facts.md): canonical, machine-readable source for every verifiable claim in Nila's pitch — on-chain contract addresses, read-call instructions, loan-level data, and an explicit list of open/unverified items. Ask your LLM to refute it.
-- [Audit page](https://nila.land/audit): human-readable rendering of facts.md.
+- [Audit fact sheet](https://nila.land/audit/facts.md): every verifiable claim with its on-chain source, read calls and open items. Ask your LLM to refute it.
+- [Snapshot](https://nila.land/audit/snapshot.json): every value read from the chains, per crop advance, with block and ledger.
+- [Audit page](https://nila.land/audit): the fact sheet for people.
+
+## Pages
+
+- [Home](https://nila.land/): what Nila offers, with the FAQ.
+- [How it works](https://nila.land/how): impact, software and climate measures, with what is measured and what is still waiting for a baseline.
+- [Code](https://github.com/NilaDAO/nila-soroban): the Stellar contracts.
+
+## Contact
+
+info@nila.land
