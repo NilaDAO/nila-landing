@@ -10,7 +10,7 @@ export const FAQ = [
   ],
   [
     "What is a crop plan?",
-    "Her year on one page: the crop on each field in each season (Kuruvai, Samba, summer), what it costs, what it should bring in, and which services she needs when. The first draft comes from her answers in the app, 8 years of satellite record of her fields and the district crop calendar; the amounts follow fixed rules in the code. She changes it with her union leader, and her choice stands. No field is left bare in the dry months."
+    "Her year on one page: the crop on each field in each season (Kuruvai, Samba, summer), what it costs, what it should bring in, and which services she needs when. An AI agent writes the first draft. Its context: her answers in the app; 8 years of satellite record per field, gathered by remote sensing (what grew when, and whether the soil is tired from the same crop again and again); the season's weather outlook (NOAA); the district crop calendar; reference prices per crop; and the state's agronomy tables (TNAU). The amounts follow fixed rules in the code, not the AI. She changes it with her union leader, and her choice stands."
   ],
   [
     "Who are the unions and the members?",
