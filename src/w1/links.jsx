@@ -50,7 +50,7 @@ function resolve(k, label, ctx) {
     case "Open the audit":
     case "audit ↗":
     case "Fact sheet": return { href: homeHref("/audit") };
-    case "facts.md": return { href: "/audit/facts.md", target: "_blank" };
+    case "facts.md": return { href: "/audit/facts.txt", target: "_blank" };
     case "Code (nila-soroban)": return { href: "https://github.com/NilaDAO/nila-soroban", target: "_blank" };
     case "Privacy Policy": return { href: homeHref("/privacy") };
     case "Terms of Use": return { href: homeHref("/terms") };

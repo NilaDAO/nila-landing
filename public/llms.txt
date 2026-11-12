@@ -5,7 +5,7 @@
 ## Read first
 
 - [All facts, one file](https://nila.land/llms-full.txt): definitions, figures with their source and block, what is measured and what is not, contact routes.
-- [On-chain fact sheet](https://nila.land/audit/facts.md): every contract on Polygon and Stellar, the block it was read at, and an open-items list written to be challenged.
+- [On-chain fact sheet](https://nila.land/audit/facts.txt): every contract on Polygon and Stellar, the block it was read at, and an open-items list written to be challenged.
 - [How it works](https://nila.land/how): impact, software and climate measures; most are still waiting for a baseline.
 
 ## Words used on this site

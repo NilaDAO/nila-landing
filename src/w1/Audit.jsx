@@ -12,7 +12,7 @@ import ComingSoonChip from "./ComingSoonChip.jsx";
 import { useIsMobile, useComingSoon, homeHref, headings } from "./util.js";
 
 const FILES = [
-  { href: "/audit/facts.md", name: "facts.md", what: "This page as plain text" },
+  { href: "/audit/facts.txt", name: "facts.md", what: "This page as plain text" },
   { href: "/audit/snapshot.json", name: "snapshot.json", what: "Every value the last refresh read" },
 ];
 
@@ -28,7 +28,7 @@ function Header({ mobile }) {
         <h1 style={{ margin: 0, fontSize: mobile ? 40 : 64, fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em" }}>Audit fact sheet</h1>
         <p style={{ margin: 0, maxWidth: 680, fontSize: mobile ? 16 : 20, lineHeight: 1.5, color: "#94A3B8" }}>
           Every figure Nila publishes that has a checkable source, with the evidence next to it. Paste{" "}
-          <a href="/audit/facts.md" target="_blank" rel="noopener noreferrer" style={{ color: "#F1F5F9", textDecoration: "underline" }}>facts.md</a>{" "}
+          <a href="/audit/facts.txt" target="_blank" rel="noopener noreferrer" style={{ color: "#F1F5F9", textDecoration: "underline" }}>facts.md</a>{" "}
           into any AI and ask it to find what does not add up.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(2, 1fr)", gap: 8, marginTop: mobile ? 8 : 16 }}>
@@ -87,8 +87,9 @@ export default function Audit() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch("/audit/facts.md")
+    fetch("/audit/facts.txt")
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then((t) => { if (/^\s*<!doctype/i.test(t)) throw new Error("got the app page"); return t; }) // a host rewrite, not the file
       .then((t) => setText(t.replace(/<!--[\s\S]*?-->\n?/g, ""))) // hide the generator's block markers
       .catch(() => setError(true));
   }, []);
@@ -126,7 +127,7 @@ export default function Audit() {
           <div style={{ maxWidth: 1152, margin: "0 auto", display: mobile ? "block" : "grid", gridTemplateColumns: "220px minmax(0, 1fr)", gap: 64, alignItems: "start" }}>
             {!mobile && <Toc items={toc} active={active} />}
             <article style={{ minWidth: 0, maxWidth: 820 }}>
-              {error && <p style={{ color: "#94A3B8" }}>Could not load facts.md. It is also at <a href="/audit/facts.md" style={{ textDecoration: "underline" }}>/audit/facts.md</a>.</p>}
+              {error && <p style={{ color: "#94A3B8" }}>Could not load facts.md. It is also at <a href="/audit/facts.txt" style={{ textDecoration: "underline" }}>/audit/facts.txt</a>.</p>}
               {!error && text === null && <p style={{ color: "#94A3B8" }}>Loading facts.md…</p>}
               {text !== null && <FactsMarkdown text={text} mobile={mobile} />}
             </article>

@@ -80,7 +80,7 @@ nUSD (not open for deposits). The harvest board for buyers (not live). Crop adva
 
 ## 8. How to verify
 
-- On-chain fact sheet with every contract on Polygon and Stellar, read calls and an open-items list written to be challenged: https://nila.land/audit/facts.md
+- On-chain fact sheet with every contract on Polygon and Stellar, read calls and an open-items list written to be challenged: https://nila.land/audit/facts.txt
 - Every value read, per crop advance with tx hashes: https://nila.land/audit/snapshot.json
 - Stellar contract code: https://github.com/NilaDAO/nila-soroban
 

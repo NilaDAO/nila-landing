@@ -89,7 +89,7 @@ nUSD (not open for deposits). The harvest board for buyers (not live). Crop adva
 
 ## 8. How to verify
 
-- On-chain fact sheet with every contract on Polygon and Stellar, read calls and an open-items list written to be challenged: https://nila.land/audit/facts.md
+- On-chain fact sheet with every contract on Polygon and Stellar, read calls and an open-items list written to be challenged: https://nila.land/audit/facts.txt
 - Every value read, per crop advance with tx hashes: https://nila.land/audit/snapshot.json
 - Stellar contract code: https://github.com/NilaDAO/nila-soroban
 
@@ -122,6 +122,9 @@ All enquiries go to info@nila.land. Use the subject line below so the right pers
 - No promise of a return, a harvest volume or a delivery date.
 `;
 
+// The fact sheet as .txt too: Amplify's rewrite rule serves .md as the app's index.html (Carst, 12 Nov). The site links
+// to facts.txt; facts.md stays the file the audit script writes.
+fs.copyFileSync(path.join(ROOT, "public/audit/facts.md"), path.join(ROOT, "public/audit/facts.txt"));
 fs.writeFileSync(path.join(ROOT, "public/llms-full.txt"), out);
 
 // llms.txt is hand-written except the partner list between its markers (src/w1/partners.js, Carst 12 Nov).
