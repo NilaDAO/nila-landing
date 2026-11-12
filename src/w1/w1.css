@@ -95,3 +95,5 @@
   .w1 .nl-coin .nl-plab{opacity:1}
   .w1 .nl-coin .nl-rim{opacity:0}
 }
+/* "A year with Nila" on phones: the open step is the tapped one (src/w1/yearTabs.js), not the hovered one. */
+.nl-accm .nl-tab.on .nl-body{opacity:1;transform:none}.nl-accm .nl-tab.on .nl-lab{color:#F1F5F9}

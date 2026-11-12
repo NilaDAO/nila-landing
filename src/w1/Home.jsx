@@ -20,6 +20,7 @@ import DWave3 from "./desktop/DWave3.jsx";
 import DStellar from "./desktop/DStellar.jsx";
 import DBacked from "./desktop/DBacked.jsx";
 import Integrated from "./Integrated.jsx";
+import { wireYearTabs } from "./yearTabs.js";
 import DHow from "./desktop/DHow.jsx";
 import DGlobeWave from "./desktop/DGlobeWave.jsx";
 import DFaq from "./desktop/DFaq.jsx";
@@ -60,6 +61,7 @@ const Anchor = ({ id }) => <span id={id} style={{ display: "block", position: "r
 
 export default function Home({ onOpenUnions, onOpenHow }) {
   const mobile = useIsMobile();
+  useEffect(() => wireYearTabs(), [mobile]); // "A year with Nila": tap opens a step (touch has no hover)
   const [news, setNews] = useState(true);
   const [menu, setMenu] = useState(false);
   const [soon, comingSoon] = useComingSoon();
