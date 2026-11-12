@@ -2,7 +2,7 @@
 // that section's row, and wraps under it when the row is too narrow (patched into DStellar / MStellar by
 // scripts/w1/post.py). Logos are the partners' own files (public/w1/partners/), on a light tile so their colours stay.
 const PARTNERS = [
-  { name: "Open Supply Hub", href: "https://opensupplyhub.org/", logo: "/w1/partners/open-supply-hub.svg", ratio: 972.96 / 364.15 },
+  { name: "Open Supply Hub", href: "https://opensupplyhub.org/production-locations/IN20263167FRTM7", logo: "/w1/partners/open-supply-hub.svg", ratio: 972.96 / 364.15 },
 ];
 
 export default function Integrated() {
