@@ -83,7 +83,7 @@ async function readTitles() {
     if (!ring) { skipped.push(`${id} (no boundary)`); continue; }
     plots.push({ ring, ha: areaHa(ring), crops: await cropsOf(id) });
   }
-  return { block, supply: n, plots, skipped };
+  return { block, supply: n, plots, skipped, revoked: skipped.filter((x) => /revoked/.test(x)).length, test: skipped.filter((x) => /test/.test(x)).length };
 }
 
 async function whisp(plots) {
@@ -119,12 +119,14 @@ async function whisp(plots) {
   });
 }
 
-const { block, supply, plots, skipped } = await readTitles();
+const { block, supply, plots, skipped, revoked, test } = await readTitles();
 console.log(`[whisp] ${supply} titles on Polygon (block ${block}); ${plots.length} plots sent; skipped: ${skipped.join(", ") || "none"}`);
 const rows = (await whisp(plots)).sort(() => crypto.randomInt(3) - 1).map((r, k) => ({ n: k + 1, ...r }));
 const count = (r) => rows.filter((x) => x.result === r).length;
 const out = {
   checked_at: new Date().toISOString(), source: "FAO Whisp (Open Foris)", indicator: `${FIELD} (Hansen Global Forest Change, tree cover loss from 2021)`,
+  // The site's "verified land titles" count (src/w1/LandTitles.jsx): live titles, not revoked, not test (Carst, 12 Nov).
+  titles_minted: supply, titles_revoked: revoked, titles_test: test, titles_live: plots.length, polygon_block: block,
   plots_checked: rows.length, no_tree_loss_since_2020: count("no tree loss"), tree_loss_since_2020: count("tree loss"), no_data: count("no data"),
   eudr_commodities: "cattle, cocoa, coffee, oil palm, rubber, soy, wood", eudr_plots: rows.filter((x) => x.eudr_crops.length).length, rows,
 };

@@ -44,7 +44,7 @@ Green manures (their own crop advance, ploughed back into the soil, not sold): s
 
 ## 5. Figures
 
-- Land titles on-chain: 60 (facts.md, Polygon block 97,069,016, 10 November 2026).
+- Land titles: 50 live (60 minted, 9 revoked, 1 test; NilaLandTitle, Polygon block 97,183,853, 12 November 2026).
 - Closed crop advances (loans) repaid in full: 39 of 39; defaults: 0 (facts.md, Polygon block 97,069,016, 10 November 2026).
 - Crop advances still running on Polygon: 18 (facts.md, Polygon block 97,069,016, 10 November 2026).
 - Members' own savings in the Polygon fund: ₹2,42,600.54 of ₹10,08,315.02, 24% (facts.md, Polygon block 97,069,016, 10 November 2026).
@@ -97,7 +97,7 @@ Q: What is a crop plan?
 A: Her year on one page: the crop on each field in each season (Kuruvai, Samba, summer), what it costs, what it should bring in, and which services she needs when. An AI agent writes the first draft. Its context: her answers in the app; 8 years of satellite record per field, gathered by remote sensing (what grew when, and whether the soil is tired from the same crop again and again); the season's weather outlook (NOAA); the district crop calendar; reference prices per crop; and the state's agronomy tables (TNAU). The amounts follow fixed rules in the code, not the AI. She changes it with her union leader, and her choice stands.
 
 Q: Who are the unions and the members?
-A: Self-help groups and farmer producer organisations in Tamil Nadu, with about 2,000 members, about 90% of them women (their own figures). The group admits its members, holds their savings and decides who gets a crop advance; Nila does not. It also runs collective growing programmes and balances supply to demand, so not every member grows the same crop. On-chain so far: 60 land titles, and 39 of 39 closed crop advances repaid in full, with no defaults.
+A: Self-help groups and farmer producer organisations in Tamil Nadu, with about 2,000 members, about 90% of them women (their own figures). The group admits its members, holds their savings and decides who gets a crop advance; Nila does not. It also runs collective growing programmes and balances supply to demand, so not every member grows the same crop. On-chain so far: 50 live land titles, and 39 of 39 closed crop advances repaid in full, with no defaults.
 
 Q: What is a voucher?
 A: A slip on the farmer's phone that pays for one service from her union: so many acres of work with the union's machines, seed the union bought, or space in the union's storage. She uses it instead of paying cash and repays it when her harvest pays back the crop advance. For now a voucher pays only for the union's own services; contracts with outside machine owners and seed shops are in the pipeline. It cannot be passed on to someone else and pays only for the work in her plan.

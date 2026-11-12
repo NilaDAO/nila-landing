@@ -73,7 +73,7 @@ Green manures (their own crop advance, ploughed back into the soil, not sold): $
 
 ## 5. Figures
 
-- Land titles on-chain: ${P.landTitles} (${pSrc}).
+${whisp?.titles_live != null ? `- Land titles: ${whisp.titles_live} live (${whisp.titles_minted} minted, ${whisp.titles_revoked} revoked, ${whisp.titles_test} test; NilaLandTitle, Polygon block ${whisp.polygon_block.toLocaleString("en-US")}, ${day(whisp.checked_at)}).` : `- Land titles on-chain: ${P.landTitles} (${pSrc}).`}
 - Closed crop advances (loans) repaid in full: ${repaid} of ${repaid + defaulted}; defaults: ${defaulted} (${pSrc}).
 - Crop advances still running on Polygon: ${live} (${pSrc}).
 - Members' own savings in the Polygon fund: ${inr(jr)} of ${inr(jr + sr)}, ${Math.round((jr / (jr + sr)) * 100)}% (${pSrc}).

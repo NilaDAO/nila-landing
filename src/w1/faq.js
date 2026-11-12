@@ -14,7 +14,7 @@ export const FAQ = [
   ],
   [
     "Who are the unions and the members?",
-    "Self-help groups and farmer producer organisations in Tamil Nadu, with about 2,000 members, about 90% of them women (their own figures). The group admits its members, holds their savings and decides who gets a crop advance; Nila does not. It also runs collective growing programmes and balances supply to demand, so not every member grows the same crop. On-chain so far: 60 land titles, and 39 of 39 closed crop advances repaid in full, with no defaults."
+    "Self-help groups and farmer producer organisations in Tamil Nadu, with about 2,000 members, about 90% of them women (their own figures). The group admits its members, holds their savings and decides who gets a crop advance; Nila does not. It also runs collective growing programmes and balances supply to demand, so not every member grows the same crop. On-chain so far: 50 live land titles, and 39 of 39 closed crop advances repaid in full, with no defaults."
   ],
   [
     "What is a voucher?",
