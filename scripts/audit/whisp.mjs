@@ -19,6 +19,8 @@ const ROOT = path.resolve(HERE, "../..");
 const CFG = JSON.parse(fs.readFileSync(path.join(HERE, "config.json"), "utf8"));
 const WHISP = process.env.WHISP_URL || "https://whisp.openforis.org/api";
 const FIELD = "GFC_loss_after_2020";
+// EUDR (Regulation (EU) 2023/1115) covers seven commodities; a plot is in scope when a planned crop on it is one of them.
+const EUDR = /cattle|cocoa|coffee|oil ?palm|rubber|soy|wood|timber/i;
 const DEAD = new Set(["0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"]);
 
 const KEY = process.env.WHISP_API_KEY;
@@ -48,6 +50,16 @@ async function readTitles() {
   const p = new ethers.JsonRpcProvider(process.env.POLYGON_RPC || CFG.polygon.rpc);
   const c = new ethers.Contract(CFG.polygon.contracts.landTitle, [
     "function totalSupply() view returns (uint256)", "function tokenURI(uint256) view returns (string)", "function ownerOf(uint256) view returns (address)"], p);
+  // Planned crops per title from its standing-crop records (FoodToken): tokenId bits 204–223 = family × 1000 + variety.
+  const ft = new ethers.Contract(CFG.polygon.contracts.foodToken, [
+    "function getLandTitleTokens(uint32) view returns (uint256[])", "function cropName(uint16) view returns (string)"], p);
+  const names = new Map();
+  const cropsOf = async (id) => {
+    const toks = await ft.getLandTitleTokens(id, { blockTag: block }).catch(() => []);
+    const fams = [...new Set(toks.map((t) => Number((BigInt(t) >> 204n) & 0xfffffn) / 1000 | 0))];
+    for (const f of fams) if (!names.has(f)) names.set(f, (await ft.cropName(f, { blockTag: block })).trim() || `family ${f}`);
+    return fams.map((f) => names.get(f));
+  };
   const block = await p.getBlockNumber();
   const n = Number(await c.totalSupply({ blockTag: block }));
   const plots = [], skipped = [];
@@ -63,7 +75,7 @@ async function readTitles() {
     if (/test/i.test(meta.farm || "")) { skipped.push(`${id} (test: ${meta.farm})`); continue; }
     const ring = ringOf(meta);
     if (!ring) { skipped.push(`${id} (no boundary)`); continue; }
-    plots.push({ ring, ha: areaHa(ring) });
+    plots.push({ ring, ha: areaHa(ring), crops: await cropsOf(id) });
   }
   return { block, supply: n, plots, skipped };
 }
@@ -96,7 +108,8 @@ async function whisp(plots) {
     const i = ids.get(String(f.properties.pid ?? f.properties.external_id ?? ""));
     const v = f.properties[FIELD];
     const result = v == null || v === "" || Number.isNaN(Number(v)) ? "no data" : Number(v) > 0 ? "tree loss" : "no tree loss";
-    return { result, area_ha_band: i == null ? "unknown" : band(plots[i].ha) };
+    const crops = i == null ? [] : plots[i].crops;
+    return { result, area_ha_band: i == null ? "unknown" : band(plots[i].ha), eudr_crops: crops.filter((c) => EUDR.test(c)) };
   });
 }
 
@@ -106,7 +119,8 @@ const rows = (await whisp(plots)).sort(() => crypto.randomInt(3) - 1).map((r, k)
 const count = (r) => rows.filter((x) => x.result === r).length;
 const out = {
   checked_at: new Date().toISOString(), source: "FAO Whisp (Open Foris)", indicator: `${FIELD} (Hansen Global Forest Change, tree cover loss from 2021)`,
-  plots_checked: rows.length, no_tree_loss_since_2020: count("no tree loss"), tree_loss_since_2020: count("tree loss"), no_data: count("no data"), rows,
+  plots_checked: rows.length, no_tree_loss_since_2020: count("no tree loss"), tree_loss_since_2020: count("tree loss"), no_data: count("no data"),
+  eudr_commodities: "cattle, cocoa, coffee, oil palm, rubber, soy, wood", eudr_plots: rows.filter((x) => x.eudr_crops.length).length, rows,
 };
 fs.writeFileSync(path.join(ROOT, "public/audit/whisp.json"), JSON.stringify(out, null, 2) + "\n");
 const day = new Date(out.checked_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -119,6 +133,12 @@ Every land title on nila.land, checked with FAO Whisp (Open Foris) on ${day}. In
 | No tree loss since 2020 | ${out.no_tree_loss_since_2020} |
 | Tree loss since 2020 | ${out.tree_loss_since_2020} |
 | No data | ${out.no_data} |
+
+## Where the EU deforestation regulation applies
+
+EUDR covers ${out.eudr_commodities}. ${out.eudr_plots ? `${out.eudr_plots} plots carry one of them:` : "None of the checked plots carries one of them."}
+${out.eudr_plots ? `\n| # | Result | Area | EUDR crop |\n|---|---|---|---|\n${rows.filter((r) => r.eudr_crops.length).map((r) => `| ${r.n} | ${r.result} | ${r.area_ha_band} ha | ${r.eudr_crops.join(", ")} |`).join("\n")}\n` : ""}
+## All plots
 
 | # | Result | Area |
 |---|---|---|

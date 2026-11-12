@@ -12,6 +12,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const snap = read("public/audit/snapshot.json");
 const how = read("public/how/how.json");
+const whisp = fs.existsSync(path.join(ROOT, "public/audit/whisp.json")) ? read("public/audit/whisp.json") : null;
 const crops = fs.existsSync(path.join(ROOT, "public/audit/crops.json")) ? read("public/audit/crops.json") : null;
 // Green manures: the soil covers in nila-sensing plan/reference/soil_v1.json (own crop advance, ploughed in, not sold).
 const GREEN = new Set(["sunhemp", "dhaincha", "wild_indigo"]);
@@ -77,7 +78,7 @@ Green manures (their own crop advance, ploughed back into the soil, not sold): $
 - Crop advances still running on Polygon: ${live} (${pSrc}).
 - Members' own savings in the Polygon fund: ${inr(jr)} of ${inr(jr + sr)}, ${Math.round((jr / (jr + sr)) * 100)}% (${pSrc}).
 - Stellar mainnet contracts deployed 6 November 2026; crop advances drawn on Stellar so far: ${Number(S.union?.borrows) || 0} (${sSrc}).
-- Members: about 2,000 in 3 unions, about 90% women. These are the unions' own figures, not on-chain.
+${whisp ? `- FAO Whisp check of every land title: ${whisp.no_tree_loss_since_2020} of ${whisp.plots_checked} plots with no tree cover loss since 2020, ${whisp.tree_loss_since_2020} with loss, ${whisp.no_data} no data; plots under the EU deforestation regulation: ${whisp.eudr_plots} (whisp.json, ${day(whisp.checked_at)}). Details: https://nila.land/audit/whisp\n` : ""}- Members: about 2,000 in 3 unions, about 90% women. These are the unions' own figures, not on-chain.
 
 ## 6. What is measured and what is not
 

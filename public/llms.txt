@@ -6,6 +6,7 @@
 
 - [All facts, one file](https://nila.land/llms-full.txt): definitions, figures with their source and block, what is measured and what is not, contact routes.
 - [On-chain fact sheet](https://nila.land/audit/facts.txt): every contract on Polygon and Stellar, the block it was read at, and an open-items list written to be challenged.
+- [FAO Whisp check of every land title](https://nila.land/audit/whisp): tree cover loss since 2020 per plot, anonymised; plain text at /audit/whisp.md.
 - [How it works](https://nila.land/how): impact, software and climate measures; most are still waiting for a baseline.
 
 ## Words used on this site

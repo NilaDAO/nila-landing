@@ -19,6 +19,7 @@ import AuditPage from "./components/sections/AuditPage";
 const W1Home = lazy(() => import("./w1/Home.jsx"));
 const W1Audit = lazy(() => import("./w1/Audit.jsx"));
 const W1Legal = lazy(() => import("./w1/Legal.jsx"));
+const W1Whisp = lazy(() => import("./w1/Whisp.jsx"));
 const loadHow = () => import("./w4/How.jsx");
 const W4How = lazy(loadHow);
 
@@ -35,6 +36,7 @@ const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV &
 const META = {
   "/how": "How it works: impact, software and climate measures · Nila",
   "/audit": "Audit fact sheet, read from Polygon and Stellar · Nila",
+  "/audit/whisp": "Every land title checked with FAO Whisp for tree loss since 2020 · Nila",
   "/privacy": "Privacy Policy · Nila",
   "/terms": "Terms of Use · Nila",
   "/risk": "Risk Disclosure · Nila",
@@ -52,6 +54,7 @@ export default function App() {
   if (path === "/privacy") return <PrivacyPolicy />;
   if (path === "/terms") return <TermsOfUse />;
   if (path === "/risk") return <RiskDisclosure />;
+  if (path === "/audit/whisp" && REDESIGN) return <Suspense fallback={null}><W1Whisp /></Suspense>;
   if (path === "/audit") return REDESIGN ? <Suspense fallback={null}><W1Audit /></Suspense> : <AuditPage />;
   if (path === "/how" && REDESIGN) return <Suspense fallback={null}><W4How /></Suspense>;
   return <NilaLanding />;

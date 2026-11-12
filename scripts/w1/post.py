@@ -139,3 +139,14 @@ import re as _re
 for f in ['src/w1/desktop/DMetrics.jsx', 'src/w1/mobile/MMetrics.jsx']:
     s = open(f).read(); n = _re.sub(r"<A k='#' label=\"Season ledger \(CSV\)\"[^>]*>Season ledger \(CSV\)</A>", '', s)
     if n != s: open(f, 'w').write(n)
+
+# Land titles metric (Carst, 12 Nov): the link under "Verified digital land titles" shows the FAO Whisp result
+# (src/w1/WhispLink.jsx, falls back to the audit link until `npm run whisp` has run).
+for f in ['src/w1/desktop/DMetrics.jsx', 'src/w1/mobile/MMetrics.jsx']:
+    s = open(f).read()
+    if '<WhispLink />' in s: continue
+    old = "Verified digital land titles</p><A k='#' label=\"audit ↗\" style={{fontSize: '12px', fontWeight: '700', color: '#94A3B8', textDecoration: 'underline'}}>audit ↗</A>"
+    assert s.count(old) == 1, f
+    s = s.replace(old, "Verified digital land titles</p><WhispLink />")
+    s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport WhispLink from "../WhispLink.jsx";')
+    open(f, 'w').write(s)
