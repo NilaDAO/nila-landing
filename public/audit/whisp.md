@@ -8,7 +8,7 @@ Every land title on nila.land, checked with FAO Whisp (Open Foris) on 12 Novembe
 | Tree loss since 2020 | 0 |
 | No data | 0 |
 
-## Where the EU deforestation regulation applies
+## Plots where the EU deforestation regulation applies
 
 EUDR covers cattle, cocoa, coffee, oil palm, rubber, soy, wood. None of the checked plots carries one of them.
 

@@ -142,7 +142,7 @@ Every land title on nila.land, checked with FAO Whisp (Open Foris) on ${day}. In
 | Tree loss since 2020 | ${out.tree_loss_since_2020} |
 | No data | ${out.no_data} |
 
-## Where the EU deforestation regulation applies
+## Plots where the EU deforestation regulation applies
 
 EUDR covers ${out.eudr_commodities}. ${out.eudr_plots ? `${out.eudr_plots} plots carry one of them:` : "None of the checked plots carries one of them."}
 ${out.eudr_plots ? `\n| # | Result | Area | EUDR crop |\n|---|---|---|---|\n${rows.filter((r) => r.eudr_crops.length).map((r) => `| ${r.n} | ${r.result} | ${r.area_ha_band} ha | ${r.eudr_crops.join(", ")} |`).join("\n")}\n` : ""}

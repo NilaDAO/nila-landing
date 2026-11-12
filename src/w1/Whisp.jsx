@@ -97,8 +97,8 @@ export default function Whisp() {
                          foot="Test titles and revoked titles are not counted." />
                 </section>
                 <section>
-                  <h2 style={h2}>Where the EU deforestation regulation applies</h2>
-                  <p style={sub}>The EUDR covers seven commodities: {w.eudr_commodities}. A plot is in scope when a crop planned on it is one of them.</p>
+                  <h2 style={h2}>Plots where the EU deforestation regulation applies</h2>
+                  <p style={sub}>The EUDR covers seven commodities: {w.eudr_commodities}.</p>
                   {eudr.length ? (
                     <Table head={["#", "Result", "Area", "EUDR crop"]}
                            rows={eudr.map((r) => [r.n, <Result key={r.n} r={r.result} />, `${r.area_ha_band} ha`, r.eudr_crops.join(", ")])} />
