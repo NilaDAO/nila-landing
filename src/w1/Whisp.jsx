@@ -73,7 +73,7 @@ export default function Whisp() {
                   {w ? `${w.no_tree_loss_since_2020} of ${w.plots_checked} plots: no tree loss since 2020` : "Every field, checked for tree loss"}
                 </h1>
                 <p style={{ margin: 0, maxWidth: 720, fontSize: mobile ? 14 : 15, lineHeight: 1.55, color: MUTED }}>
-                  Each land title is checked against satellite maps of tree loss since 2020. We publish the result, never the plot.
+                  Each land title is checked against satellite maps of tree loss since 2020. For privacy reasons we only show aggregated data.
                 </p>
               </div>
             </div>
