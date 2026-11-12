@@ -62,7 +62,6 @@ function resolve(k, label, ctx) {
     case "Impact Members, repayments, and what we can’t measure yet.": return howTab("impact", ctx);   // W4 tabs (Carst, 10 Nov)
     case "Technical Chains, signatures, AI and satellite.": return howTab("technical", ctx);
     case "Climate Soil, seasons and land that recovers.": return howTab("climate", ctx);
-    case "View a live field": return { href: "#live", onClick: ctx.comingSoon }; // W4: no public live field view yet
     case "Read more": return { href: "https://communityfund.stellar.org/project/nila-fwc", target: "_blank" }; // SCF project page (Carst, 10 Nov)
     case "Menu": return { href: "#menu", onClick: ctx.toggleMenu };
     case "Close": return { href: "#close", onClick: ctx.closeNews };

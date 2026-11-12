@@ -12,8 +12,6 @@ import MFooter from "../w1/mobile/MFooter.jsx";
 import { useIsMobile, useComingSoon, homeHref } from "../w1/util.js";
 import { RingCard, SideNav, TopNav } from "./HowRings.jsx";
 import { loadHowData, loadSnapshot, liveNumbers } from "./howData.js";
-import DSat from "./DSat.jsx";
-import MSat from "./MSat.jsx";
 
 // Start both fetches as soon as this chunk loads (App preloads it), so the page is filled when it slides in.
 loadHowData();
@@ -92,8 +90,6 @@ export default function How({ onBack, onOpenUnions }) {
             </div>
           ))}
         </section>
-
-        {tab?.key === "technical" && (mobile ? <MSat /> : <DSat />)}
 
         <Footer />
         <ComingSoonChip on={soon} />
