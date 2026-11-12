@@ -120,3 +120,18 @@ for f in ['src/w1/desktop/DFooter.jsx', 'src/w1/mobile/MFooter.jsx']:
 for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
     s = open(f).read(); n = s.replace('In development. Target, not guaranteed.<', 'In development. Target, not guaranteed. Check that taking part is legal where you live.<')
     if n != s: open(f, 'w').write(n)
+
+# Built on Stellar + Integrated with Nila in one row that wraps (Carst, 12 Nov): the section's container becomes a
+# wrapping flex row, the Stellar card grows, and src/w1/Integrated.jsx sits after it.
+for f, pad in [('src/w1/desktop/DStellar.jsx', '56px 24px 72px'), ('src/w1/mobile/MStellar.jsx', '40px 16px 48px')]:
+    s = open(f).read()
+    if '<Integrated />' in s: continue
+    box = "<div style={{maxWidth: '1152px', margin: '0 auto', padding: '%s', boxSizing: 'border-box'}}>" % pad
+    card = "<div style={{display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', padding: '22px 24px',"
+    end = "</A></div></div></div></div></section>"
+    assert s.count(box) == 1 and s.count(end) == 1, f
+    s = s.replace(box, box[:-3] + ", display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'stretch'}}>")
+    s = s.replace(card, "<div style={{flex: '999 1 520px', display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', padding: '22px 24px',", 1)
+    s = s.replace(end, "</A></div></div><Integrated /></div></div></section>")
+    s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport Integrated from "../Integrated.jsx";')
+    open(f, 'w').write(s)

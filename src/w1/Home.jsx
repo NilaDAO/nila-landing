@@ -19,7 +19,6 @@ import DTrust from "./desktop/DTrust.jsx";
 import DWave3 from "./desktop/DWave3.jsx";
 import DStellar from "./desktop/DStellar.jsx";
 import DBacked from "./desktop/DBacked.jsx";
-import Integrated from "./Integrated.jsx";
 import { wireYearTabs } from "./yearTabs.js";
 import DHow from "./desktop/DHow.jsx";
 import DGlobeWave from "./desktop/DGlobeWave.jsx";
@@ -99,7 +98,6 @@ export default function Home({ onOpenUnions, onOpenHow }) {
         <S.Trust />
         <S.Wave3 />
         <S.Stellar />
-        <Integrated mobile={mobile} />
         <S.Backed />
         <Anchor id="how" />
         <S.How />
