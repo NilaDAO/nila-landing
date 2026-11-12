@@ -1,6 +1,7 @@
 // "Integrated with Nila" (Carst, 12 Nov): services that use Nila's data. Sits next to the Built on Stellar card, inside
 // that section's row, and wraps under it when the row is too narrow (patched into DStellar / MStellar by
-// scripts/w1/post.py). Logos are the partners' own files (public/w1/partners/), on a light tile so their colours stay.
+// scripts/w1/post.py). Logos are the partners' own files (public/w1/partners/), drawn white on the same tile as the
+// Build with Nila button (#1F2733, 44 px, radius 12), Carst 12 Nov.
 const PARTNERS = [
   { name: "Open Supply Hub", href: "https://opensupplyhub.org/production-locations/IN20263167FRTM7", logo: "/w1/partners/open-supply-hub.svg", ratio: 972.96 / 364.15 },
 ];
@@ -16,8 +17,8 @@ export default function Integrated() {
         {PARTNERS.map((p) => (
           <li key={p.name}>
             <a href={p.href} target="_blank" rel="noopener noreferrer" title={p.name}
-               style={{ height: 48, padding: "0 16px", borderRadius: 12, background: "#F1F5F9", display: "flex", alignItems: "center", boxSizing: "border-box" }}>
-              <img src={p.logo} alt={p.name} height={26} width={Math.round(26 * p.ratio)} style={{ display: "block" }} />
+               style={{ height: 44, padding: "0 18px", borderRadius: 12, background: "#1F2733", display: "flex", alignItems: "center", boxSizing: "border-box" }}>
+              <img src={p.logo} alt={p.name} height={24} width={Math.round(24 * p.ratio)} style={{ display: "block", filter: "brightness(0) invert(1)" }} />
             </a>
           </li>
         ))}
