@@ -11,7 +11,8 @@
     "audit": "node scripts/audit/refresh.mjs",
     "prebuild": "node scripts/llms/build.mjs",
     "llms": "node scripts/llms/build.mjs",
-    "crops": "node scripts/audit/crops.mjs"
+    "crops": "node scripts/audit/crops.mjs",
+    "whisp": "node scripts/audit/whisp.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
