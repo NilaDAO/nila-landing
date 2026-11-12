@@ -133,3 +133,9 @@ for f, pad in [('src/w1/desktop/DStellar.jsx', '56px 24px 72px'), ('src/w1/mobil
     s = s.replace(card, "<Integrated /><div style={{flex: '999 1 520px', display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', padding: '22px 24px',", 1)
     s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport Integrated from "../Integrated.jsx";')
     open(f, 'w').write(s)
+
+# Metrics (Carst, 12 Nov): no "Season ledger (CSV)" button; the CSV is not published.
+import re as _re
+for f in ['src/w1/desktop/DMetrics.jsx', 'src/w1/mobile/MMetrics.jsx']:
+    s = open(f).read(); n = _re.sub(r"<A k='#' label=\"Season ledger \(CSV\)\"[^>]*>Season ledger \(CSV\)</A>", '', s)
+    if n != s: open(f, 'w').write(n)
