@@ -103,11 +103,19 @@ export default function Whisp() {
                     <Table head={["#", "Result", "Area", "EUDR crop"]}
                            rows={eudr.map((r) => [r.n, <Result key={r.n} r={r.result} />, `${r.area_ha_band} ha`, r.eudr_crops.join(", ")])} />
                   ) : (
-                    <div style={{ ...card, padding: "16px 18px" }}>
-                      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.55 }}>
-                        None. The crops on Nila's crop calendar (paddy, groundnut, sugarcane, banana, sesame, cassava, maize, pulses and fodder) are not EUDR commodities.
-                        When a union that grows one of them joins, its plots are listed here with their result.
-                      </p>
+                    // No EUDR plots yet: the table's shape, blurred and hidden from screen readers, with the reason on
+                    // top (as the "waiting for a baseline" cards on /how). The rows are placeholders, never data.
+                    <div style={{ position: "relative" }}>
+                      <div aria-hidden="true" style={{ filter: "blur(6px)", opacity: 0.45, pointerEvents: "none", userSelect: "none" }}>
+                        <Table head={["#", "Result", "Area", "EUDR crop"]}
+                               rows={[["1", "no tree loss", "0.5–1 ha", "coffee"], ["2", "no tree loss", "<0.5 ha", "rubber"],
+                                      ["3", "no tree loss", "1–2 ha", "cocoa"], ["4", "no tree loss", "<0.5 ha", "coffee"]]} />
+                      </div>
+                      <div role="status" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center",
+                                                  justifyContent: "center", gap: 6, textAlign: "center", padding: 16 }}>
+                        <span style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.3 }}>No unions trade EUDR commodities on Nila yet</span>
+                        <span style={{ fontSize: 13, lineHeight: 1.5, color: "#CBD5E1" }}>When one does, its plots are listed here with their result.</span>
+                      </div>
                     </div>
                   )}
                 </section>
