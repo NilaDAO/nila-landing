@@ -65,7 +65,10 @@ export default function Whisp() {
             <PageNav mobile={mobile} />
             <div style={{ padding: mobile ? "40px 16px 40px" : "72px 48px 56px" }}>
               <div style={{ maxWidth: 1152, margin: "0 auto", display: "flex", flexDirection: "column", gap: mobile ? 14 : 18 }}>
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED }}>Audit · FAO Whisp</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <img src="/w1/partners/whisp-white.svg" alt="Whisp" width={77} height={24} style={{ display: "block" }} />
+                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED }}>Audit · FAO Whisp</span>
+                </span>
                 <h1 style={{ margin: 0, fontSize: mobile ? 34 : 56, fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
                   {w ? `${w.no_tree_loss_since_2020} of ${w.plots_checked} plots: no tree loss since 2020` : "Every field, checked for tree loss"}
                 </h1>
