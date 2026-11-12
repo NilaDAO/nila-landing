@@ -73,9 +73,7 @@ export default function Whisp() {
                   {w ? `${w.no_tree_loss_since_2020} of ${w.plots_checked} plots: no tree loss since 2020` : "Every field, checked for tree loss"}
                 </h1>
                 <p style={{ margin: 0, maxWidth: 720, fontSize: mobile ? 14 : 15, lineHeight: 1.55, color: MUTED }}>
-                  We send the boundary of every land title to FAO's Whisp (Open Foris), the open tool used for deforestation checks. It
-                  compares each plot with satellite maps of tree cover loss since 31 December 2020. The check is private: no GeoIDs are
-                  registered, and we publish only the result, never a location, a title number or a name.
+                  Each land title is checked against satellite maps of tree loss since 2020. We publish the result, never the plot.
                 </p>
               </div>
             </div>
