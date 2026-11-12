@@ -1,9 +1,7 @@
 // "Integrated with Nila" (Carst, 12 Nov): services that use Nila's data. Sits next to the Built on Stellar card, inside
 // that section's row, and wraps under it when the row is too narrow (patched into DStellar / MStellar by
 // scripts/w1/post.py). Logos are the partners' own files (public/w1/partners/), on a light tile so their colours stay.
-const PARTNERS = [
-  { name: "Open Supply Hub", href: "https://opensupplyhub.org/production-locations/IN20263167FRTM7", logo: "/w1/partners/open-supply-hub.svg", ratio: 972.96 / 364.15 },
-];
+import { PARTNERS } from "./partners.js"; // one list: also feeds index.html and the llms files
 
 export default function Integrated() {
   return (

@@ -19,6 +19,12 @@
 
 - nUSD deposits. The harvest board for buyers. Most impact measures (the first year plans run in 2026–27).
 
+## Integrated with
+
+<!-- partners -->
+- [Open Supply Hub](https://opensupplyhub.org/production-locations/IN20263167FRTM7): Nila's production location on Open Supply Hub, the open map of supply-chain sites.
+<!-- /partners -->
+
 ## Contact
 
 - info@nila.land, with a subject per topic: see "Contact" in [llms-full.txt](https://nila.land/llms-full.txt).

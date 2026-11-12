@@ -113,6 +113,10 @@ A: Into the services in a farmer's year plan, not into cash. Since November 2026
 Q: How do I verify independently?
 A: Read it from the chains yourself. The audit page lists every contract on Polygon (the first seasons) and Stellar (since 6 November 2026), with the block it was read at and a link to the explorer. facts.md has the same in plain text, with prompts for handing it to any AI and asking what does not add up. The contract code is public: nila-soroban on GitHub.
 
+## 9b. Integrated with
+
+- Open Supply Hub: Nila's production location on Open Supply Hub, the open map of supply-chain sites: https://opensupplyhub.org/production-locations/IN20263167FRTM7
+
 ## 10. Contact
 
 All enquiries go to info@nila.land. Use the subject line below so the right person answers.

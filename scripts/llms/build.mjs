@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { FAQ } from "../../src/w1/faq.js";
+import { PARTNERS } from "../../src/w1/partners.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
@@ -96,6 +97,10 @@ nUSD (not open for deposits). The harvest board for buyers (not live). Crop adva
 
 ${FAQ.map(([q, a]) => `Q: ${q}\nA: ${noTarget(a)}`).join("\n\n")}
 
+## 9b. Integrated with
+
+${PARTNERS.map((p) => `- ${p.name}: ${p.what}: ${p.href}`).join("\n")}
+
 ## 10. Contact
 
 All enquiries go to info@nila.land. Use the subject line below so the right person answers.
@@ -118,4 +123,9 @@ All enquiries go to info@nila.land. Use the subject line below so the right pers
 `;
 
 fs.writeFileSync(path.join(ROOT, "public/llms-full.txt"), out);
+
+// llms.txt is hand-written except the partner list between its markers (src/w1/partners.js, Carst 12 Nov).
+const short = path.join(ROOT, "public/llms.txt");
+fs.writeFileSync(short, fs.readFileSync(short, "utf8").replace(/<!-- partners -->[\s\S]*?<!-- \/partners -->/,
+  `<!-- partners -->\n${PARTNERS.map((p) => `- [${p.name}](${p.href}): ${p.what}.`).join("\n")}\n<!-- /partners -->`));
 console.log(`[llms] wrote public/llms-full.txt (${out.length} chars, ${pSrc})`);

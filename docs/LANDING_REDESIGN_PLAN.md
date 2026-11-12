@@ -69,6 +69,12 @@ not verified against the live Amplify bundle). Local repo only: no remote, no pu
 | S11 | **FAQ** | **Done 2026-11-11** (`c0cc1b5`), see W1 list above. Still to confirm: "about 2,000 members, about 90% women" (unions' own figures). |
 | S12 | **Legal pages** | **Done 2026-11-11**: W1 style; entities Blockchainforcommons (KvK 55518559) + Nila Farmer Livelihoods Trust, no BV; dated 11 Nov 2026; no Information Memorandum (the site has no forms); Risk rewritten to Stellar / USDC / crop shares / 14-day unbond / loss order (LOAN_RULES), 3–5 % nUSD target. The old site still has the IM form and shares this text: release with the redesign. Counsel to review. |
 
+## Rule: partners on the text versions (Carst, 12 Nov)
+
+Every partner under "Integrated with Nila" must also be on the site's text versions (index.html plain text and
+sameAs, llms.txt, llms-full.txt). One list, `src/w1/partners.js`, feeds all of them at build; never add a partner by hand
+in those files.
+
 ## Before release (11 Nov)
 
 - Human checks: Tamil saying (Anand or a union leader); 1950–51 land-use figures (table 1); unions' member figures.
