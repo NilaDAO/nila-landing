@@ -121,13 +121,15 @@ for f in ['src/w1/desktop/DOffers.jsx', 'src/w1/mobile/MOffers.jsx']:
     s = open(f).read(); n = s.replace('In development. Target, not guaranteed.<', 'In development. Target, not guaranteed. Check that taking part is legal where you live.<')
     if n != s: open(f, 'w').write(n)
 
-# Built on Stellar + Integrated with Nila in one shared card (Carst, 12 Nov): src/w1/Integrated.jsx goes first inside the
-# Built on Stellar card, so the partners sit on the left and Build with Nila on the right; the card wraps when narrow.
-for f, prop in [('src/w1/desktop/DStellar.jsx', ''), ('src/w1/mobile/MStellar.jsx', ' mobile')]:
+# Built on Stellar + Integrated with Nila in one row that wraps (Carst, 12 Nov): the section's container becomes a
+# wrapping flex row, src/w1/Integrated.jsx sits first (left), the Stellar card with Build with Nila on the right and grows.
+for f, pad in [('src/w1/desktop/DStellar.jsx', '56px 24px 72px'), ('src/w1/mobile/MStellar.jsx', '40px 16px 48px')]:
     s = open(f).read()
-    if '<Integrated' in s: continue
+    if '<Integrated />' in s: continue
+    box = "<div style={{maxWidth: '1152px', margin: '0 auto', padding: '%s', boxSizing: 'border-box'}}>" % pad
     card = "<div style={{display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', padding: '22px 24px',"
-    i = s.index(card); j = s.index('>', s.index('}}', i)) + 1
-    s = s[:j] + '<Integrated%s />' % prop + s[j:]
+    assert s.count(box) == 1, f
+    s = s.replace(box, box[:-3] + ", display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'stretch'}}>")
+    s = s.replace(card, "<Integrated /><div style={{flex: '999 1 520px', display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap', padding: '22px 24px',", 1)
     s = s.replace('import { A } from "../links.jsx";', 'import { A } from "../links.jsx";\nimport Integrated from "../Integrated.jsx";')
     open(f, 'w').write(s)
