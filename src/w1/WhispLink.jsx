@@ -16,7 +16,7 @@ export default function WhispLink() {
   return (
     <a href={homeHref("/audit/whisp")} style={STYLE} title={w ? `Checked with FAO Whisp on ${w.checked_at.slice(0, 10)}` : "FAO Whisp check of every land title"}>
       <img src="/w1/partners/whisp-white.svg" alt="Whisp" width={51} height={16} style={{ display: "block" }} />
-      {w ? `${w.no_tree_loss_since_2020}/${w.plots_checked} forest-free ↗` : "check ↗"}
+      {w ? `FAO · ${w.no_tree_loss_since_2020}/${w.plots_checked} forest-free ↗` : "FAO check ↗"}
     </a>
   );
 }

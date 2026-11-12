@@ -1,0 +1,313 @@
+{
+  "checked_at": "2026-11-12T11:00:57.983Z",
+  "source": "FAO Whisp (Open Foris)",
+  "indicator": "GFC_loss_after_2020 (Hansen Global Forest Change, tree cover loss from 2021)",
+  "plots_checked": 50,
+  "no_tree_loss_since_2020": 50,
+  "tree_loss_since_2020": 0,
+  "no_data": 0,
+  "eudr_commodities": "cattle, cocoa, coffee, oil palm, rubber, soy, wood",
+  "eudr_plots": 0,
+  "rows": [
+    {
+      "n": 1,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 2,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 3,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 4,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 5,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 6,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 7,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 8,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 9,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 10,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 11,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 12,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 13,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 14,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 15,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 16,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 17,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 18,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 19,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 20,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 21,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 22,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 23,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 24,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 25,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 26,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 27,
+      "result": "no tree loss",
+      "area_ha_band": "1–2",
+      "eudr_crops": []
+    },
+    {
+      "n": 28,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 29,
+      "result": "no tree loss",
+      "area_ha_band": "1–2",
+      "eudr_crops": []
+    },
+    {
+      "n": 30,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 31,
+      "result": "no tree loss",
+      "area_ha_band": "1–2",
+      "eudr_crops": []
+    },
+    {
+      "n": 32,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 33,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 34,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 35,
+      "result": "no tree loss",
+      "area_ha_band": "1–2",
+      "eudr_crops": []
+    },
+    {
+      "n": 36,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 37,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 38,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 39,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 40,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 41,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 42,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 43,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 44,
+      "result": "no tree loss",
+      "area_ha_band": "1–2",
+      "eudr_crops": []
+    },
+    {
+      "n": 45,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 46,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 47,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    },
+    {
+      "n": 48,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 49,
+      "result": "no tree loss",
+      "area_ha_band": "<0.5",
+      "eudr_crops": []
+    },
+    {
+      "n": 50,
+      "result": "no tree loss",
+      "area_ha_band": "0.5–1",
+      "eudr_crops": []
+    }
+  ]
+}

@@ -96,7 +96,7 @@ export default function Whisp() {
                   <Table head={["Result", "Plots"]}
                          rows={[[<Result key="a" r="no tree loss" />, w.no_tree_loss_since_2020], [<Result key="b" r="tree loss" />, w.tree_loss_since_2020],
                                 [<Result key="c" r="no data" />, w.no_data], [<b key="d">Checked</b>, <b key="e">{w.plots_checked}</b>]]}
-                         foot="Test titles are not counted." />
+                         foot="Test titles and revoked titles are not counted." />
                 </section>
                 <section>
                   <h2 style={h2}>Where the EU deforestation regulation applies</h2>

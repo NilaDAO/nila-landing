@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 import { ethers } from "ethers";
 
@@ -70,7 +71,12 @@ async function readTitles() {
     if (DEAD.has(owner)) { skipped.push(`${id} (revoked)`); continue; }
     live++;
     let meta;
-    try { meta = JSON.parse(Buffer.from((await c.tokenURI(id, { blockTag: block })).split(",")[1], "base64").toString()); }
+    try {
+      const uri = await c.tokenURI(id, { blockTag: block });
+      const raw = Buffer.from(uri.split(",")[1], "base64");
+      // Newer titles are zlib-compressed: data:application/json+zlib;base64,…
+      meta = JSON.parse((uri.startsWith("data:application/json+zlib") ? zlib.inflateSync(raw) : raw).toString());
+    }
     catch { skipped.push(`${id} (unreadable tokenURI)`); continue; }
     if (/test/i.test(meta.farm || "")) { skipped.push(`${id} (test: ${meta.farm})`); continue; }
     const ring = ringOf(meta);
@@ -144,7 +150,7 @@ ${out.eudr_plots ? `\n| # | Result | Area | EUDR crop |\n|---|---|---|---|\n${ro
 |---|---|---|
 ${rows.map((r) => `| ${r.n} | ${r.result} | ${r.area_ha_band} ha |`).join("\n")}
 
-Test titles are not counted. Method: each title's outer boundary is read from the NilaLandTitle contract on Polygon and sent to the Whisp API in one request; the result per plot is "tree loss" when ${FIELD} is above 0 ha.
+Test titles and revoked titles are not counted. Method: each title's outer boundary is read from the NilaLandTitle contract on Polygon and sent to the Whisp API in one request; the result per plot is "tree loss" when ${FIELD} is above 0 ha.
 `;
 fs.writeFileSync(path.join(ROOT, "public/audit/whisp.md"), md);
 console.log(`[whisp] ${out.no_tree_loss_since_2020} of ${out.plots_checked} no tree loss, ${out.tree_loss_since_2020} tree loss, ${out.no_data} no data → public/audit/whisp.{json,md}`);

@@ -49,6 +49,7 @@ Green manures (their own crop advance, ploughed back into the soil, not sold): s
 - Crop advances still running on Polygon: 18 (facts.md, Polygon block 97,069,016, 10 November 2026).
 - Members' own savings in the Polygon fund: ₹2,42,600.54 of ₹10,08,315.02, 24% (facts.md, Polygon block 97,069,016, 10 November 2026).
 - Stellar mainnet contracts deployed 6 November 2026; crop advances drawn on Stellar so far: 0 (facts.md, Stellar ledger 65,404,591, 10 November 2026).
+- FAO Whisp check of every land title: 50 of 50 plots with no tree cover loss since 2020, 0 with loss, 0 no data; plots under the EU deforestation regulation: 0 (whisp.json, 12 November 2026). Details: https://nila.land/audit/whisp
 - Members: about 2,000 in 3 unions, about 90% women. These are the unions' own figures, not on-chain.
 
 ## 6. What is measured and what is not
