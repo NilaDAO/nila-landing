@@ -22,6 +22,8 @@ const W1Legal = lazy(() => import("./w1/Legal.jsx"));
 const W1Whisp = lazy(() => import("./w1/Whisp.jsx"));
 const loadHow = () => import("./w4/How.jsx");
 const W4How = lazy(loadHow);
+// The senior guarantee pool for invited investors (23 Nov); its own chunk, with the Stellar SDK.
+const Senior = lazy(() => import("./senior/Senior.jsx"));
 
 // Redesign (dev/nila-design page 6) behind a flag: VITE_REDESIGN=1 at build time; ?w1 previews it in `npm run dev` only.
 const REDESIGN = import.meta.env.VITE_REDESIGN === "1" || (import.meta.env.DEV && new URLSearchParams(window.location.search).has("w1"));
@@ -40,6 +42,7 @@ const META = {
   "/privacy": "Privacy Policy · Nila",
   "/terms": "Terms of Use · Nila",
   "/risk": "Risk Disclosure · Nila",
+  "/senior": "Senior pool · Nila",
 };
 function setMeta(path) {
   if (META[path]) document.title = META[path];
@@ -57,6 +60,7 @@ export default function App() {
   if (path === "/audit/whisp" && REDESIGN) return <Suspense fallback={null}><W1Whisp /></Suspense>;
   if (path === "/audit") return REDESIGN ? <Suspense fallback={null}><W1Audit /></Suspense> : <AuditPage />;
   if (path === "/how" && REDESIGN) return <Suspense fallback={null}><W4How /></Suspense>;
+  if (path === "/senior") return <Suspense fallback={null}><Senior /></Suspense>;
   return <NilaLanding />;
 }
 
